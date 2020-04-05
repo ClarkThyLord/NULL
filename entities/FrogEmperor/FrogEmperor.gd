@@ -1,88 +1,70 @@
+tool
 extends KinematicBody
 class_name FrogEmperor
 
 
+# Refrences
+onready var CameraPivot := get_node("CameraPivot")
+onready var Camera := get_node("CameraPivot/Camera")
+
+onready var HitArea := get_node("HitArea")
+
 
 # Declarations
-var velocity = Vector3()
-var camera
-var gravity = -9.8 * 3
-export (float) var SPEED
-export (float) var RUN_SPEED
-export (float) var DE_ACCELERATION
-export (float) var ACCELERATION
-export (float) var jump_height
+export(int, 0, 100, 1) var Health := 100
+export(int, 0, 100, 1) var Stamina := 100
 
+export(int, 0, 100, 1) var Speed := 25
+export(float, 0, 10, 0.01) var SpeedBoost := 1.75
+
+export(int, 0, 3, 1) var MaxJumps := 1
+export(int, 0, 10, 1) var JumpHeight := 3
+export(float, 0, 100, 0.1) var Gravity := 10
+
+export(int, 0, 100, 1) var MouseSensitivity := 10
 
 
 # Core
-func _ready():
+func _ready() -> void:
 	add_to_group("players", true)
-	#Get the scene's camera
-	camera = get_viewport().get_camera().get_global_transform()
+	if not Engine.editor_hint:
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 
-func attack():
-	#Enable collision box when input attack is done and disable it when not
-	if(Input.is_action_pressed("attack")):
-		get_node("Hit").get_node("Hitbox").disabled = false
-	else:
-		get_node("Hit").get_node("Hitbox").disabled = true
+func attack() -> void:
+	pass
 
-func movement(delta):
-	#Declare the vector that will tell the direction the player wants to move
-	var dir = Vector3()
-	if(Input.is_action_pressed("move_fw")):
-		dir.z -= 1
-	if(Input.is_action_pressed("move_bw")):
-		dir.z += 1
-	if(Input.is_action_pressed("move_lf")):
-		dir.x -= 1
-	if(Input.is_action_pressed("move_rg")):
-		dir.x += 1
-	dir = dir.normalized()
-	
-	#Make gravity change y position of player
-	velocity.y += gravity * delta
-	
-	#Declare a temporal variable for velocity so that the y vector doesnt get change
-	var temp_velocity = velocity
-	temp_velocity.y = 0
-	
-	#See if player wants the character to run and with that get the new position of the object
-	var speed = SPEED
-	if(Input.is_action_pressed("action_shift")):
-		speed = RUN_SPEED
-	var target = dir * speed
-	
-	#deaccelerate when player is changing direction or stopping
-	var accel = DE_ACCELERATION
-	if(dir.dot(temp_velocity)>0):
-		accel = ACCELERATION
-	
-	#Call the linear_interpolate to make move_and_slide movement with the acceleration given 
-	temp_velocity = temp_velocity.linear_interpolate(target, accel * delta)
-	velocity.x = temp_velocity.x
-	velocity.z = temp_velocity.z
-	velocity = move_and_slide(velocity, Vector3(0,1,0))
-
-	#Rotate the player towards where its moving, "if" dectects if player is moving
-	if abs(velocity.x) >= 1 or abs(velocity.z) >= 1:
-		var rot = get_rotation()
-		rot.y = atan2(-temp_velocity.x,-temp_velocity.z)
-		set_rotation(rot)
-	
-	#Jumping when player its on floor and inpus space is done
-	if is_on_floor() and Input.is_action_pressed("action_space"):
-		velocity.y = jump_height
+func move(direction : Vector3, delta : float) -> void:
+	move_and_slide(Vector3.DOWN * Gravity)
+	move_and_slide(direction * Speed)
 
 
-func _process(delta):
-	#Call all the action the player can do
-	movement(delta)
-	attack()
+func _process(delta : float) -> void:
+	pass
 
+func _physics_process(delta):
+	if not Engine.editor_hint:
+		var direction := Vector3()
+		if Input.is_action_pressed("move_forward"): direction += Vector3.FORWARD
+		if Input.is_action_pressed("move_back"): direction += Vector3.BACK
+		if Input.is_action_pressed("move_right"): direction += Vector3.RIGHT
+		if Input.is_action_pressed("move_left"): direction += Vector3.LEFT
+		if Input.is_action_pressed("move_boost"): direction *= SpeedBoost
+		if Input.is_action_just_pressed("move_jump"): direction += Vector3.UP
+		move(direction, delta)
 
-#Attack hit
-func _on_Hit_body_entered(body):
-	print("hit")
+func _unhandled_input(event : InputEvent):
+	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
+		if event is InputEventMouseMotion:
+			CameraPivot.rotation_degrees.x += clamp(int(event.relative.y / MouseSensitivity), -1, 1)
+			CameraPivot.rotation_degrees.y += clamp(int(event.relative.x / MouseSensitivity), -1, 1)
+		elif event is InputEventMouseButton:
+			match event.button_index:
+				BUTTON_WHEEL_UP, BUTTON_WHEEL_DOWN:
+					Camera.translation += Vector3(0, 0.1, 0.1) * (1 if event.button_index == BUTTON_WHEEL_UP else -1)
+
+func _unhandled_key_input(event : InputEventKey) -> void:
+	if not event.pressed:
+		match event.scancode:
+			KEY_ESCAPE:
+				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED else Input.MOUSE_MODE_CAPTURED)
