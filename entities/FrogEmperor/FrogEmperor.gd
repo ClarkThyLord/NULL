@@ -1,5 +1,9 @@
 extends KinematicBody
+class_name FrogEmperor
 
+
+
+# Declarations
 var velocity = Vector3()
 var camera
 var gravity = -9.8 * 3
@@ -10,17 +14,14 @@ export (float) var ACCELERATION
 export (float) var jump_height
 
 
+
+# Core
 func _ready():
+	add_to_group("players", true)
 	#Get the scene's camera
 	camera = get_viewport().get_camera().get_global_transform()
 
 
-
-func _process(delta):
-	#Call all the action the player can do
-	movement(delta)
-	attack()
-	
 func attack():
 	#Enable collision box when input attack is done and disable it when not
 	if(Input.is_action_pressed("attack")):
@@ -28,8 +29,6 @@ func attack():
 	else:
 		get_node("Hit").get_node("Hitbox").disabled = true
 
-
-		
 func movement(delta):
 	#Declare the vector that will tell the direction the player wants to move
 	var dir = Vector3()
@@ -76,6 +75,13 @@ func movement(delta):
 	#Jumping when player its on floor and inpus space is done
 	if is_on_floor() and Input.is_action_pressed("action_space"):
 		velocity.y = jump_height
+
+
+func _process(delta):
+	#Call all the action the player can do
+	movement(delta)
+	attack()
+
 
 #Attack hit
 func _on_Hit_body_entered(body):
