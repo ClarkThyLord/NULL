@@ -57,8 +57,8 @@ func _physics_process(delta):
 			elif is_on_floor(): jumps = 0
 			
 			move_and_slide(velocity, Vector3.UP)
-			move_and_slide(Vector3.DOWN * Gravity, Vector3.UP)
-			Body.rotation = Vector3(0, Vector2(direction.z, direction.x).angle(), 0)
+			Body.rotation = Vector3(0, Vector2(velocity.z, velocity.x).angle(), 0)
+		move_and_slide(Vector3.DOWN * Gravity, Vector3.UP)
 
 func _unhandled_input(event : InputEvent):
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
