@@ -47,6 +47,10 @@ func _ready() -> void:
 		HUD.ScoreBoard.add_event(str(e))
 
 
+func die() -> void:
+	HUD.show_summary()
+
+
 func _physics_process(delta):
 	var regenerate_stamina := true
 	var direction := Vector3()
