@@ -60,7 +60,7 @@ func _unhandled_input(event : InputEvent):
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		if event is InputEventMouseMotion:
 			var motion : Vector2 = event.relative.normalized()
-#			CameraPivot.rotation_degrees.x = clamp(CameraPivot.rotation_degrees.x + motion.y * MouseSensitivity, -45, 30)
+			CameraPivot.rotation_degrees.x = clamp(CameraPivot.rotation_degrees.x + -motion.y * MouseSensitivity, -45, 30)
 			CameraPivot.rotation_degrees.y += -motion.x * MouseSensitivity
 		elif event is InputEventMouseButton:
 			match event.button_index:
