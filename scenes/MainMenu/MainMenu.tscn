@@ -1,0 +1,122 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://scenes/MainMenu/MainMenu.gd" type="Script" id=1]
+[ext_resource path="res://assets/scenes/MainMenu/logo.png" type="Texture" id=2]
+[ext_resource path="res://assets/fonts/8-Bit Wonder/8-Bit Wonder.TTF" type="DynamicFontData" id=3]
+[ext_resource path="res://assets/shaders/offset.shader" type="Shader" id=4]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 4 )
+shader_param/size_x = 0.004
+shader_param/size_y = 0.004
+shader_param/r_offset_x = -0.2
+shader_param/r_offset_y = 0.0
+shader_param/g_offset_x = 0.0
+shader_param/g_offset_y = 0.0
+shader_param/b_offset_x = 0.2
+shader_param/b_offset_y = 0.0
+
+[sub_resource type="Curve" id=2]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 1.4, 0.0, 0, 0 ]
+
+[sub_resource type="Curve" id=3]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.798851, 0.7 ), -1.58182, -1.58182, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="DynamicFont" id=4]
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 64
+font_data = ExtResource( 3 )
+
+[node name="MainMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.247059, 0.121569, 0.301961, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OffsetShader" type="ColorRect" parent="."]
+material = SubResource( 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MenuParticles" type="CPUParticles2D" parent="OffsetShader"]
+position = Vector2( 526, 150 )
+amount = 50
+preprocess = 15.0
+fixed_fps = 30
+direction = Vector2( 0, 0 )
+spread = 180.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 400.0
+initial_velocity_random = 1.0
+angular_velocity = 64.0
+orbit_velocity_curve = SubResource( 2 )
+linear_accel = 100.0
+scale_amount = 25.0
+scale_amount_random = 1.0
+scale_amount_curve = SubResource( 3 )
+color = Color( 0.513726, 0.164706, 0.662745, 1 )
+hue_variation = 0.04
+hue_variation_random = 1.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -242.0
+margin_right = 242.0
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="logo" type="TextureRect" parent="VBoxContainer"]
+margin_right = 484.0
+margin_bottom = 300.0
+rect_min_size = Vector2( 300, 300 )
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="HighScore" type="Label" parent="VBoxContainer"]
+visible = false
+margin_top = 304.0
+margin_right = 484.0
+margin_bottom = 320.0
+custom_fonts/font = SubResource( 4 )
+text = "HIGH SCORE"
+align = 1
+valign = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+margin_top = 304.0
+margin_right = 484.0
+margin_bottom = 600.0
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Start" type="ToolButton" parent="VBoxContainer/VBoxContainer"]
+margin_top = 112.0
+margin_right = 484.0
+margin_bottom = 184.0
+custom_fonts/font = SubResource( 5 )
+text = "START"
+[connection signal="resized" from="." to="." method="_on_resized"]
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/Start" to="." method="_on_Start_pressed"]

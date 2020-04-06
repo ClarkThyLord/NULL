@@ -1,18 +1,17 @@
-tool
-extends KinematicBody
+extends Entity
 class_name Enemy
 
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 
-
-# Called when the node enters the scene tree for the first time.
+# Core
 func _ready():
-	add_to_group('enemies', true)
+	add_to_group("enemies", true)
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+# Seek Schema -> {
+#	'found' : null | Entity
+#}
+func seek() -> Dictionary:
+	return {
+		'found': null
+	}

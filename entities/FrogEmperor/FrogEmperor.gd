@@ -1,5 +1,4 @@
-tool
-extends KinematicBody
+extends Entity
 class_name FrogEmperor
 
 
@@ -15,9 +14,6 @@ onready var Body := get_node("Body")
 
 
 # Declarations
-export(int, 0, 100, 1) var Health := 100
-export(int, 0, 100, 1) var Stamina := 100
-
 export(int, 0, 100, 1) var Speed := 25
 export(float, 0, 10, 0.01) var SpeedBoost := 1.75
 
@@ -38,34 +34,33 @@ func _ready() -> void:
 
 
 func _physics_process(delta):
-	if not Engine.editor_hint:
-		var direction := Vector3()
-		if Input.is_action_pressed("move_forward"): direction += Vector3.FORWARD
-		if Input.is_action_pressed("move_back"): direction += Vector3.BACK
-		if Input.is_action_pressed("move_right"): direction += Vector3.RIGHT
-		if Input.is_action_pressed("move_left"): direction += Vector3.LEFT
+	var direction := Vector3()
+	if Input.is_action_pressed("move_forward"): direction += Vector3.FORWARD
+	if Input.is_action_pressed("move_back"): direction += Vector3.BACK
+	if Input.is_action_pressed("move_right"): direction += Vector3.RIGHT
+	if Input.is_action_pressed("move_left"): direction += Vector3.LEFT
+	
+	if direction.length() > 0:
+		var velocity := Vector3()
+		velocity += CameraPivot.global_transform.basis.x * direction.x
+		velocity += CameraPivot.global_transform.basis.z * direction.z
+		velocity *= Speed * (SpeedBoost if Input.is_action_pressed("move_boost") else 1)
 		
-		if direction.length() > 0:
-			var velocity := Vector3()
-			velocity += CameraPivot.global_transform.basis.x * direction.x
-			velocity += CameraPivot.global_transform.basis.z * direction.z
-			velocity *= Speed * (SpeedBoost if Input.is_action_pressed("move_boost") else 1)
-			
-			if jumps < MaxJumps and Input.is_action_just_pressed("move_jump"):
-				jumps += 1
-				translate(Vector3.UP * JumpHeight)
-			elif is_on_floor(): jumps = 0
-			
-			velocity.y = 0
-			move_and_slide(velocity, Vector3.UP)
-			Body.rotation = Vector3(0, Vector2(velocity.z, velocity.x).angle(), 0)
-		move_and_slide(Vector3.DOWN * Gravity, Vector3.UP)
+		if jumps < MaxJumps and Input.is_action_just_pressed("move_jump"):
+			jumps += 1
+			translate(Vector3.UP * JumpHeight)
+		elif is_on_floor(): jumps = 0
+		
+		velocity.y = 0
+		move_and_slide(velocity, Vector3.UP)
+		Body.rotation = Vector3(0, Vector2(velocity.z, velocity.x).angle(), 0)
+	move_and_slide(Vector3.DOWN * Gravity, Vector3.UP)
 
 func _unhandled_input(event : InputEvent):
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		if event is InputEventMouseMotion:
 			var motion : Vector2 = event.relative.normalized()
-			CameraPivot.rotation_degrees.x = clamp(CameraPivot.rotation_degrees.x + motion.y * MouseSensitivity, -45, 30)
+#			CameraPivot.rotation_degrees.x = clamp(CameraPivot.rotation_degrees.x + motion.y * MouseSensitivity, -45, 30)
 			CameraPivot.rotation_degrees.y += motion.x * MouseSensitivity
 		elif event is InputEventMouseButton:
 			match event.button_index:
