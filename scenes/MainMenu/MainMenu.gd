@@ -11,6 +11,10 @@ onready var Start := get_node("VBoxContainer/VBoxContainer/Start")
 
 
 # Core
+func _ready():
+	correct()
+
+
 func correct() -> void:
 	if MenuParticles:
 		MenuParticles.position.x = rect_size.x / 2
