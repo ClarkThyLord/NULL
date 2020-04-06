@@ -26,7 +26,7 @@ export(int, 0, 3, 1) var MaxJumps := 1
 export(int, 0, 100, 1) var JumpHeight := 3
 export(int, 0, 100, 1) var Gravity := 10
 
-export(int, 0, 100, 1) var MouseSensitivity := 10
+export(int, 0, 100, 1) var MouseSensitivity := 2
 
 
 
@@ -56,6 +56,7 @@ func _physics_process(delta):
 				translate(Vector3.UP * JumpHeight)
 			elif is_on_floor(): jumps = 0
 			
+			velocity.y = 0
 			move_and_slide(velocity, Vector3.UP)
 			Body.rotation = Vector3(0, Vector2(velocity.z, velocity.x).angle(), 0)
 		move_and_slide(Vector3.DOWN * Gravity, Vector3.UP)
@@ -63,8 +64,9 @@ func _physics_process(delta):
 func _unhandled_input(event : InputEvent):
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		if event is InputEventMouseMotion:
-			CameraPivot.rotation_degrees.x += clamp(int(event.relative.y / MouseSensitivity), -1, 1)
-			CameraPivot.rotation_degrees.y += clamp(int(event.relative.x / MouseSensitivity), -1, 1)
+			var motion : Vector2 = event.relative.normalized()
+			CameraPivot.rotation_degrees.x = clamp(CameraPivot.rotation_degrees.x + motion.y * MouseSensitivity, -45, 30)
+			CameraPivot.rotation_degrees.y += motion.x * MouseSensitivity
 		elif event is InputEventMouseButton:
 			match event.button_index:
 				BUTTON_WHEEL_UP, BUTTON_WHEEL_DOWN:
