@@ -22,7 +22,7 @@ export(int, 0, 3, 1) var MaxJumps := 1
 export(int, 0, 100, 1) var JumpHeight := 3
 export(int, 0, 100, 1) var Gravity := 10
 
-export(int, 0, 100, 1) var MouseSensitivity := 2
+export(int, 0, 100, 1) var MouseSensitivity := 5
 
 
 
@@ -61,7 +61,7 @@ func _unhandled_input(event : InputEvent):
 		if event is InputEventMouseMotion:
 			var motion : Vector2 = event.relative.normalized()
 #			CameraPivot.rotation_degrees.x = clamp(CameraPivot.rotation_degrees.x + motion.y * MouseSensitivity, -45, 30)
-			CameraPivot.rotation_degrees.y += motion.x * MouseSensitivity
+			CameraPivot.rotation_degrees.y += -motion.x * MouseSensitivity
 		elif event is InputEventMouseButton:
 			match event.button_index:
 				BUTTON_WHEEL_UP, BUTTON_WHEEL_DOWN:

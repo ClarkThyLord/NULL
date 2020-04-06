@@ -1,7 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://entities/FrogEmperor/FrogEmperor.gd" type="Script" id=1]
 [ext_resource path="res://assets/entities/FrogEmperor/Head.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/entities/FrogEmperor/Hand.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/entities/FrogEmperor/Torso.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/entities/FrogEmperor/Foot.tscn" type="PackedScene" id=5]
 
 [sub_resource type="CapsuleShape" id=1]
 height = 2.0
@@ -35,3 +38,18 @@ transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0
 
 [node name="Head" parent="Body" instance=ExtResource( 2 )]
 transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 1.25, 0 )
+
+[node name="Torso" parent="Body" instance=ExtResource( 4 )]
+transform = Transform( 0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, -0.8, -0.3 )
+
+[node name="HandRight" parent="Body/Torso" instance=ExtResource( 3 )]
+transform = Transform( 0.625, 0, 5.32907e-14, 0, 0.625, 0, -5.32907e-14, 0, 0.625, -2.49999, 2, 0.644426 )
+
+[node name="HandLeft" parent="Body/Torso" instance=ExtResource( 3 )]
+transform = Transform( -0.625, 0, -5.68434e-14, 0, -0.625, 0, 5.68434e-14, 0, -0.625, 2.50001, 2, 0.644427 )
+
+[node name="FootRight" parent="Body/Torso" instance=ExtResource( 5 )]
+transform = Transform( 0.625, 0, 1.42109e-14, 0, 0.625, 0, -1.42109e-14, 0, 0.625, -1.5, -2.3, 0.226662 )
+
+[node name="FootLeft" parent="Body/Torso" instance=ExtResource( 5 )]
+transform = Transform( 0.625, 0, 1.42109e-14, 0, 0.625, 0, -1.42109e-14, 0, 0.625, 1.5, -2.3, 0.226662 )
