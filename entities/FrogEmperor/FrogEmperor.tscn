@@ -1,14 +1,12 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://entities/FrogEmperor/FrogEmperor.gd" type="Script" id=1]
+[ext_resource path="res://assets/entities/FrogEmperor/Head.tscn" type="PackedScene" id=2]
 
 [sub_resource type="CapsuleShape" id=4]
 height = 2.0
 
 [sub_resource type="BoxShape" id=2]
-
-[sub_resource type="CapsuleMesh" id=3]
-mid_height = 2.0
 
 [node name="FrogEmperor" type="KinematicBody" groups=[
 "players",
@@ -32,7 +30,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.47723 )
 shape = SubResource( 2 )
 
-[node name="placeholder" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0 )
-mesh = SubResource( 3 )
-material/0 = null
+[node name="Body" type="Spatial" parent="."]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
+
+[node name="Head" parent="Body" instance=ExtResource( 2 )]
+transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 1.25, 0 )
