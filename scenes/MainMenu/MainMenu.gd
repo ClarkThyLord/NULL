@@ -3,9 +3,8 @@ extends Control
 
 
 # Refrences
-onready var MenuParticles := get_node("OffsetShader/MenuParticles")
+onready var Effects := get_node("Effects")
 
-onready var HighScore := get_node("VBoxContainer/HighScore")
 onready var Start := get_node("VBoxContainer/VBoxContainer/Start")
 
 
@@ -16,11 +15,20 @@ func _ready():
 
 
 func correct() -> void:
-	if MenuParticles:
-		MenuParticles.position.x = rect_size.x / 2
+	if Effects:
+		Effects.position.x = rect_size.x / 2
+		Effects.scale.x = rect_size.x / 1024
+		Effects.scale.y = rect_size.y / 600
 
 
 func _on_resized(): correct()
 
+
 func _on_Start_pressed():
 	get_tree().change_scene("res://maps/Testing.tscn")
+
+func _on_Start_mouse_entered():
+	Start.material.blend_mode = BLEND_MODE_ADD
+
+func _on_Start_mouse_exited():
+	Start.material.blend_mode = BLEND_MODE_MIX
