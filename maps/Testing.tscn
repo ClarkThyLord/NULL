@@ -16,7 +16,7 @@ data = PoolVector3Array( 50, 0, 50, -50, 0, 50, 50, 0, -50, -50, 0, 50, -50, 0, 
 [node name="Testing" type="Spatial"]
 
 [node name="FrogEmperor" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
 
 [node name="Floor" type="MeshInstance" parent="."]
 mesh = SubResource( 1 )

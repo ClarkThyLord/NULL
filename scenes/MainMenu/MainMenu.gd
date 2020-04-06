@@ -19,4 +19,4 @@ func correct() -> void:
 func _on_resized(): correct()
 
 func _on_Start_pressed():
-	get_tree().change_scene_to(preload("res://maps/Testing.tscn"))
+	get_tree().change_scene("res://maps/Testing.tscn")

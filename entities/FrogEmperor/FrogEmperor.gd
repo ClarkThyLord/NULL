@@ -4,6 +4,8 @@ class_name FrogEmperor
 
 
 # Refrences
+onready var HUD := get_node("HUD")
+
 onready var CameraPivot := get_node("CameraPivot")
 onready var PlayerCamera := get_node("CameraPivot/PlayerCamera")
 
@@ -57,18 +59,11 @@ func _physics_process(delta):
 	move_and_slide(Vector3.DOWN * Gravity, Vector3.UP)
 
 func _unhandled_input(event : InputEvent):
-	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
-		if event is InputEventMouseMotion:
-			var motion : Vector2 = event.relative.normalized()
-			CameraPivot.rotation_degrees.x = clamp(CameraPivot.rotation_degrees.x + -motion.y * MouseSensitivity, -45, 30)
-			CameraPivot.rotation_degrees.y += -motion.x * MouseSensitivity
-		elif event is InputEventMouseButton:
-			match event.button_index:
-				BUTTON_WHEEL_UP, BUTTON_WHEEL_DOWN:
-					PlayerCamera.translation += Vector3(0, 0.1, 0.1) * (1 if event.button_index == BUTTON_WHEEL_DOWN else -1)
-
-func _unhandled_key_input(event : InputEventKey) -> void:
-	if not event.pressed:
-		match event.scancode:
-			KEY_ESCAPE:
-				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED else Input.MOUSE_MODE_CAPTURED)
+	if event is InputEventMouseMotion:
+		var motion : Vector2 = event.relative.normalized()
+		CameraPivot.rotation_degrees.x = clamp(CameraPivot.rotation_degrees.x + -motion.y * MouseSensitivity, -45, 30)
+		CameraPivot.rotation_degrees.y += -motion.x * MouseSensitivity
+	elif event is InputEventMouseButton:
+		match event.button_index:
+			BUTTON_WHEEL_UP, BUTTON_WHEEL_DOWN:
+				PlayerCamera.translation += Vector3(0, 0.1, 0.1) * (1 if event.button_index == BUTTON_WHEEL_DOWN else -1)
