@@ -10,6 +10,8 @@ onready var PlayerCamera := get_node("CameraPivot/PlayerCamera")
 
 onready var HitArea := get_node("HitArea")
 
+onready var Body := get_node("Body")
+
 
 
 # Declarations
@@ -43,18 +45,20 @@ func _physics_process(delta):
 		if Input.is_action_pressed("move_right"): direction += Vector3.RIGHT
 		if Input.is_action_pressed("move_left"): direction += Vector3.LEFT
 		
-		var velocity := Vector3()
-		velocity += CameraPivot.global_transform.basis.x * direction.x
-		velocity += CameraPivot.global_transform.basis.z * direction.z
-		velocity *= Speed * (SpeedBoost if Input.is_action_pressed("move_boost") else 1)
-		
-		if jumps < MaxJumps and Input.is_action_just_pressed("move_jump"):
-			jumps += 1
-			translate(Vector3.UP * JumpHeight)
-		elif is_on_floor(): jumps = 0
-		
-		move_and_slide(velocity, Vector3.UP)
-		move_and_slide(Vector3.DOWN * Gravity, Vector3.UP)
+		if direction.length() > 0:
+			var velocity := Vector3()
+			velocity += CameraPivot.global_transform.basis.x * direction.x
+			velocity += CameraPivot.global_transform.basis.z * direction.z
+			velocity *= Speed * (SpeedBoost if Input.is_action_pressed("move_boost") else 1)
+			
+			if jumps < MaxJumps and Input.is_action_just_pressed("move_jump"):
+				jumps += 1
+				translate(Vector3.UP * JumpHeight)
+			elif is_on_floor(): jumps = 0
+			
+			move_and_slide(velocity, Vector3.UP)
+			move_and_slide(Vector3.DOWN * Gravity, Vector3.UP)
+			Body.rotation = Vector3(0, Vector2(direction.z, direction.x).angle(), 0)
 
 func _unhandled_input(event : InputEvent):
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
