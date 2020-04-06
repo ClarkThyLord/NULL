@@ -6,6 +6,8 @@ extends Control
 onready var Health := get_node("Stats/HBoxContainer/Health")
 onready var Stamina := get_node("Stats/HBoxContainer2/Stamina")
 
+onready var ScoreBoard := get_node("ScoreBoard")
+
 onready var Menu := get_node("Menu")
 
 

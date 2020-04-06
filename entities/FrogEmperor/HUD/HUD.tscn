@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://entities/FrogEmperor/HUD/HUD.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/8-Bit Wonder/8-Bit Wonder.TTF" type="DynamicFontData" id=2]
+[ext_resource path="res://entities/FrogEmperor/HUD/ScoreBoard/ScoreBoard.tscn" type="PackedScene" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 size = 64
@@ -63,6 +64,13 @@ margin_bottom = 14.0
 size_flags_horizontal = 3
 value = 100.0
 rounded = true
+
+[node name="ScoreBoard" parent="." instance=ExtResource( 3 )]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -160.0
+margin_top = 5.0
+margin_right = -5.0
 
 [node name="Menu" type="VBoxContainer" parent="."]
 anchor_left = 0.5

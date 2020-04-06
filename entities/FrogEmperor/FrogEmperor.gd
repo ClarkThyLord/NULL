@@ -41,6 +41,10 @@ func _ready() -> void:
 	add_to_group("players", true)
 	if not Engine.editor_hint:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	
+	HUD.ScoreBoard.set_score(156124)
+	for e in range(0, 1000, 100):
+		HUD.ScoreBoard.add_event(str(e))
 
 
 func _physics_process(delta):
