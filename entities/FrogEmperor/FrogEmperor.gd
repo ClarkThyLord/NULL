@@ -16,6 +16,14 @@ onready var Body := get_node("Body")
 
 
 # Declarations
+func set_health(health : int) -> void:
+	HUD.update_health(health)
+	.set_health(health)
+
+func set_stamina(stamina : int) -> void:
+	HUD.update_stamina(stamina)
+	.set_stamina(stamina)
+
 export(int, 0, 100, 1) var Speed := 25
 export(float, 0, 10, 0.01) var SpeedBoost := 1.75
 
