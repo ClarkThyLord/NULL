@@ -10,7 +10,7 @@
 [sub_resource type="Animation" id=1]
 resource_name = "blank"
 tracks/0/type = "value"
-tracks/0/path = NodePath("Body/Head:translation")
+tracks/0/path = NodePath("Content/Body/Head:translation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -22,7 +22,7 @@ tracks/0/keys = {
 "values": [ Vector3( 0, 1.25, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Body/Head:rotation_degrees")
+tracks/1/path = NodePath("Content/Body/Head:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -34,7 +34,7 @@ tracks/1/keys = {
 "values": [ Vector3( 0, 0, 0 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Body/Torso:translation")
+tracks/2/path = NodePath("Content/Body/Torso:translation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -46,7 +46,7 @@ tracks/2/keys = {
 "values": [ Vector3( 0, -0.8, -0.3 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Body/Torso:rotation_degrees")
+tracks/3/path = NodePath("Content/Body/Torso:rotation_degrees")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -58,7 +58,7 @@ tracks/3/keys = {
 "values": [ Vector3( 0, 0, 0 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("Body/HandRight:translation")
+tracks/4/path = NodePath("Content/Body/HandRight:translation")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -70,7 +70,7 @@ tracks/4/keys = {
 "values": [ Vector3( -1, -0.3, -0.04 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("Body/HandRight:rotation_degrees")
+tracks/5/path = NodePath("Content/Body/HandRight:rotation_degrees")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -82,7 +82,7 @@ tracks/5/keys = {
 "values": [ Vector3( 3.41509e-06, 8.14222e-12, 2.03555e-13 ) ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("Body/HandLeft:translation")
+tracks/6/path = NodePath("Content/Body/HandLeft:translation")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -94,7 +94,7 @@ tracks/6/keys = {
 "values": [ Vector3( 1.1, -0.3, -0.04 ) ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("Body/HandLeft:rotation_degrees")
+tracks/7/path = NodePath("Content/Body/HandLeft:rotation_degrees")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
@@ -106,7 +106,7 @@ tracks/7/keys = {
 "values": [ Vector3( 3.41509e-06, 8.14222e-12, 2.03555e-13 ) ]
 }
 tracks/8/type = "value"
-tracks/8/path = NodePath("Body/FootRight:translation")
+tracks/8/path = NodePath("Content/Body/FootRight:translation")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
@@ -118,7 +118,7 @@ tracks/8/keys = {
 "values": [ Vector3( -0.6, -1.92, -0.2092 ) ]
 }
 tracks/9/type = "value"
-tracks/9/path = NodePath("Body/FootRight:rotation_degrees")
+tracks/9/path = NodePath("Content/Body/FootRight:rotation_degrees")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/imported = false
@@ -130,7 +130,7 @@ tracks/9/keys = {
 "values": [ Vector3( 0, 1.35704e-12, 0 ) ]
 }
 tracks/10/type = "value"
-tracks/10/path = NodePath("Body/FootLeft:translation")
+tracks/10/path = NodePath("Content/Body/FootLeft:translation")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/imported = false
@@ -142,7 +142,7 @@ tracks/10/keys = {
 "values": [ Vector3( 0.7, -1.92, -0.2092 ) ]
 }
 tracks/11/type = "value"
-tracks/11/path = NodePath("Body/FootLeft:rotation_degrees")
+tracks/11/path = NodePath("Content/Body/FootLeft:rotation_degrees")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/imported = false
@@ -159,7 +159,7 @@ resource_name = "idle"
 length = 6.5
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Body/Head:translation")
+tracks/0/path = NodePath("Content/Body/Head:translation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -171,7 +171,7 @@ tracks/0/keys = {
 "values": [ Vector3( 0, 1.25, 0 ), Vector3( 0, 1.2, 0 ), Vector3( 0, 1.25, 0 ), Vector3( 0, 1.3, 0 ), Vector3( 0, 1.25, 0 ), Vector3( 0, 1.2, 0 ), Vector3( 0, 1.25, 0 ), Vector3( 0, 1.3, 0 ), Vector3( 0, 1.2, 0 ), Vector3( 0, 1.25, 0 ), Vector3( 0, 1.3, 0 ), Vector3( 0, 1.25, 0 ), Vector3( 0, 1.2, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Body/Head:rotation_degrees")
+tracks/1/path = NodePath("Content/Body/Head:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -183,7 +183,7 @@ tracks/1/keys = {
 "values": [ Vector3( 5.437, 1.6, 8.23438e-07 ), Vector3( 5.437, 1.6, 8.23438e-07 ), Vector3( -5.49599, -28.4031, 5.89764 ), Vector3( -5.49599, -28.4031, 5.89764 ), Vector3( 5.437, 1.6, 8.23438e-07 ), Vector3( 5.437, 1.6, 8.23438e-07 ), Vector3( -4.90527, 46.5492, -10.8794 ), Vector3( -4.90527, 46.5492, -10.8794 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Body/Torso:translation")
+tracks/2/path = NodePath("Content/Body/Torso:translation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -195,7 +195,7 @@ tracks/2/keys = {
 "values": [ Vector3( 0, -0.8, -0.3 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Body/Torso:rotation_degrees")
+tracks/3/path = NodePath("Content/Body/Torso:rotation_degrees")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -207,7 +207,7 @@ tracks/3/keys = {
 "values": [ Vector3( 0, 0, 0 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("Body/HandRight:translation")
+tracks/4/path = NodePath("Content/Body/HandRight:translation")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -219,7 +219,7 @@ tracks/4/keys = {
 "values": [ Vector3( -1, -0.3, -0.04 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("Body/HandRight:rotation_degrees")
+tracks/5/path = NodePath("Content/Body/HandRight:rotation_degrees")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -231,7 +231,7 @@ tracks/5/keys = {
 "values": [ Vector3( 13.3886, -10.2163, -1.03868 ) ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("Body/HandLeft:translation")
+tracks/6/path = NodePath("Content/Body/HandLeft:translation")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -243,7 +243,7 @@ tracks/6/keys = {
 "values": [ Vector3( 1.1, -0.3, -0.04 ) ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("Body/HandLeft:rotation_degrees")
+tracks/7/path = NodePath("Content/Body/HandLeft:rotation_degrees")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
@@ -255,7 +255,7 @@ tracks/7/keys = {
 "values": [ Vector3( 11.9294, 15.642, 2.56454 ) ]
 }
 tracks/8/type = "value"
-tracks/8/path = NodePath("Body/FootRight:translation")
+tracks/8/path = NodePath("Content/Body/FootRight:translation")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
@@ -267,7 +267,7 @@ tracks/8/keys = {
 "values": [ Vector3( -0.6, -1.92, -0.2092 ) ]
 }
 tracks/9/type = "value"
-tracks/9/path = NodePath("Body/FootRight:rotation_degrees")
+tracks/9/path = NodePath("Content/Body/FootRight:rotation_degrees")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/imported = false
@@ -279,7 +279,7 @@ tracks/9/keys = {
 "values": [ Vector3( 0, -8.674, 0 ) ]
 }
 tracks/10/type = "value"
-tracks/10/path = NodePath("Body/FootLeft:translation")
+tracks/10/path = NodePath("Content/Body/FootLeft:translation")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/imported = false
@@ -291,7 +291,7 @@ tracks/10/keys = {
 "values": [ Vector3( 0.7, -1.92, -0.2092 ) ]
 }
 tracks/11/type = "value"
-tracks/11/path = NodePath("Body/FootLeft:rotation_degrees")
+tracks/11/path = NodePath("Content/Body/FootLeft:rotation_degrees")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/imported = false
@@ -331,30 +331,32 @@ shape = SubResource( 3 )
 transform = Transform( 1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 10, 10 )
 current = true
 
-[node name="HitArea" type="Area" parent="."]
+[node name="Content" type="Spatial" parent="."]
+
+[node name="HitArea" type="Area" parent="Content"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2 )
 
-[node name="Hitbox" type="CollisionShape" parent="HitArea"]
+[node name="Hitbox" type="CollisionShape" parent="Content/HitArea"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.47723 )
 shape = SubResource( 4 )
 
-[node name="Body" type="Spatial" parent="."]
+[node name="Body" type="Spatial" parent="Content"]
 transform = Transform( -1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -1.77636e-15, 0, 0 )
 
-[node name="Head" parent="Body" instance=ExtResource( 2 )]
+[node name="Head" parent="Content/Body" instance=ExtResource( 2 )]
 transform = Transform( 0.200508, 0.022946, 0.147547, -0.036387, 0.247092, 0.0110208, -0.144819, -0.0303142, 0.201515, 0, 1.2785, 0 )
 
-[node name="Torso" parent="Body" instance=ExtResource( 4 )]
+[node name="Torso" parent="Content/Body" instance=ExtResource( 4 )]
 transform = Transform( 0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, -0.8, -0.3 )
 
-[node name="HandRight" parent="Body" instance=ExtResource( 3 )]
+[node name="HandRight" parent="Content/Body" instance=ExtResource( 3 )]
 transform = Transform( 0.393891, -0.00928912, -0.0690178, -0.00705386, 0.389065, -0.0926214, 0.0692819, 0.092424, 0.382959, -1, -0.3, -0.04 )
 
-[node name="HandLeft" parent="Body" instance=ExtResource( 3 )]
+[node name="HandLeft" parent="Content/Body" instance=ExtResource( 3 )]
 transform = Transform( 0.385798, 0.00503591, 0.105521, 0.0175113, 0.390969, -0.0826823, -0.10418, 0.0843661, 0.376867, 1.1, -0.3, -0.04 )
 
-[node name="FootRight" parent="Body" instance=ExtResource( 5 )]
+[node name="FootRight" parent="Content/Body" instance=ExtResource( 5 )]
 transform = Transform( 0.296569, 0, -0.0452437, 0, 0.3, 0, 0.0452437, 0, 0.296569, -0.6, -1.92, -0.2092 )
 
-[node name="FootLeft" parent="Body" instance=ExtResource( 5 )]
+[node name="FootLeft" parent="Content/Body" instance=ExtResource( 5 )]
 transform = Transform( 0.291588, 0, 0.0705426, 0, 0.3, 0, -0.0705426, 0, 0.291588, 0.7, -1.92, -0.2092 )

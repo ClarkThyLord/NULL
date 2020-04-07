@@ -9,9 +9,8 @@ onready var HUD := get_node("HUD")
 onready var CameraPivot := get_node("CameraPivot")
 onready var PlayerCamera := get_node("CameraPivot/PlayerCamera")
 
-onready var HitArea := get_node("HitArea")
-
-onready var Body := get_node("Body")
+onready var Content := get_node("Content")
+onready var HitArea := get_node("Content/HitArea")
 
 
 
@@ -80,7 +79,7 @@ func _physics_process(delta):
 		
 		velocity.y = 0
 		move_and_slide(velocity, Vector3.UP)
-		Body.rotation = Vector3(0, Vector2(velocity.z, velocity.x).angle(), 0)
+		Content.rotation = Vector3(0, -Vector2(-velocity.z, velocity.x).angle(), 0)
 	move_and_slide(Vector3.DOWN * Gravity, Vector3.UP)
 	if regenerate_stamina: self.Stamina += 1
 
@@ -94,7 +93,7 @@ func _unhandled_input(event : InputEvent):
 			BUTTON_WHEEL_UP, BUTTON_WHEEL_DOWN:
 				PlayerCamera.translation += Vector3(0, 0.1, 0.1) * (1 if event.button_index == BUTTON_WHEEL_DOWN else -1)
 			BUTTON_LEFT:
-				if Stamina >= LightCost and event.is_pressed():
+				if Stamina >= LightCost:
 					self.Stamina -= LightCost
 					for body in HitArea.get_overlapping_bodies():
 						if body.is_in_group("enemies"):
@@ -102,7 +101,7 @@ func _unhandled_input(event : InputEvent):
 								"damage": MinLightDamage + randi() % MaxLightDamage
 							})
 			BUTTON_RIGHT:
-				if Stamina >= HeavyCost and event.is_pressed():
+				if Stamina >= HeavyCost:
 					self.Stamina -= HeavyCost
 					for body in HitArea.get_overlapping_bodies():
 						if body.is_in_group("enemies"):
