@@ -17,8 +17,8 @@ onready var Body := get_node("Body")
 
 # Declarations
 func set_health(health : int) -> void:
-	HUD.update_health(health)
 	.set_health(health)
+	HUD.update_health(Health)
 
 export(int, 0, 100, 1) var Stamina := 100 setget set_stamina
 func set_stamina(stamina : int) -> void:
@@ -32,6 +32,13 @@ var jumps := 0
 export(int, 0, 3, 1) var MaxJumps := 1
 export(int, 0, 100, 1) var JumpHeight := 3
 export(int, 0, 100, 1) var Gravity := 10
+
+export(int, 0, 100) var LightCost := 0
+export(int, 0, 100) var MinLightDamage := 5
+export(int, 0, 100) var MaxLightDamage := 20
+export(int, 0, 100) var HeavyCost := 6
+export(int, 0, 100) var MinHeavyDamage := 25
+export(int, 0, 100) var MaxHeavyDamage := 65
 
 export(int, 0, 100, 1) var MouseSensitivity := 5
 
@@ -86,3 +93,19 @@ func _unhandled_input(event : InputEvent):
 		match event.button_index:
 			BUTTON_WHEEL_UP, BUTTON_WHEEL_DOWN:
 				PlayerCamera.translation += Vector3(0, 0.1, 0.1) * (1 if event.button_index == BUTTON_WHEEL_DOWN else -1)
+			BUTTON_LEFT:
+				if Stamina >= LightCost and event.is_pressed():
+					self.Stamina -= LightCost
+					for body in HitArea.get_overlapping_bodies():
+						if body.is_in_group("enemies"):
+							body.hurt({
+								"damage": MinLightDamage + randi() % MaxLightDamage
+							})
+			BUTTON_RIGHT:
+				if Stamina >= HeavyCost and event.is_pressed():
+					self.Stamina -= HeavyCost
+					for body in HitArea.get_overlapping_bodies():
+						if body.is_in_group("enemies"):
+							body.hurt({
+								"damage": MinHeavyDamage + randi() % MaxHeavyDamage
+							})

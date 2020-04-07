@@ -16,7 +16,7 @@ func _ready():
 
 
 # Hit Schema -> {
-#	'damage' : float
+#	"damage" : float
 # }
 func hurt(hit : Dictionary) -> void:
 	set_health(Health - hit["damage"])

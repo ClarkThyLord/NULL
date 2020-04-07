@@ -27,3 +27,18 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -16 )
 speed = 10
 hitRate = 100
+
+[node name="Pawn4" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 21 )
+speed = 10
+hitRate = 100
+
+[node name="Pawn2" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, -16 )
+speed = 10
+hitRate = 100
+
+[node name="Pawn3" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, -16 )
+speed = 10
+hitRate = 100

@@ -11,7 +11,7 @@ onready var HealthBar := get_node("HealthBar")
 # Declarations
 func set_health(health : int) -> void:
 	.set_health(health)
-	HealthBar.progress = Health
+	HealthBar.Progress = Health
 
 export (int) var speed
 
