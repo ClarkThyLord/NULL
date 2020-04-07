@@ -9,6 +9,8 @@ onready var HUD := get_node("HUD")
 onready var CameraPivot := get_node("CameraPivot")
 onready var PlayerCamera := get_node("CameraPivot/PlayerCamera")
 
+onready var PlayerAnimationTree : AnimationNodeStateMachinePlayback = get_node("AnimationTree").get("parameters/playback")
+
 onready var Content := get_node("Content")
 onready var HitArea := get_node("Content/HitArea")
 
@@ -80,6 +82,8 @@ func _physics_process(delta):
 		velocity.y = 0
 		move_and_slide(velocity, Vector3.UP)
 		Content.rotation = Vector3(0, -Vector2(-velocity.z, velocity.x).angle(), 0)
+		PlayerAnimationTree.travel("moving")
+	else: PlayerAnimationTree.travel("idle")
 	move_and_slide(Vector3.DOWN * Gravity, Vector3.UP)
 	if regenerate_stamina: self.Stamina += 1
 

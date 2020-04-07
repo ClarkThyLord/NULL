@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://entities/FrogEmperor/FrogEmperor.gd" type="Script" id=1]
 [ext_resource path="res://assets/entities/FrogEmperor/Head.tscn" type="PackedScene" id=2]
@@ -452,6 +452,28 @@ tracks/11/keys = {
 "values": [ Vector3( 0, 13.6, 0 ), Vector3( 28.0583, 15.4537, 7.40893 ), Vector3( 0, 13.6, 0 ), Vector3( -33.7158, 16.4208, -9.29052 ), Vector3( 0, 13.6, 0 ), Vector3( 28.0583, 15.4537, 7.40893 ), Vector3( 0, 13.6, 0 ), Vector3( -33.7158, 16.4208, -9.29052 ), Vector3( 0, 13.6, 0 ), Vector3( 28.0583, 15.4537, 7.40893 ), Vector3( 0, 13.6, 0 ), Vector3( -33.7158, 16.4208, -9.29052 ) ]
 }
 
+[sub_resource type="AnimationNodeAnimation" id=6]
+animation = "idle"
+
+[sub_resource type="AnimationNodeAnimation" id=7]
+animation = "moving"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=12]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=13]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachine" id=10]
+states/idle/node = SubResource( 6 )
+states/idle/position = Vector2( 266, 50 )
+states/moving/node = SubResource( 7 )
+states/moving/position = Vector2( 515, 50 )
+transitions = [ "idle", "moving", SubResource( 12 ), "moving", "idle", SubResource( 13 ) ]
+start_node = "idle"
+graph_offset = Vector2( -4, -35 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=11]
+
 [sub_resource type="CapsuleShape" id=3]
 height = 2.0
 
@@ -467,10 +489,15 @@ script = ExtResource( 1 )
 visible = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "idle"
 anims/blank = SubResource( 1 )
 anims/idle = SubResource( 2 )
 anims/moving = SubResource( 5 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 10 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 11 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1.91069e-15, -1, 4.37114e-08, -4.37114e-08, -4.37114e-08, -1, 1, 0, -4.37114e-08, 0, 0, 0 )
@@ -498,16 +525,16 @@ shape = SubResource( 4 )
 transform = Transform( -1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -1.77636e-15, 0, 0 )
 
 [node name="Head" parent="Content/Body" instance=ExtResource( 2 )]
-transform = Transform( 0.249903, 0.000661398, 0.006949, 3.57676e-09, 0.248875, -0.0236878, -0.00698041, 0.0236785, 0.248778, 0, 1.25, 0 )
+transform = Transform( 0.219912, -0.0112664, -0.118371, 0.0255698, 0.247533, 0.023944, 0.116124, -0.0331692, 0.218895, 0, 1.25914, 0 )
 
 [node name="Torso" parent="Content/Body" instance=ExtResource( 4 )]
-transform = Transform( 0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, -0.8, -0.3 )
+transform = Transform( 0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, -0.790856, -0.3 )
 
 [node name="HandRight" parent="Content/Body" instance=ExtResource( 3 )]
-transform = Transform( 0.393891, -0.00928914, -0.0690177, -0.00705389, 0.389065, -0.0926217, 0.0692818, 0.0924243, 0.382959, -1, -0.3, -0.04 )
+transform = Transform( 0.393891, -0.00928914, -0.0690177, -0.00705389, 0.389065, -0.0926217, 0.0692818, 0.0924243, 0.382959, -1, -0.290856, -0.04 )
 
 [node name="HandLeft" parent="Content/Body" instance=ExtResource( 3 )]
-transform = Transform( 0.385798, 0.00503596, 0.105521, 0.0175114, 0.390969, -0.0826824, -0.10418, 0.0843663, 0.376867, 1.1, -0.3, -0.04 )
+transform = Transform( 0.385798, 0.00503596, 0.105521, 0.0175114, 0.390969, -0.0826824, -0.10418, 0.0843663, 0.376867, 1.1, -0.290856, -0.04 )
 
 [node name="FootRight" parent="Content/Body" instance=ExtResource( 5 )]
 transform = Transform( 0.296569, 0, -0.0452437, 0, 0.3, 0, 0.0452437, 0, 0.296569, -0.6, -1.92, -0.2092 )
