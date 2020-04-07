@@ -156,7 +156,7 @@ tracks/11/keys = {
 
 [sub_resource type="Animation" id=2]
 resource_name = "idle"
-length = 6.5
+length = 6.0
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Content/Body/Head:translation")
@@ -165,10 +165,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5, 6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector3( 0, 1.25, 0 ), Vector3( 0, 1.2, 0 ), Vector3( 0, 1.25, 0 ), Vector3( 0, 1.3, 0 ), Vector3( 0, 1.25, 0 ), Vector3( 0, 1.2, 0 ), Vector3( 0, 1.25, 0 ), Vector3( 0, 1.3, 0 ), Vector3( 0, 1.2, 0 ), Vector3( 0, 1.25, 0 ), Vector3( 0, 1.3, 0 ), Vector3( 0, 1.25, 0 ), Vector3( 0, 1.2, 0 ) ]
+"values": [ Vector3( 0, 1.25, 0 ), Vector3( 0, 1.2, 0 ), Vector3( 0, 1.25, 0 ), Vector3( 0, 1.3, 0 ), Vector3( 0, 1.25, 0 ), Vector3( 0, 1.2, 0 ), Vector3( 0, 1.25, 0 ), Vector3( 0, 1.3, 0 ), Vector3( 0, 1.25, 0 ), Vector3( 0, 1.2, 0 ), Vector3( 0, 1.25, 0 ), Vector3( 0, 1.3, 0 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Content/Body/Head:rotation_degrees")
@@ -189,10 +189,10 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector3( 0, -0.8, -0.3 ) ]
+"values": [ Vector3( 0, -0.8, -0.3 ), Vector3( 0, -0.85, -0.3 ), Vector3( 0, -0.8, -0.3 ), Vector3( 0, -0.75, -0.3 ), Vector3( 0, -0.8, -0.3 ), Vector3( 0, -0.85, -0.3 ), Vector3( 0, -0.8, -0.3 ), Vector3( 0, -0.75, -0.3 ), Vector3( 0, -0.8, -0.3 ), Vector3( 0, -0.85, -0.3 ), Vector3( 0, -0.8, -0.3 ), Vector3( 0, -0.75, -0.3 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("Content/Body/Torso:rotation_degrees")
@@ -213,10 +213,10 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector3( -1, -0.3, -0.04 ) ]
+"values": [ Vector3( -1, -0.3, -0.04 ), Vector3( -1, -0.35, -0.04 ), Vector3( -1, -0.3, -0.04 ), Vector3( -1, -0.25, -0.04 ), Vector3( -1, -0.3, -0.04 ), Vector3( -1, -0.35, -0.04 ), Vector3( -1, -0.3, -0.04 ), Vector3( -1, -0.25, -0.04 ), Vector3( -1, -0.3, -0.04 ), Vector3( -1, -0.35, -0.04 ), Vector3( -1, -0.3, -0.04 ), Vector3( -1, -0.25, -0.04 ) ]
 }
 tracks/5/type = "value"
 tracks/5/path = NodePath("Content/Body/HandRight:rotation_degrees")
@@ -237,10 +237,10 @@ tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector3( 1.1, -0.3, -0.04 ) ]
+"values": [ Vector3( 1.1, -0.3, -0.04 ), Vector3( 1.1, -0.35, -0.04 ), Vector3( 1.1, -0.3, -0.04 ), Vector3( 1.1, -0.25, -0.04 ), Vector3( 1.1, -0.3, -0.04 ), Vector3( 1.1, -0.35, -0.04 ), Vector3( 1.1, -0.3, -0.04 ), Vector3( 1.1, -0.25, -0.04 ), Vector3( 1.1, -0.3, -0.04 ), Vector3( 1.1, -0.35, -0.04 ), Vector3( 1.1, -0.3, -0.04 ), Vector3( 1.1, -0.25, -0.04 ) ]
 }
 tracks/7/type = "value"
 tracks/7/path = NodePath("Content/Body/HandLeft:rotation_degrees")
@@ -315,6 +315,7 @@ extents = Vector3( 2, 2, 2 )
 script = ExtResource( 1 )
 
 [node name="HUD" parent="." instance=ExtResource( 6 )]
+visible = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "idle"
@@ -323,9 +324,11 @@ anims/idle = SubResource( 2 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1.91069e-15, -1, 4.37114e-08, -4.37114e-08, -4.37114e-08, -1, 1, 0, -4.37114e-08, 0, 0, 0 )
+visible = false
 shape = SubResource( 3 )
 
 [node name="CameraPivot" type="Spatial" parent="."]
+visible = false
 
 [node name="PlayerCamera" type="Camera" parent="CameraPivot"]
 transform = Transform( 1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 10, 10 )
@@ -335,6 +338,7 @@ current = true
 
 [node name="HitArea" type="Area" parent="Content"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2 )
+visible = false
 
 [node name="Hitbox" type="CollisionShape" parent="Content/HitArea"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.47723 )
@@ -344,16 +348,16 @@ shape = SubResource( 4 )
 transform = Transform( -1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -1.77636e-15, 0, 0 )
 
 [node name="Head" parent="Content/Body" instance=ExtResource( 2 )]
-transform = Transform( 0.200508, 0.022946, 0.147547, -0.036387, 0.247092, 0.0110208, -0.144819, -0.0303142, 0.201515, 0, 1.2785, 0 )
+transform = Transform( 0.249903, 0.000661398, 0.006949, 3.57676e-09, 0.248875, -0.0236878, -0.00698041, 0.0236786, 0.248778, 0, 1.26428, 0 )
 
 [node name="Torso" parent="Content/Body" instance=ExtResource( 4 )]
-transform = Transform( 0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, -0.8, -0.3 )
+transform = Transform( 0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, -0.785721, -0.3 )
 
 [node name="HandRight" parent="Content/Body" instance=ExtResource( 3 )]
-transform = Transform( 0.393891, -0.00928912, -0.0690178, -0.00705386, 0.389065, -0.0926214, 0.0692819, 0.092424, 0.382959, -1, -0.3, -0.04 )
+transform = Transform( 0.393891, -0.00928914, -0.0690177, -0.00705389, 0.389065, -0.0926217, 0.0692818, 0.0924243, 0.382959, -1, -0.285721, -0.04 )
 
 [node name="HandLeft" parent="Content/Body" instance=ExtResource( 3 )]
-transform = Transform( 0.385798, 0.00503591, 0.105521, 0.0175113, 0.390969, -0.0826823, -0.10418, 0.0843661, 0.376867, 1.1, -0.3, -0.04 )
+transform = Transform( 0.385798, 0.00503596, 0.105521, 0.0175114, 0.390969, -0.0826824, -0.10418, 0.0843663, 0.376867, 1.1, -0.285721, -0.04 )
 
 [node name="FootRight" parent="Content/Body" instance=ExtResource( 5 )]
 transform = Transform( 0.296569, 0, -0.0452437, 0, 0.3, 0, 0.0452437, 0, 0.296569, -0.6, -1.92, -0.2092 )
