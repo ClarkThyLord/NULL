@@ -6,6 +6,8 @@ class_name Pawn
 # Refrences
 onready var HealthBar := get_node("HealthBar")
 
+onready var HitArea := get_node("HitArea")
+
 
 
 # Declarations
@@ -13,10 +15,13 @@ func set_health(health : int) -> void:
 	.set_health(health)
 	HealthBar.Progress = Health
 
-export (int) var speed
+export(int, 0, 100) var Speed := 10
 
-var hitFrames = 0
-export (int) var hitRate
+var hit_frames = 0
+export(int, 1, 1000) var HitRate := 100
+
+export(int, 0, 100) var MinDamage := 0
+export(int, 0, 100) var MaxDamage := 10
 
 
 
@@ -26,22 +31,15 @@ func _ready():
 
 
 func attack():
-	get_node("HitArea").get_node("HitBox").disabled = false
+	for body in HitArea.get_overlapping_bodies():
+		if body.is_in_group("entities"):
+			body.hurt({
+				"damage": MinDamage + randi() % MaxDamage
+			})
 
 
 func _process(delta):
-	hitFrames = (hitFrames + 1) % hitRate
-	if hitFrames == 0: attack()
-	else: get_node("HitArea").get_node("HitBox").disabled = true
+	hit_frames = (hit_frames + 1) % HitRate
+	if hit_frames == 0: attack()
 	
-	var global_direction = Vector3(0,0,1)
-	var local_direction = global_direction.rotated(Vector3(0,1,0), rotation.y)
-	var velocity = - local_direction * speed
-	move_and_slide(velocity)
-
-
-func _on_HitArea_body_entered(body):
-	if body.is_in_group('entities'):
-		body.hurt({
-			"damage": 10
-		})
+	move_and_slide(Vector3.FORWARD.rotated(Vector3.UP, rotation.y) * Speed)
