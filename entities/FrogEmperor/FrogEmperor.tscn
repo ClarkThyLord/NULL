@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://entities/FrogEmperor/FrogEmperor.gd" type="Script" id=1]
 [ext_resource path="res://assets/entities/FrogEmperor/Head.tscn" type="PackedScene" id=2]
@@ -303,6 +303,155 @@ tracks/11/keys = {
 "values": [ Vector3( 0, 13.6, 0 ) ]
 }
 
+[sub_resource type="Animation" id=5]
+resource_name = "moving"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Content/Body/Head:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 1.25, 0 ), Vector3( 0, 1.2, 0 ), Vector3( 0, 1.25, 0 ), Vector3( 0, 1.3, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Content/Body/Head:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 5.437, 1.6, 8.23438e-07 ), Vector3( 0.501286, 0.985505, -0.674531 ), Vector3( 5.437, 1.6, 8.23438e-07 ), Vector3( 6.3546, 5.68305, 0.699114 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Content/Body/Torso:translation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, -0.8, -0.3 ), Vector3( 5.95319e-10, -0.85, -0.3 ), Vector3( 0, -0.8, -0.3 ), Vector3( 5.95319e-10, -0.75, -0.3 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Content/Body/Torso:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 11.316, 0 ), Vector3( 0, 0, 0 ), Vector3( 0, -11.385, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Content/Body/HandRight:translation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( -1, -0.3, -0.04 ), Vector3( -1.13595, -0.35, -1.34434 ), Vector3( -1, -0.3, -0.04 ), Vector3( -1.07112, -0.25, 1.03353 ), Vector3( -1, -0.3, -0.04 ), Vector3( -1.13595, -0.35, -1.34434 ), Vector3( -1, -0.3, -0.04 ), Vector3( -1.07112, -0.25, 1.03353 ), Vector3( -1, -0.3, -0.04 ), Vector3( -1.13595, -0.35, -1.34434 ), Vector3( -1, -0.3, -0.04 ), Vector3( -1.07112, -0.25, 1.03353 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Content/Body/HandRight:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 13.3886, -10.2163, -1.03868 ), Vector3( 19.9686, -44.4637, -7.55255 ), Vector3( 19.3704, -41.3503, -6.96038 ), Vector3( 13.8235, 13.8619, -7.65739 ), Vector3( 13.3886, -10.2163, -1.03868 ), Vector3( 19.9686, -44.4637, -7.55255 ), Vector3( 19.3704, -41.3503, -6.96038 ), Vector3( 13.8235, 13.8619, -7.65739 ), Vector3( 13.3886, -10.2163, -1.03868 ), Vector3( 19.9686, -44.4637, -7.55255 ), Vector3( 19.3704, -41.3503, -6.96038 ), Vector3( 13.8235, 13.8619, -7.65739 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Content/Body/HandLeft:translation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 1.1, -0.3, -0.04 ), Vector3( 1.25402, -0.35, 0.973516 ), Vector3( 1.1, -0.3, -0.04 ), Vector3( 1.1, -0.25, -1.23101 ), Vector3( 1.1, -0.3, -0.04 ), Vector3( 1.25402, -0.35, 0.973516 ), Vector3( 1.1, -0.3, -0.04 ), Vector3( 1.1, -0.25, -1.23101 ), Vector3( 1.1, -0.3, -0.04 ), Vector3( 1.25402, -0.35, 0.973516 ), Vector3( 1.1, -0.3, -0.04 ), Vector3( 1.1, -0.25, -1.23101 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Content/Body/HandLeft:rotation_degrees")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 11.9294, 15.642, 2.56454 ), Vector3( 19.1407, -13.688, 0.776118 ), Vector3( 18.4852, -11.0216, 0.938702 ), Vector3( 9.5947, 17.4313, -1.60979 ), Vector3( 11.9294, 15.642, 2.56454 ), Vector3( 19.1407, -13.688, 0.776118 ), Vector3( 18.4852, -11.0216, 0.938702 ), Vector3( 9.5947, 17.4313, -1.60979 ), Vector3( 11.9294, 15.642, 2.56454 ), Vector3( 19.1407, -13.688, 0.776118 ), Vector3( 18.4852, -11.0216, 0.938702 ), Vector3( 9.5947, 17.4313, -1.60979 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Content/Body/FootRight:translation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( -0.6, -1.92, -0.2092 ), Vector3( -0.850451, -1.53214, 1.54492 ), Vector3( -0.6, -1.92, -0.2092 ), Vector3( -0.652775, -1.68346, -1.37929 ), Vector3( -0.6, -1.92, -0.2092 ), Vector3( -0.850451, -1.53214, 1.54492 ), Vector3( -0.6, -1.92, -0.2092 ), Vector3( -0.652775, -1.68346, -1.37929 ), Vector3( -0.6, -1.92, -0.2092 ), Vector3( -0.850451, -1.53214, 1.54492 ), Vector3( -0.6, -1.92, -0.2092 ), Vector3( -0.652775, -1.68346, -1.37929 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Content/Body/FootRight:rotation_degrees")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, -8.674, 0 ), Vector3( -56.2728, -15.7605, 13.2096 ), Vector3( 0, -8.674, 0 ), Vector3( 42.4761, 1.42125, -8.02908 ), Vector3( 0, -8.674, 0 ), Vector3( -56.2728, -15.7605, 13.2096 ), Vector3( 0, -8.674, 0 ), Vector3( 42.4761, 1.42125, -8.02908 ), Vector3( 0, -8.674, 0 ), Vector3( -56.2728, -15.7605, 13.2096 ), Vector3( 0, -8.674, 0 ), Vector3( 42.4761, 1.42125, -8.02908 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Content/Body/FootLeft:translation")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0.7, -1.92, -0.2092 ), Vector3( 0.778368, -1.44765, -1.71162 ), Vector3( 0.7, -1.92, -0.2092 ), Vector3( 0.7, -1.6402, 1.39464 ), Vector3( 0.7, -1.92, -0.2092 ), Vector3( 0.778368, -1.44765, -1.71162 ), Vector3( 0.7, -1.92, -0.2092 ), Vector3( 0.7, -1.6402, 1.39464 ), Vector3( 0.7, -1.92, -0.2092 ), Vector3( 0.778368, -1.44765, -1.71162 ), Vector3( 0.7, -1.92, -0.2092 ), Vector3( 0.7, -1.6402, 1.39464 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("Content/Body/FootLeft:rotation_degrees")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 13.6, 0 ), Vector3( 28.0583, 15.4537, 7.40893 ), Vector3( 0, 13.6, 0 ), Vector3( -33.7158, 16.4208, -9.29052 ), Vector3( 0, 13.6, 0 ), Vector3( 28.0583, 15.4537, 7.40893 ), Vector3( 0, 13.6, 0 ), Vector3( -33.7158, 16.4208, -9.29052 ), Vector3( 0, 13.6, 0 ), Vector3( 28.0583, 15.4537, 7.40893 ), Vector3( 0, 13.6, 0 ), Vector3( -33.7158, 16.4208, -9.29052 ) ]
+}
+
 [sub_resource type="CapsuleShape" id=3]
 height = 2.0
 
@@ -321,6 +470,7 @@ visible = false
 autoplay = "idle"
 anims/blank = SubResource( 1 )
 anims/idle = SubResource( 2 )
+anims/moving = SubResource( 5 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1.91069e-15, -1, 4.37114e-08, -4.37114e-08, -4.37114e-08, -1, 1, 0, -4.37114e-08, 0, 0, 0 )
@@ -348,16 +498,16 @@ shape = SubResource( 4 )
 transform = Transform( -1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -1.77636e-15, 0, 0 )
 
 [node name="Head" parent="Content/Body" instance=ExtResource( 2 )]
-transform = Transform( 0.249903, 0.000661398, 0.006949, 3.57676e-09, 0.248875, -0.0236878, -0.00698041, 0.0236786, 0.248778, 0, 1.26428, 0 )
+transform = Transform( 0.249903, 0.000661398, 0.006949, 3.57676e-09, 0.248875, -0.0236878, -0.00698041, 0.0236785, 0.248778, 0, 1.25, 0 )
 
 [node name="Torso" parent="Content/Body" instance=ExtResource( 4 )]
-transform = Transform( 0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, -0.785721, -0.3 )
+transform = Transform( 0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, -0.8, -0.3 )
 
 [node name="HandRight" parent="Content/Body" instance=ExtResource( 3 )]
-transform = Transform( 0.393891, -0.00928914, -0.0690177, -0.00705389, 0.389065, -0.0926217, 0.0692818, 0.0924243, 0.382959, -1, -0.285721, -0.04 )
+transform = Transform( 0.393891, -0.00928914, -0.0690177, -0.00705389, 0.389065, -0.0926217, 0.0692818, 0.0924243, 0.382959, -1, -0.3, -0.04 )
 
 [node name="HandLeft" parent="Content/Body" instance=ExtResource( 3 )]
-transform = Transform( 0.385798, 0.00503596, 0.105521, 0.0175114, 0.390969, -0.0826824, -0.10418, 0.0843663, 0.376867, 1.1, -0.285721, -0.04 )
+transform = Transform( 0.385798, 0.00503596, 0.105521, 0.0175114, 0.390969, -0.0826824, -0.10418, 0.0843663, 0.376867, 1.1, -0.3, -0.04 )
 
 [node name="FootRight" parent="Content/Body" instance=ExtResource( 5 )]
 transform = Transform( 0.296569, 0, -0.0452437, 0, 0.3, 0, 0.0452437, 0, 0.296569, -0.6, -1.92, -0.2092 )
