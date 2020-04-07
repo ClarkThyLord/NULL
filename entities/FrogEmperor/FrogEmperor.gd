@@ -1,4 +1,4 @@
-extends Entity
+extends "res://entities/Entity.gd"
 class_name FrogEmperor
 
 
@@ -20,9 +20,10 @@ func set_health(health : int) -> void:
 	HUD.update_health(health)
 	.set_health(health)
 
+export(int, 0, 100, 1) var Stamina := 100 setget set_stamina
 func set_stamina(stamina : int) -> void:
-	HUD.update_stamina(stamina)
-	.set_stamina(stamina)
+	Stamina = clamp(stamina, 0, 100)
+	HUD.update_stamina(Stamina)
 
 export(int, 0, 100, 1) var Speed := 25
 export(float, 0, 10, 0.01) var SpeedBoost := 1.75
@@ -55,6 +56,11 @@ func _physics_process(delta):
 	if Input.is_action_pressed("move_right"): direction += Vector3.RIGHT
 	if Input.is_action_pressed("move_left"): direction += Vector3.LEFT
 	
+	if jumps < MaxJumps and Input.is_action_just_pressed("move_jump"):
+		jumps += 1
+		translate(Vector3.UP * JumpHeight)
+	elif is_on_floor(): jumps = 0
+	
 	if direction.length() > 0:
 		var velocity := Vector3()
 		velocity += CameraPivot.global_transform.basis.x * direction.x
@@ -64,11 +70,6 @@ func _physics_process(delta):
 			self.Stamina -= 2
 			regenerate_stamina = false
 			velocity *= SpeedBoost
-		
-		if jumps < MaxJumps and Input.is_action_just_pressed("move_jump"):
-			jumps += 1
-			translate(Vector3.UP * JumpHeight)
-		elif is_on_floor(): jumps = 0
 		
 		velocity.y = 0
 		move_and_slide(velocity, Vector3.UP)

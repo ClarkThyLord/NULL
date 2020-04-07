@@ -1,5 +1,4 @@
 extends KinematicBody
-class_name Entity
 
 
 
@@ -8,10 +7,6 @@ export(int, 0, 100, 1) var Health := 100 setget set_health
 func set_health(health : int) -> void:
 	Health = clamp(health, 0, 100)
 	if Health <= 0: die()
-
-export(int, 0, 100, 1) var Stamina := 100 setget set_stamina
-func set_stamina(stamina : int) -> void:
-	Stamina = clamp(stamina, 0, 100)
 
 
 
