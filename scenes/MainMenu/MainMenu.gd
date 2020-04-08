@@ -32,7 +32,7 @@ func _on_resized(): correct()
 
 
 func _on_Start_pressed():
-	get_tree().change_scene("res://maps/Testing.tscn")
+	get_tree().change_scene("res://scenes/Start/Start.tscn")
 
 func _on_Controls_pressed():
 	pass # Replace with function body.

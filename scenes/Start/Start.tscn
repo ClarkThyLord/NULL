@@ -1,0 +1,168 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://scenes/Start/Start.gd" type="Script" id=1]
+[ext_resource path="res://assets/fonts/8-Bit Wonder/8-Bit Wonder.TTF" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/themes/default/button/hover.png" type="Texture" id=3]
+[ext_resource path="res://assets/scenes/MainMenu/margin.png" type="Texture" id=4]
+[ext_resource path="res://assets/themes/default/button/focus.png" type="Texture" id=5]
+[ext_resource path="res://assets/fonts/8-Bit Wonder/8-Bit Wonder.tres" type="DynamicFont" id=6]
+[ext_resource path="res://assets/scenes/MainMenu/model_2.png" type="Texture" id=7]
+[ext_resource path="res://assets/audio/Menu Selection Click.wav" type="AudioStream" id=8]
+
+[sub_resource type="Curve" id=1]
+_data = [ Vector2( 0, 0 ), 0.0, 1.4, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="StyleBoxTexture" id=2]
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 26, 3 )
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="StyleBoxTexture" id=4]
+texture = ExtResource( 5 )
+region_rect = Rect2( 0, 0, 26, 3 )
+
+[sub_resource type="StyleBoxEmpty" id=5]
+
+[sub_resource type="DynamicFont" id=6]
+size = 64
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 32
+font_data = ExtResource( 2 )
+
+[node name="ScoreBoard" type="ColorRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SoundEffects" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+
+[node name="MenuParticles" type="CPUParticles2D" parent="."]
+position = Vector2( 512, 300 )
+amount = 128
+lifetime = 4.0
+preprocess = 4.0
+spread = 180.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 100.0
+linear_accel = 30.0
+scale_amount = 6.0
+scale_amount_random = 1.0
+scale_amount_curve = SubResource( 1 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 16.0
+margin_top = 16.0
+margin_right = -16.0
+margin_bottom = -16.0
+custom_constants/separation = 32
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="modelleft" type="TextureRect" parent="HBoxContainer"]
+margin_right = 239.0
+margin_bottom = 568.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 7 )
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+margin_left = 271.0
+margin_right = 721.0
+margin_bottom = 568.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer"]
+margin_right = 450.0
+margin_bottom = 282.0
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Name" type="LineEdit" parent="HBoxContainer/VBoxContainer/VBoxContainer"]
+margin_top = 107.0
+margin_right = 450.0
+margin_bottom = 139.0
+rect_min_size = Vector2( 320, 0 )
+custom_fonts/font = ExtResource( 6 )
+align = 1
+max_length = 12
+expand_to_text_length = true
+placeholder_text = "ENTER NAME"
+
+[node name="footer" type="TextureRect" parent="HBoxContainer/VBoxContainer/VBoxContainer"]
+margin_top = 143.0
+margin_right = 450.0
+margin_bottom = 175.0
+rect_min_size = Vector2( 0, 32 )
+texture = ExtResource( 4 )
+expand = true
+flip_v = true
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer/VBoxContainer"]
+margin_top = 286.0
+margin_right = 450.0
+margin_bottom = 568.0
+size_flags_vertical = 3
+custom_constants/separation = 32
+
+[node name="Start" type="Button" parent="HBoxContainer/VBoxContainer/VBoxContainer2"]
+margin_right = 450.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 450, 0 )
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/focus = SubResource( 4 )
+custom_styles/normal = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
+disabled = true
+text = "Start"
+
+[node name="Back" type="Button" parent="HBoxContainer/VBoxContainer/VBoxContainer2"]
+margin_top = 96.0
+margin_right = 450.0
+margin_bottom = 128.0
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/focus = SubResource( 4 )
+custom_styles/normal = SubResource( 5 )
+custom_fonts/font = SubResource( 7 )
+text = "Back"
+
+[node name="modelright" type="TextureRect" parent="HBoxContainer"]
+margin_left = 753.0
+margin_right = 992.0
+margin_bottom = 568.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 7 )
+stretch_mode = 6
+flip_h = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="resized" from="." to="." method="_on_resized"]
+[connection signal="text_changed" from="HBoxContainer/VBoxContainer/VBoxContainer/Name" to="." method="_on_Name_text_changed"]
+[connection signal="text_entered" from="HBoxContainer/VBoxContainer/VBoxContainer/Name" to="." method="_on_Name_text_entered"]
+[connection signal="focus_entered" from="HBoxContainer/VBoxContainer/VBoxContainer2/Start" to="SoundEffects" method="play"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/VBoxContainer2/Start" to="." method="_on_Start_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/VBoxContainer2/Start" to="SoundEffects" method="play"]
+[connection signal="focus_entered" from="HBoxContainer/VBoxContainer/VBoxContainer2/Back" to="SoundEffects" method="play"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/VBoxContainer2/Back" to="." method="_on_Back_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/VBoxContainer2/Back" to="SoundEffects" method="play"]

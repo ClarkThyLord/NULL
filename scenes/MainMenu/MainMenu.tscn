@@ -8,8 +8,6 @@
 [ext_resource path="res://assets/themes/default/button/hover.png" type="Texture" id=6]
 [ext_resource path="res://assets/audio/Menu Selection Click.wav" type="AudioStream" id=8]
 
-
-
 [sub_resource type="Curve" id=1]
 _data = [ Vector2( 0, 0 ), 0.0, 1.4, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
 
