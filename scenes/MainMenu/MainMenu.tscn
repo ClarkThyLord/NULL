@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scenes/MainMenu/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://assets/scenes/MainMenu/model.png" type="Texture" id=2]
@@ -6,6 +6,11 @@
 [ext_resource path="res://assets/scenes/MainMenu/margin.png" type="Texture" id=4]
 [ext_resource path="res://assets/scenes/MainMenu/focus.png" type="Texture" id=5]
 [ext_resource path="res://assets/scenes/MainMenu/hover.png" type="Texture" id=6]
+[ext_resource path="res://assets/scenes/MainMenu/0cc ost - Track 04 (Takeoff for Combat).ogg" type="AudioStream" id=7]
+[ext_resource path="res://assets/scenes/MainMenu/Menu Selection Click.wav" type="AudioStream" id=8]
+
+[sub_resource type="Curve" id=7]
+_data = [ Vector2( 0, 0 ), 0.0, 1.4, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
 
 [sub_resource type="DynamicFont" id=1]
 size = 64
@@ -36,6 +41,26 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+autoplay = true
+
+[node name="SoundEffects" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+
+[node name="MenuParticles" type="CPUParticles2D" parent="."]
+position = Vector2( 512, 300 )
+amount = 128
+lifetime = 4.0
+preprocess = 4.0
+spread = 180.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 100.0
+linear_accel = 30.0
+scale_amount = 6.0
+scale_amount_random = 1.0
+scale_amount_curve = SubResource( 7 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 anchor_right = 1.0
@@ -163,7 +188,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 [connection signal="resized" from="." to="." method="_on_resized"]
+[connection signal="focus_entered" from="HBoxContainer/VBoxContainer/VBoxContainer/Start" to="SoundEffects" method="play"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/VBoxContainer/Start" to="." method="_on_Start_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/VBoxContainer/Start" to="SoundEffects" method="play"]
+[connection signal="focus_entered" from="HBoxContainer/VBoxContainer/VBoxContainer/Controls" to="SoundEffects" method="play"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/VBoxContainer/Controls" to="." method="_on_Controls_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/VBoxContainer/Controls" to="SoundEffects" method="play"]
+[connection signal="focus_entered" from="HBoxContainer/VBoxContainer/VBoxContainer/HighScores" to="SoundEffects" method="play"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/VBoxContainer/HighScores" to="." method="_on_HighScores_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/VBoxContainer/HighScores" to="SoundEffects" method="play"]
+[connection signal="focus_entered" from="HBoxContainer/VBoxContainer/VBoxContainer/GitHub" to="SoundEffects" method="play"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/VBoxContainer/GitHub" to="." method="_on_GitHub_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/VBoxContainer/GitHub" to="SoundEffects" method="play"]
