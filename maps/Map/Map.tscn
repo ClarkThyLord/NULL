@@ -4,4 +4,3 @@
 
 [node name="Map" type="Spatial"]
 script = ExtResource( 2 )
-AutoGenerate = true

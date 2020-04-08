@@ -51,8 +51,7 @@ func clear() -> void:
 		levels[level_position].queue_free()
 	levels.clear()
 
-func generate(level = null) -> void:
-	pass
+func generate(level = levels.keys().pop_back()) -> void:
 	match typeof(level):
 		TYPE_NIL:
 			clear()
@@ -70,10 +69,11 @@ func generate(level = null) -> void:
 	var levelnode := Level.instance()
 	levelnode.Size = LevelSize
 	levelnode.translation = Vector3(
-		(LevelSize.x / 2) * level.x,
+		LevelSize.x * level.x * 2,
 		0,
-		(LevelSize.y / 2) * level.y
+		LevelSize.y * level.y * 2
 	)
 	add_child(levelnode)
-#	levels[level] = levelnode
-#	print(levels)
+	levels[level] = levelnode
+	if levels.size() < Levels:
+		generate(level)
