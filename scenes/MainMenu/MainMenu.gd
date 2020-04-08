@@ -27,7 +27,7 @@ func _on_Controls_pressed():
 	pass # Replace with function body.
 
 func _on_HighScores_pressed():
-	pass # Replace with function body.
+	get_tree().change_scene("res://scenes/HighScores/HighScores.tscn")
 
 func _on_GitHub_pressed():
 	OS.shell_open("https://github.com/ClarkThyLord/NULL")

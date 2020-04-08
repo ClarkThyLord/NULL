@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scenes/MainMenu/MainMenu.gd" type="Script" id=1]
-[ext_resource path="res://assets/scenes/MainMenu/model.png" type="Texture" id=2]
+[ext_resource path="res://assets/scenes/MainMenu/model_1.png" type="Texture" id=2]
 [ext_resource path="res://assets/fonts/8-Bit Wonder/8-Bit Wonder.TTF" type="DynamicFontData" id=3]
 [ext_resource path="res://assets/scenes/MainMenu/margin.png" type="Texture" id=4]
 [ext_resource path="res://assets/scenes/MainMenu/focus.png" type="Texture" id=5]
@@ -9,27 +9,27 @@
 [ext_resource path="res://assets/scenes/MainMenu/0cc ost - Track 04 (Takeoff for Combat).ogg" type="AudioStream" id=7]
 [ext_resource path="res://assets/scenes/MainMenu/Menu Selection Click.wav" type="AudioStream" id=8]
 
-[sub_resource type="Curve" id=7]
+[sub_resource type="Curve" id=1]
 _data = [ Vector2( 0, 0 ), 0.0, 1.4, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=2]
 size = 64
 extra_spacing_bottom = 12
 font_data = ExtResource( 3 )
 
-[sub_resource type="StyleBoxTexture" id=2]
+[sub_resource type="StyleBoxTexture" id=3]
 texture = ExtResource( 6 )
 region_rect = Rect2( 0, 0, 26, 3 )
 
-[sub_resource type="StyleBoxEmpty" id=3]
+[sub_resource type="StyleBoxEmpty" id=4]
 
-[sub_resource type="StyleBoxTexture" id=4]
+[sub_resource type="StyleBoxTexture" id=5]
 texture = ExtResource( 5 )
 region_rect = Rect2( 0, 0, 26, 3 )
 
-[sub_resource type="StyleBoxEmpty" id=5]
+[sub_resource type="StyleBoxEmpty" id=6]
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=7]
 size = 32
 font_data = ExtResource( 3 )
 
@@ -60,7 +60,7 @@ initial_velocity = 100.0
 linear_accel = 30.0
 scale_amount = 6.0
 scale_amount_random = 1.0
-scale_amount_curve = SubResource( 7 )
+scale_amount_curve = SubResource( 1 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 anchor_right = 1.0
@@ -103,7 +103,7 @@ expand = true
 margin_top = 36.0
 margin_right = 432.0
 margin_bottom = 112.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "NULL"
 align = 1
 valign = 1
@@ -130,11 +130,11 @@ margin_top = 96.0
 margin_right = 432.0
 margin_bottom = 128.0
 mouse_default_cursor_shape = 2
-custom_styles/hover = SubResource( 2 )
-custom_styles/pressed = SubResource( 3 )
-custom_styles/focus = SubResource( 4 )
-custom_styles/normal = SubResource( 5 )
-custom_fonts/font = SubResource( 6 )
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 4 )
+custom_styles/focus = SubResource( 5 )
+custom_styles/normal = SubResource( 6 )
+custom_fonts/font = SubResource( 7 )
 text = "START"
 
 [node name="Controls" type="Button" parent="HBoxContainer/VBoxContainer/VBoxContainer"]
@@ -142,11 +142,11 @@ margin_top = 160.0
 margin_right = 432.0
 margin_bottom = 192.0
 mouse_default_cursor_shape = 2
-custom_styles/hover = SubResource( 2 )
-custom_styles/pressed = SubResource( 3 )
-custom_styles/focus = SubResource( 4 )
-custom_styles/normal = SubResource( 5 )
-custom_fonts/font = SubResource( 6 )
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 4 )
+custom_styles/focus = SubResource( 5 )
+custom_styles/normal = SubResource( 6 )
+custom_fonts/font = SubResource( 7 )
 text = "CONTROLS"
 
 [node name="HighScores" type="Button" parent="HBoxContainer/VBoxContainer/VBoxContainer"]
@@ -155,11 +155,11 @@ margin_right = 432.0
 margin_bottom = 256.0
 rect_min_size = Vector2( 432, 0 )
 mouse_default_cursor_shape = 2
-custom_styles/hover = SubResource( 2 )
-custom_styles/pressed = SubResource( 3 )
-custom_styles/focus = SubResource( 4 )
-custom_styles/normal = SubResource( 5 )
-custom_fonts/font = SubResource( 6 )
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 4 )
+custom_styles/focus = SubResource( 5 )
+custom_styles/normal = SubResource( 6 )
+custom_fonts/font = SubResource( 7 )
 text = "High Scores"
 
 [node name="GitHub" type="Button" parent="HBoxContainer/VBoxContainer/VBoxContainer"]
@@ -168,11 +168,11 @@ margin_right = 432.0
 margin_bottom = 320.0
 rect_min_size = Vector2( 432, 0 )
 mouse_default_cursor_shape = 2
-custom_styles/hover = SubResource( 2 )
-custom_styles/pressed = SubResource( 3 )
-custom_styles/focus = SubResource( 4 )
-custom_styles/normal = SubResource( 5 )
-custom_fonts/font = SubResource( 6 )
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 4 )
+custom_styles/focus = SubResource( 5 )
+custom_styles/normal = SubResource( 6 )
+custom_fonts/font = SubResource( 7 )
 text = "GitHub"
 
 [node name="modelright" type="TextureRect" parent="HBoxContainer"]
