@@ -7,6 +7,9 @@ extends Node
 var BackgroundMusic := AudioStreamPlayer.new() setget set_background_music
 func set_background_music(backgroundmusic : AudioStreamPlayer) -> void: pass
 
+var CurrentName := ""
+var CurrentPoints := 0
+
 var ScoreBoard := {} setget set_score_board, get_score_board
 func set_score_board(scoreboard : Dictionary) -> void: pass
 func get_score_board() -> Dictionary: return ScoreBoard.duplicate()

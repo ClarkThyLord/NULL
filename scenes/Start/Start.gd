@@ -50,7 +50,8 @@ func _on_Start_pressed():
 	var regex = RegEx.new()
 	regex.compile("[A-Za-z]+$")
 	var result = regex.search(Name.text)
-	var name = result.get_string().to_upper()
+	get_node("/root/Server").CurrentName = result.get_string().to_upper()
+	get_node("/root/Server").CurrentPoints = 0
 	
 	get_tree().change_scene("res://maps/Testing.tscn")
 
