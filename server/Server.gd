@@ -17,7 +17,7 @@ func get_score_board() -> Dictionary: return ScoreBoard.duplicate()
 func _init(): load_game()
 func _ready():
 	load_game()
-	if ScoreBoard.size() == 0 or true:
+	if ScoreBoard.size() == 0:
 		add_score("ClarkThyLord", 7777)
 		add_score("FrogEmperor", 666)
 		add_score("Unknown", 444)

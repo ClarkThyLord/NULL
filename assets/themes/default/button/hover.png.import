@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/focus.png-8dee15e394078db91287dd859f894140.stex"
+path="res://.import/hover.png-56e58a1b8c737a8fab7ae0bfeb865ff8.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/scenes/MainMenu/focus.png"
-dest_files=[ "res://.import/focus.png-8dee15e394078db91287dd859f894140.stex" ]
+source_file="res://assets/themes/default/button/hover.png"
+dest_files=[ "res://.import/hover.png-56e58a1b8c737a8fab7ae0bfeb865ff8.stex" ]
 
 [params]
 

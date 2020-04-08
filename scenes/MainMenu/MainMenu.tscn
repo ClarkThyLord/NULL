@@ -4,9 +4,11 @@
 [ext_resource path="res://assets/scenes/MainMenu/model_1.png" type="Texture" id=2]
 [ext_resource path="res://assets/fonts/8-Bit Wonder/8-Bit Wonder.TTF" type="DynamicFontData" id=3]
 [ext_resource path="res://assets/scenes/MainMenu/margin.png" type="Texture" id=4]
-[ext_resource path="res://assets/scenes/MainMenu/focus.png" type="Texture" id=5]
-[ext_resource path="res://assets/scenes/MainMenu/hover.png" type="Texture" id=6]
+[ext_resource path="res://assets/themes/default/button/focus.png" type="Texture" id=5]
+[ext_resource path="res://assets/themes/default/button/hover.png" type="Texture" id=6]
 [ext_resource path="res://assets/audio/Menu Selection Click.wav" type="AudioStream" id=8]
+
+
 
 [sub_resource type="Curve" id=1]
 _data = [ Vector2( 0, 0 ), 0.0, 1.4, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]

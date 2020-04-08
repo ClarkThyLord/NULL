@@ -65,6 +65,10 @@ Server="*res://server/Server.gd"
 
 enabled=PoolStringArray( "Voxel-Core" )
 
+[gui]
+
+theme/custom="res://assets/themes/default/default.tres"
+
 [input]
 
 move_forward={
