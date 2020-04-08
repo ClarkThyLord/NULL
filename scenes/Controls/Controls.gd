@@ -31,17 +31,5 @@ func correct() -> void:
 func _on_resized(): correct()
 
 
-func _on_Start_pressed():
-	get_tree().change_scene("res://scenes/Start/Start.tscn")
-
-func _on_Controls_pressed():
-	get_tree().change_scene("res://scenes/Controls/Controls.tscn")
-
-func _on_HighScores_pressed():
-	get_tree().change_scene("res://scenes/HighScores/HighScores.tscn")
-
-func _on_GitHub_pressed():
-	OS.shell_open("https://github.com/ClarkThyLord/NULL")
-
-func _on_Exit_pressed():
-	get_tree().quit()
+func _on_Back_pressed():
+	get_tree().change_scene("res://scenes/MainMenu/MainMenu.tscn")

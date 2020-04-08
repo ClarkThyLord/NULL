@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/light.png-cce544931b417fca59c2900054b46f46.stex"
+path="res://.import/model_4.png-f5d8c57a2fbc73d12beab33e36210852.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/scenes/MainMenu/light.png"
-dest_files=[ "res://.import/light.png-cce544931b417fca59c2900054b46f46.stex" ]
+source_file="res://assets/scenes/MainMenu/model_4.png"
+dest_files=[ "res://.import/model_4.png-f5d8c57a2fbc73d12beab33e36210852.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
@@ -30,5 +30,5 @@ process/HDR_as_SRGB=false
 process/invert_color=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0
