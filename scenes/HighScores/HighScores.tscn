@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://assets/fonts/8-Bit Wonder/8-Bit Wonder.TTF" type="DynamicFontData" id=1]
 [ext_resource path="res://controls/ScoreBoard/ScoreBoard.tscn" type="PackedScene" id=2]
@@ -7,8 +7,7 @@
 [ext_resource path="res://assets/scenes/MainMenu/trophy.png" type="Texture" id=5]
 [ext_resource path="res://assets/scenes/MainMenu/margin.png" type="Texture" id=6]
 [ext_resource path="res://assets/scenes/MainMenu/focus.png" type="Texture" id=7]
-[ext_resource path="res://assets/scenes/MainMenu/0cc ost - Track 04 (Takeoff for Combat).ogg" type="AudioStream" id=8]
-[ext_resource path="res://assets/scenes/MainMenu/Menu Selection Click.wav" type="AudioStream" id=9]
+[ext_resource path="res://assets/audio/Menu Selection Click.wav" type="AudioStream" id=9]
 [ext_resource path="res://scenes/HighScores/HighScores.gd" type="Script" id=10]
 
 [sub_resource type="Curve" id=1]
@@ -39,10 +38,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 8 )
-autoplay = true
-
 [node name="SoundEffects" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )
 
@@ -72,7 +67,7 @@ __meta__ = {
 }
 
 [node name="modelleft" type="TextureRect" parent="HBoxContainer"]
-margin_right = 309.0
+margin_right = 308.0
 margin_bottom = 568.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -83,14 +78,14 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
-margin_left = 341.0
-margin_right = 650.0
+margin_left = 340.0
+margin_right = 652.0
 margin_bottom = 568.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="throphy" type="TextureRect" parent="HBoxContainer/VBoxContainer"]
-margin_right = 309.0
+margin_right = 312.0
 margin_bottom = 228.0
 rect_min_size = Vector2( 0, 32 )
 size_flags_vertical = 3
@@ -100,7 +95,7 @@ stretch_mode = 6
 
 [node name="head" type="TextureRect" parent="HBoxContainer/VBoxContainer"]
 margin_top = 232.0
-margin_right = 309.0
+margin_right = 312.0
 margin_bottom = 264.0
 rect_min_size = Vector2( 0, 32 )
 texture = ExtResource( 6 )
@@ -108,21 +103,22 @@ expand = true
 
 [node name="ScoreBoard" parent="HBoxContainer/VBoxContainer" instance=ExtResource( 2 )]
 margin_top = 268.0
-margin_right = 309.0
+margin_right = 312.0
 margin_bottom = 496.0
+LimitScores = false
 
 [node name="footer" type="TextureRect" parent="HBoxContainer/VBoxContainer"]
 margin_top = 500.0
-margin_right = 309.0
+margin_right = 312.0
 margin_bottom = 532.0
 rect_min_size = Vector2( 0, 32 )
 texture = ExtResource( 6 )
 expand = true
 flip_v = true
 
-[node name="Exit" type="Button" parent="HBoxContainer/VBoxContainer"]
+[node name="Back" type="Button" parent="HBoxContainer/VBoxContainer"]
 margin_top = 536.0
-margin_right = 309.0
+margin_right = 312.0
 margin_bottom = 568.0
 mouse_default_cursor_shape = 2
 custom_styles/hover = SubResource( 2 )
@@ -130,10 +126,10 @@ custom_styles/pressed = SubResource( 3 )
 custom_styles/focus = SubResource( 4 )
 custom_styles/normal = SubResource( 5 )
 custom_fonts/font = SubResource( 6 )
-text = "Exit"
+text = "Back"
 
 [node name="modelright" type="TextureRect" parent="HBoxContainer"]
-margin_left = 682.0
+margin_left = 684.0
 margin_right = 992.0
 margin_bottom = 568.0
 size_flags_horizontal = 3
@@ -145,6 +141,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 [connection signal="resized" from="." to="." method="_on_resized"]
-[connection signal="focus_entered" from="HBoxContainer/VBoxContainer/Exit" to="SoundEffects" method="play"]
-[connection signal="pressed" from="HBoxContainer/VBoxContainer/Exit" to="SoundEffects" method="play"]
-[connection signal="pressed" from="HBoxContainer/VBoxContainer/Exit" to="." method="_on_Exit_pressed"]
+[connection signal="focus_entered" from="HBoxContainer/VBoxContainer/Back" to="SoundEffects" method="play"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Back" to="SoundEffects" method="play"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Back" to="." method="_on_Back_pressed"]

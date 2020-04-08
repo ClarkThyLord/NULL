@@ -59,6 +59,7 @@ config/icon="res://icon.png"
 [autoload]
 
 VoxelSet="*res://addons/Voxel-Core/defaults/VoxelSet.default.gd"
+Server="*res://server/Server.gd"
 
 [editor_plugins]
 

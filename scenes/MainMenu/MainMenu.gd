@@ -2,13 +2,24 @@ extends ColorRect
 
 
 
+# Imports
+const BackgroundMusic := preload("res://assets/audio/0cc ost - Track 04 (Takeoff for Combat).ogg")
+
+
+
 # Refrences
 onready var MenuParticles := get_node("MenuParticles")
 
 
 
 # Core
-func _ready(): correct()
+func _ready():
+	correct()
+	
+	if get_node("/root/Server").BackgroundMusic.stream != BackgroundMusic:
+		get_node("/root/Server").BackgroundMusic.stream = BackgroundMusic
+	if not get_node("/root/Server").BackgroundMusic.playing:
+		get_node("/root/Server").BackgroundMusic.play()
 
 
 func correct() -> void:
@@ -31,3 +42,6 @@ func _on_HighScores_pressed():
 
 func _on_GitHub_pressed():
 	OS.shell_open("https://github.com/ClarkThyLord/NULL")
+
+func _on_Exit_pressed():
+	get_tree().quit()

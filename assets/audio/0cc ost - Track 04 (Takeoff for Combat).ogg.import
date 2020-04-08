@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/0cc ost - Track 04 (Takeoff for Combat).ogg-80543295857239458aac485f5dffba17.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/0cc ost - Track 04 (Takeoff for Combat).ogg"
+dest_files=[ "res://.import/0cc ost - Track 04 (Takeoff for Combat).ogg-80543295857239458aac485f5dffba17.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
