@@ -56,7 +56,7 @@ func die() -> void:
 	HUD.show_summary()
 
 
-func _physics_process(delta):
+func _physics_process(delta) -> void:
 	var regenerate_stamina := true
 	var direction := Vector3()
 	if Input.is_action_pressed("move_forward"): direction += Vector3.FORWARD
@@ -96,19 +96,9 @@ func _unhandled_input(event : InputEvent):
 		match event.button_index:
 			BUTTON_WHEEL_UP, BUTTON_WHEEL_DOWN:
 				PlayerCamera.translation += Vector3(0, 0.1, 0.1) * (1 if event.button_index == BUTTON_WHEEL_DOWN else -1)
-			BUTTON_LEFT:
+			BUTTON_LEFT, BUTTON_RIGHT:
 				if Stamina >= LightCost:
 					self.Stamina -= LightCost
 					for body in HitArea.get_overlapping_bodies():
 						if body.is_in_group("enemies"):
-							body.hurt({
-								"damage": MinLightDamage + randi() % MaxLightDamage
-							})
-			BUTTON_RIGHT:
-				if Stamina >= HeavyCost:
-					self.Stamina -= HeavyCost
-					for body in HitArea.get_overlapping_bodies():
-						if body.is_in_group("enemies"):
-							body.hurt({
-								"damage": MinHeavyDamage + randi() % MaxHeavyDamage
-							})
+							hit(body, (MinLightDamage + randi() % MaxLightDamage) if event.button_index == BUTTON_LEFT else (MinHeavyDamage + randi() % MaxHeavyDamage))

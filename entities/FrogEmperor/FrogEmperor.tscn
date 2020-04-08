@@ -7,7 +7,7 @@
 [ext_resource path="res://assets/entities/FrogEmperor/Foot.tscn" type="PackedScene" id=5]
 [ext_resource path="res://entities/FrogEmperor/HUD/HUD.tscn" type="PackedScene" id=6]
 
-[sub_resource type="Animation" id=1]
+[sub_resource type="Animation" id=14]
 resource_name = "blank"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Content/Body/Head:translation")
@@ -154,7 +154,7 @@ tracks/11/keys = {
 "values": [ Vector3( 0, 1.35704e-12, 0 ) ]
 }
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=15]
 resource_name = "idle"
 length = 6.0
 loop = true
@@ -303,7 +303,7 @@ tracks/11/keys = {
 "values": [ Vector3( 0, 13.6, 0 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=16]
 resource_name = "moving"
 length = 2.0
 loop = true
@@ -472,12 +472,12 @@ transitions = [ "idle", "moving", SubResource( 12 ), "moving", "idle", SubResour
 start_node = "idle"
 graph_offset = Vector2( -4, -35 )
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=11]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=17]
 
-[sub_resource type="CapsuleShape" id=3]
+[sub_resource type="CapsuleShape" id=18]
 height = 2.0
 
-[sub_resource type="BoxShape" id=4]
+[sub_resource type="BoxShape" id=19]
 extents = Vector3( 2, 2, 2 )
 
 [node name="FrogEmperor" type="KinematicBody" groups=[
@@ -486,26 +486,23 @@ extents = Vector3( 2, 2, 2 )
 script = ExtResource( 1 )
 
 [node name="HUD" parent="." instance=ExtResource( 6 )]
-visible = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/blank = SubResource( 1 )
-anims/idle = SubResource( 2 )
-anims/moving = SubResource( 5 )
+anims/blank = SubResource( 14 )
+anims/idle = SubResource( 15 )
+anims/moving = SubResource( 16 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource( 10 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
-parameters/playback = SubResource( 11 )
+parameters/playback = SubResource( 17 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1.91069e-15, -1, 4.37114e-08, -4.37114e-08, -4.37114e-08, -1, 1, 0, -4.37114e-08, 0, 0, 0 )
-visible = false
-shape = SubResource( 3 )
+shape = SubResource( 18 )
 
 [node name="CameraPivot" type="Spatial" parent="."]
-visible = false
 
 [node name="PlayerCamera" type="Camera" parent="CameraPivot"]
 transform = Transform( 1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 10, 10 )
@@ -515,26 +512,25 @@ current = true
 
 [node name="HitArea" type="Area" parent="Content"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2 )
-visible = false
 
 [node name="Hitbox" type="CollisionShape" parent="Content/HitArea"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.47723 )
-shape = SubResource( 4 )
+shape = SubResource( 19 )
 
 [node name="Body" type="Spatial" parent="Content"]
 transform = Transform( -1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -1.77636e-15, 0, 0 )
 
 [node name="Head" parent="Content/Body" instance=ExtResource( 2 )]
-transform = Transform( 0.219912, -0.0112664, -0.118371, 0.0255698, 0.247533, 0.023944, 0.116124, -0.0331692, 0.218895, 0, 1.25914, 0 )
+transform = Transform( 0.229792, 0.0214622, 0.0960979, -0.0221552, 0.249002, -0.00263309, -0.0959404, -0.00609604, 0.230777, 0, 1.27337, 0 )
 
 [node name="Torso" parent="Content/Body" instance=ExtResource( 4 )]
-transform = Transform( 0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, -0.790856, -0.3 )
+transform = Transform( 0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, -0.776632, -0.3 )
 
 [node name="HandRight" parent="Content/Body" instance=ExtResource( 3 )]
-transform = Transform( 0.393891, -0.00928914, -0.0690177, -0.00705389, 0.389065, -0.0926217, 0.0692818, 0.0924243, 0.382959, -1, -0.290856, -0.04 )
+transform = Transform( 0.393891, -0.00928914, -0.0690177, -0.00705389, 0.389065, -0.0926217, 0.0692818, 0.0924244, 0.382959, -1, -0.276632, -0.04 )
 
 [node name="HandLeft" parent="Content/Body" instance=ExtResource( 3 )]
-transform = Transform( 0.385798, 0.00503596, 0.105521, 0.0175114, 0.390969, -0.0826824, -0.10418, 0.0843663, 0.376867, 1.1, -0.290856, -0.04 )
+transform = Transform( 0.385798, 0.00503596, 0.105521, 0.0175114, 0.390969, -0.0826825, -0.10418, 0.0843663, 0.376867, 1.1, -0.276632, -0.04 )
 
 [node name="FootRight" parent="Content/Body" instance=ExtResource( 5 )]
 transform = Transform( 0.296569, 0, -0.0452437, 0, 0.3, 0, 0.0452437, 0, 0.296569, -0.6, -1.92, -0.2092 )

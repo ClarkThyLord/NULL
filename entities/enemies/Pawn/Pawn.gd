@@ -33,9 +33,7 @@ func _ready():
 func attack():
 	for body in HitArea.get_overlapping_bodies():
 		if body.is_in_group("entities"):
-			body.hurt({
-				"damage": MinDamage + randi() % MaxDamage
-			})
+			hit(body, MinDamage + randi() % MaxDamage)
 
 
 func _process(delta):

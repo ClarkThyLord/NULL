@@ -15,8 +15,16 @@ func _ready():
 	add_to_group("entities", true)
 
 
+
+func hit(target : KinematicBody, damage : int) -> void:	
+	target.hurt({
+		"damage": damage,
+		"direction": (target.translation - translation).normalized()
+	})
+
 # Hit Schema -> {
-#	"damage" : float
+#	"damage" : float,
+#	"direction": Vector3
 # }
 func hurt(hit : Dictionary) -> void:
 	set_health(Health - hit["damage"])
