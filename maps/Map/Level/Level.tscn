@@ -9,6 +9,14 @@
 vertex_color_use_as_albedo = true
 albedo_color = Color( 0.701961, 0, 1, 1 )
 albedo_texture = ExtResource( 1 )
+emission_enabled = true
+emission = Color( 0.513726, 0.301961, 0.603922, 1 )
+emission_energy = 3.96
+emission_operator = 1
+emission_on_uv2 = false
+rim_enabled = true
+rim = 0.3
+rim_tint = 0.91
 
 [sub_resource type="ConcavePolygonShape" id=3]
 data = PoolVector3Array( 1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1 )
