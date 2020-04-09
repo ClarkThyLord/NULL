@@ -15,8 +15,8 @@ signal cleared
 export(bool) var Start := false setget set_start
 func set_start(start : bool) -> void:
 	Start = start
-	if Start: self.start()
-	else: self.State = States.IDLE
+	if Start: start()
+	else: State = States.IDLE
 
 enum States { IDLE, STARTING, PROGRESSING, CLEARED }
 export(States) var State := States.IDLE setget set_state
@@ -52,7 +52,7 @@ func set_cleared_color(color : Color) -> void:
 
 export(bool) var DitherColor := true setget set_dither
 func set_dither(dither : bool) -> void:
-	dither = DitherColor
+	DitherColor = dither
 	dither = 0.0
 	dither_growth = DitherGrowth
 
@@ -89,11 +89,12 @@ func _ready():
 
 func start() -> void:
 	time = 0
-	self.State = States.STARTING
+	Start = true
+	State = States.STARTING
 	emit_signal("started")
 
 func cleared() -> void:
-	self.State = States.CLEARED
+	State = States.CLEARED
 	emit_signal("cleared")
 
 
@@ -103,15 +104,15 @@ func set_floor_color(base : Color, rim : Color) -> void:
 		Floor.material_override.albedo_color = rim
 
 
-var time := 0
+var time := 0.0
 func _process(delta):
 	if Start:
 		time += delta
 		
 		if time < 3: pass
-		elif time < 6: self.State = States.PROGRESSING
+		elif time < 6: State = States.PROGRESSING
 		elif time < 8: cleared()
-		elif time < 10: self.Start = States.IDLE
+		elif time < 10: State = States.IDLE
 	
 	if Floor:
 		var color : Color
