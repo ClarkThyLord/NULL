@@ -22,3 +22,4 @@ func set_size(size : Vector2, autogenerate := true) -> void:
 # Core
 func _ready():
 	set_size(Size)
+	add_to_group("Map.Level")

@@ -9,31 +9,30 @@ const Level := preload("res://maps/Map/Level/Level.tscn")
 
 
 # Declarations
-var Directions := [
-	Vector2.RIGHT,
-	Vector2.UP,
-	Vector2.LEFT,
-	Vector2.DOWN
-]
+var Directions := [ Vector2.RIGHT, Vector2.UP, Vector2.LEFT, Vector2.DOWN ]
+
+
+var Map := {} setget set_map   #   Map Schema -> { Vector2 : [Level.tscn] }
+func set_map(Map : Dictionary) -> void: pass
 
 
 export(bool) var AutoGenerate := false setget set_auto_generate
 func set_auto_generate(autogenerate : bool) -> void:
 	AutoGenerate = autogenerate
+	
 	if AutoGenerate: generate()
-	else: clear()
+	else: erase_levels()
 
-
-# levels Schema -> {
-#	Vector2 : [Level.tscn]
-# }
-var levels := {} setget _set_levels
-func _set_levels(levels : Dictionary) -> void: pass
 
 export(int, 1, 100) var Levels := 1 setget set_levels
-func set_levels(levels : int, autogenerate := true) -> void:
-	Levels = clamp(levels, 0, 100)
-	if AutoGenerate and autogenerate: generate()
+func set_levels(levels : int, autogenerate := true) -> void:	
+	var prev = Levels
+	Levels = clamp(levels, 1, 100)
+	
+	if prev > Levels:
+		while levels < Map.size():
+			erase_level(Map.keys().pop_back())
+	elif AutoGenerate and autogenerate: generate()
 
 export(Vector2) var LevelSize := Vector2(16, 16) setget set_level_size
 func set_level_size(levelsize : Vector2, autogenerate := true) -> void:
@@ -41,29 +40,41 @@ func set_level_size(levelsize : Vector2, autogenerate := true) -> void:
 		clamp(levelsize.x, 16, 100),
 		clamp(levelsize.y, 16, 100)
 	)
-	if AutoGenerate and autogenerate: generate()
+	
+	if AutoGenerate and autogenerate: generate(null)
 
 
 
 # Core
-func clear() -> void:
-	for level_position in levels:
-		levels[level_position].queue_free()
-	levels.clear()
+func _ready():
+	add_to_group("Map")
 
-func generate(level = levels.keys().pop_back()) -> void:
+
+func erase_level(level : Vector2) -> void:
+	if Map.has(level):
+		Map[level].queue_free()
+		Map.erase(level)
+
+func erase_levels() -> void:
+	for child in get_children():
+		if child.is_in_group("Map.Level"):
+			child.queue_free()
+	Map.clear()
+
+
+func generate(level = Map.keys().pop_back()) -> void:
 	match typeof(level):
 		TYPE_NIL:
-			clear()
+			erase_levels()
 			level = Vector2.ZERO
 		TYPE_VECTOR2:
 			Directions.shuffle()
 			var previous = level
 			for direction in Directions:
-				if not levels.has(level + direction):
+				if not Map.has(level + direction):
 					level = level + direction
 			if level == previous:
-				generate(levels.keys()[randi() % levels.size()])
+				generate(Map.keys()[randi() % Map.size()])
 		_: return
 	
 	var levelnode := Level.instance()
@@ -74,6 +85,6 @@ func generate(level = levels.keys().pop_back()) -> void:
 		LevelSize.y * level.y * 2
 	)
 	add_child(levelnode)
-	levels[level] = levelnode
-	if levels.size() < Levels:
+	Map[level] = levelnode
+	if Map.size() < Levels:
 		generate(level)
