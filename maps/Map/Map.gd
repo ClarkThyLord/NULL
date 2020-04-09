@@ -32,7 +32,9 @@ func set_level_size(levelsize : Vector2, update := true) -> void:
 		clamp(levelsize.y, 16, 100)
 	)
 	
-	if Active and update: self.update()
+	if Active and update:
+		reset()
+		update()
 
 
 
@@ -82,43 +84,3 @@ func update() -> void:
 	Route.append(level_position)
 	Map[level_position].connect("cleared", self, "update", [], CONNECT_ONESHOT)
 	Map[level_position].start()
-
-
-#func erase_level(level : Vector2) -> void:
-#	if Map.has(level):
-#		Map[level].queue_free()
-#		Map.erase(level)
-#
-#func erase_levels() -> void:
-#	for child in get_children():
-#		if child.is_in_group("Map.Level"):
-#			child.queue_free()
-#	Map.clear()
-#
-#
-#func generate(level = Map.keys().pop_back()) -> void:
-#	match typeof(level):
-#		TYPE_NIL:
-#			erase_levels()
-#			level = Vector2.ZERO
-#		TYPE_VECTOR2:
-#			Directions.shuffle()
-#			var previous = level
-#			for direction in Directions:
-#				if not Map.has(level + direction):
-#					level = level + direction
-#			if level == previous:
-#				generate(Map.keys()[randi() % Map.size()])
-#		_: return
-#
-#	var levelnode := Level.instance()
-#	levelnode.Size = LevelSize
-#	levelnode.translation = Vector3(
-#		LevelSize.x * level.x * 2,
-#		0,
-#		LevelSize.y * level.y * 2
-#	)
-#	add_child(levelnode)
-#	Map[level] = levelnode
-#	if Map.size() < Levels:
-#		generate(level)
