@@ -9,13 +9,19 @@ onready var Floor := get_node("Floor")
 
 
 # Declarations
+signal started
 signal cleared
+
+export(bool) var Start := false setget set_start
+func set_start(start : bool) -> void:
+	Start = start
+	if Start: self.start()
+	else: self.State = States.IDLE
 
 enum States { IDLE, STARTING, PROGRESSING, CLEARED }
 export(States) var State := States.IDLE setget set_state
 func set_state(state : int) -> void:
 	State = state
-	update()
 
 
 export(Vector2) var Size := Vector2(16, 16) setget set_size
@@ -27,35 +33,47 @@ func set_size(size : Vector2, autogenerate := true) -> void:
 	if Floor: Floor.scale = Vector3(Size.x, 1, Size.y)
 
 
-export(Color) var IdleColor := Color("ff00ff") setget set_IdleColor
-func set_IdleColor(color : Color) -> void:
+export(Color) var IdleColor := Color("ff00ff") setget set_idle_color
+func set_idle_color(color : Color) -> void:
 	IdleColor = color
-	update()
 
-export(Color) var StartingColor := Color("ffff00") setget set_StartingColor
-func set_StartingColor(color : Color) -> void:
+export(Color) var StartingColor := Color("ffff00") setget set_starting_color
+func set_starting_color(color : Color) -> void:
 	StartingColor = color
-	update()
 
-export(Color) var ProgressingColor := Color.red setget ProgressingColor
-func ProgressingColor(color : Color) -> void:
+export(Color) var ProgressingColor := Color.red setget set_progressing_color
+func set_progressing_color(color : Color) -> void:
 	ProgressingColor = color
-	update()
 
-export(Color) var ClearedColor := Color("2dff0f") setget set_ClearedColor
-func set_ClearedColor(color : Color) -> void:
+export(Color) var ClearedColor := Color("2dff0f") setget set_cleared_color
+func set_cleared_color(color : Color) -> void:
 	ClearedColor = color
-	update()
 
-export(bool) var DitheringColor := true
 
-export(int, 0, 255) var DitheringAmount := 30
+export(bool) var DitherColor := true setget set_dither
+func set_dither(dither : bool) -> void:
+	dither = DitherColor
+	dither = 0.0
+	dither_growth = DitherGrowth
 
+export(float, 0.01, 1.00, 0.01) var DitheringAmount := 0.10 setget set_dither_amount
+func set_dither_amount(ditheringamount : float) -> void:
+	DitheringAmount = ditheringamount
+	dither = 0.0
+	dither_growth = DitherGrowth
+
+export(float, 0.01, 0.33, 0.01) var DitherGrowth := 0.01 setget set_dither_growth
+func set_dither_growth(dithergrowth : float) -> void:
+	DitherGrowth = clamp(dithergrowth, 0.01, DitheringAmount / 3)
+	dither = 0.0
+	dither_growth = DitherGrowth
+
+var dither := 0.0
+var dither_growth = DitherGrowth
 
 
 # Core
 func _ready():
-	update()
 	set_size(Size)
 	add_to_group("Map.Level")
 	var material := SpatialMaterial.new()
@@ -70,35 +88,41 @@ func _ready():
 
 
 func start() -> void:
-	pass
+	time = 0
+	self.State = States.STARTING
+	emit_signal("started")
+
+func cleared() -> void:
+	self.State = States.CLEARED
+	emit_signal("cleared")
 
 
-func update() -> void:
-	if not Floor: return
-	match State:
-		States.IDLE:
-			Floor.material_override.emission = IdleColor
-			Floor.material_override.albedo_color = IdleColor
-		States.STARTING:
-			Floor.material_override.emission = StartingColor
-			Floor.material_override.albedo_color = StartingColor
-		States.PROGRESSING:
-			Floor.material_override.emission = ProgressingColor
-			Floor.material_override.albedo_color = ProgressingColor
-		States.CLEARED:
-			Floor.material_override.emission = ClearedColor
-			Floor.material_override.albedo_color = ClearedColor
+func set_floor_color(base : Color, rim : Color) -> void:
+	if Floor:
+		Floor.material_override.emission = base
+		Floor.material_override.albedo_color = rim
 
-var time = 0
+
+var time := 0
 func _process(delta):
-	time += delta
+	if Start:
+		time += delta
+		
+		if time < 3: pass
+		elif time < 6: self.State = States.PROGRESSING
+		elif time < 8: cleared()
+		elif time < 10: self.Start = States.IDLE
 	
-	if time < 3:
-		self.State = States.STARTING
-	elif time < 6:
-		self.State = States.PROGRESSING
-	elif time < 8:
-		self.State = States.CLEARED
-		emit_signal("cleared")
-	elif time < 10:
-		self.State = States.IDLE
+	if Floor:
+		var color : Color
+		match State:
+			States.IDLE: color = IdleColor
+			States.STARTING: color = StartingColor
+			States.PROGRESSING: color = ProgressingColor
+			States.CLEARED: color = ClearedColor
+		if DitherColor:
+			dither += dither_growth
+			color = color.darkened(dither)
+			if dither < 0 or dither >= DitheringAmount:
+				dither_growth *= -1
+		set_floor_color(color, color)
