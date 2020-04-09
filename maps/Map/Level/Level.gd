@@ -47,6 +47,10 @@ func set_ClearedColor(color : Color) -> void:
 	ClearedColor = color
 	update()
 
+export(bool) var DitheringColor := true
+
+export(int, 0, 255) var DitheringAmount := 30
+
 
 
 # Core
@@ -54,6 +58,15 @@ func _ready():
 	update()
 	set_size(Size)
 	add_to_group("Map.Level")
+	var material := SpatialMaterial.new()
+	material.vertex_color_use_as_albedo = true
+	material.albedo_color = IdleColor
+	material.albedo_texture = preload("res://assets/maps/floor.jpg")
+	material.emission_enabled = true
+	material.emission = IdleColor
+	material.emission_operator = SpatialMaterial.EMISSION_OP_MULTIPLY
+	material.emission_texture = preload("res://assets/maps/floor.rim.png")
+	Floor.material_override = material
 
 
 func start() -> void:
@@ -75,3 +88,17 @@ func update() -> void:
 		States.CLEARED:
 			Floor.material_override.emission = ClearedColor
 			Floor.material_override.albedo_color = ClearedColor
+
+var time = 0
+func _process(delta):
+	time += delta
+	
+	if time < 3:
+		self.State = States.STARTING
+	elif time < 6:
+		self.State = States.PROGRESSING
+	elif time < 8:
+		self.State = States.CLEARED
+		emit_signal("cleared")
+	elif time < 10:
+		self.State = States.IDLE
