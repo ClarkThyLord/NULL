@@ -35,7 +35,7 @@ func attack():
 			hit(body, MinDamage + randi() % MaxDamage)
 
 
-func _process(delta):
+func _physics_process(delta):
 	hit_frames = (hit_frames + 1) % HitRate
 	if hit_frames == 0: attack()
 	

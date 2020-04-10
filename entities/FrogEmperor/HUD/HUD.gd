@@ -42,7 +42,7 @@ func hide_menu() -> void:
 	get_tree().paused = false
 
 func show_summary() -> void:
-	FinalScore.text = "YOUR SCORE\n" + (get_node("/root/Server").CurrentPoints)
+	FinalScore.text = "YOUR SCORE\n" + str(get_node("/root/Server").CurrentPoints)
 	Summary.show()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	get_tree().paused = true

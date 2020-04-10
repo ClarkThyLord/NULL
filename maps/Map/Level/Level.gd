@@ -143,16 +143,7 @@ func set_floor_color(base : Color, rim : Color) -> void:
 		Floor.material_override.albedo_color = rim
 
 
-#var time := 0.0
 func _process(delta):
-#	if Start:
-#		time += delta
-#
-#		if time < 3: pass
-#		elif time < 6: State = States.PROGRESSING
-#		elif time < 8: cleared()
-#		elif time < 10: State = States.IDLE
-	
 	if Floor:
 		var color : Color
 		match State:

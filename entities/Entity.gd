@@ -34,3 +34,8 @@ func hurt(hit : Dictionary) -> void:
 func die() -> void:
 	emit_signal("died")
 	queue_free()
+
+
+func _process(delta):
+	if translation.y <= -10: die()
+
