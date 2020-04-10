@@ -10,9 +10,9 @@ func set_background_music(backgroundmusic : AudioStreamPlayer) -> void: pass
 var CurrentName := ""
 var CurrentPoints := 0
 
-var ScoreBoard := {} setget set_score_board, get_score_board
-func set_score_board(scoreboard : Dictionary) -> void: pass
-func get_score_board() -> Dictionary: return ScoreBoard.duplicate()
+var Scores := {} setget set_scores, get_scores
+func set_scores(scores : Dictionary) -> void: pass
+func get_scores() -> Dictionary: return Scores.duplicate()
 
 
 
@@ -20,7 +20,7 @@ func get_score_board() -> Dictionary: return ScoreBoard.duplicate()
 func _init(): load_game()
 func _ready():
 	load_game()
-	if ScoreBoard.size() == 0:
+	if Scores.size() == 0:
 		add_score("ClarkThyLord", 7777)
 		add_score("FrogEmperor", 666)
 		add_score("Unknown", 444)
@@ -40,7 +40,7 @@ func save_game() -> void:
 	var save = File.new()
 	var opened = save.open("user://savegame.save", File.WRITE)
 	if opened == OK:
-		save.store_string(JSON.print(ScoreBoard))
+		save.store_string(JSON.print(Scores))
 		save.close()
 
 func load_game() -> void:
@@ -48,15 +48,26 @@ func load_game() -> void:
 	var opened = save.open("user://savegame.save", File.READ)
 	if opened == OK:
 		var result := JSON.parse(save.get_as_text())
-		ScoreBoard = result.result if result.error == OK else {}
+		Scores = result.result if result.error == OK else {}
 		save.close()
 
 func reset_game() -> void:
-	ScoreBoard.clear()
+	Scores.clear()
 	save_game()
 
 
-func add_score(name : String, points : int) -> void:
-	if ScoreBoard.has(name) and ScoreBoard[name] <= points: return
-	ScoreBoard[name] = points
+func add_score(name := CurrentName, points := CurrentPoints) -> bool:
+	if name.empty() or (Scores.has(name) and Scores[name] <= points): return false
+	Scores[name.to_upper()] = points
 	save_game()
+	return true
+
+class MyCustomSorter:
+	static func sort_descending(a, b):
+		return a[1] > b[1]
+func get_scores_sorted() -> Array:
+	var scores_sorted := []
+	for name in Scores.keys():
+		scores_sorted.append([name, Scores[name]])
+	scores_sorted.sort_custom(MyCustomSorter, "sort_descending")
+	return scores_sorted

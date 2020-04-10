@@ -9,11 +9,6 @@ const Score := preload("res://controls/ScoreBoard/Score/Score.tscn")
 
 
 # Refrences
-class MyCustomSorter:
-	static func sort_descending(a, b):
-		return a[1] > b[1]
-
-
 onready var Scores := get_node("Scores")
 
 
@@ -41,11 +36,7 @@ func _update() -> void:
 			child.queue_free()
 		
 		var rank := 0
-		var scores : Dictionary = get_node("/root/Server").ScoreBoard
-		var scores_sorted := []
-		for name in scores.keys():
-			scores_sorted.append([name, scores[name]])
-		scores_sorted.sort_custom(MyCustomSorter, "sort_descending")
+		var scores_sorted = get_node("/root/Server").get_scores_sorted()
 		while rank < (MaximumScores if LimitScores else INF):
 			if rank >= scores_sorted.size(): break
 			var score := Score.instance()
