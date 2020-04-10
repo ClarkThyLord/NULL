@@ -13,7 +13,7 @@ font_data = ExtResource( 1 )
 pause_mode = 1
 margin_right = 160.0
 margin_bottom = 40.0
-rect_min_size = Vector2( 0, 250 )
+rect_min_size = Vector2( 268, 250 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -33,8 +33,10 @@ text = "SCORE   "
 margin_left = 108.0
 margin_right = 268.0
 margin_bottom = 16.0
+size_flags_horizontal = 3
 custom_fonts/font = SubResource( 2 )
-text = "0000000000"
+text = "0"
+align = 2
 
 [node name="Events" type="VBoxContainer" parent="."]
 margin_top = 20.0

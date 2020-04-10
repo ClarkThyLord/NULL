@@ -10,15 +10,11 @@ onready var Tracker := get_node("Tracker")
 
 onready var Menu := get_node("Menu")
 
-onready var Summary := get_node("Summary")
-onready var FinalScore := get_node("Summary/FinalScore")
-
 
 
 # Core
 func _ready():
 	hide_menu()
-	Summary.visible = false
 
 
 func update_health(health : int) -> void:
@@ -42,15 +38,8 @@ func hide_menu() -> void:
 	get_tree().paused = false
 
 
-func show_summary() -> void:
-	FinalScore.text = "YOUR SCORE\n" + str(get_node("/root/Server").CurrentPoints)
-	Summary.show()
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	get_tree().paused = true
-
-
 func _unhandled_key_input(event : InputEventKey) -> void:
-	if not Summary.visible and not event.pressed:
+	if not event.pressed:
 		match event.scancode:
 			KEY_ESCAPE:
 				toggle_menu()

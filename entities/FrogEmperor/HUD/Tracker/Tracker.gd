@@ -25,7 +25,7 @@ func add_event(event : String) -> void:
 func _process(delta):
 	var score = get_node("/root/Server").CurrentPoints
 	if Score and int(Score.text) != score:
-		Score.text = "%010d" %  (int(Score.text) + sign(score - int(Score.text)))
+		Score.text = str(int(Score.text) + sign(score - int(Score.text)))
 	
 	if Events:
 		var last_event = Events.get_children()

@@ -85,3 +85,7 @@ func update() -> void:
 	Route.append(level_position)
 	Map[level_position].connect("cleared", self, "update", [], CONNECT_ONESHOT)
 	Map[level_position].start()
+
+
+func _on_FrogEmperor_died():
+	get_tree().change_scene("res://scenes/Summary/Summary.tscn")

@@ -8,3 +8,4 @@ script = ExtResource( 2 )
 
 [node name="FrogEmperor" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
+[connection signal="died" from="FrogEmperor" to="." method="_on_FrogEmperor_died"]

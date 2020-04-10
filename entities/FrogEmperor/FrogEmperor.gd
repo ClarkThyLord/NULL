@@ -52,7 +52,8 @@ func _ready() -> void:
 
 
 func die() -> void:
-	HUD.show_summary()
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	.die()
 
 
 func _physics_process(delta) -> void:
