@@ -1,9 +1,8 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://entities/FrogEmperor/HUD/HUD.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/8-Bit Wonder/8-Bit Wonder.TTF" type="DynamicFontData" id=2]
 [ext_resource path="res://entities/FrogEmperor/HUD/Tracker/Tracker.tscn" type="PackedScene" id=3]
-[ext_resource path="res://assets/audio/Menu Selection Click.wav" type="AudioStream" id=4]
 [ext_resource path="res://controls/InteractiveButton/InteractiveButton.tscn" type="PackedScene" id=5]
 
 [sub_resource type="DynamicFont" id=1]
@@ -27,9 +26,6 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="SoundEffects" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 4 )
 
 [node name="Stats" type="VBoxContainer" parent="."]
 margin_left = 12.0
@@ -72,6 +68,7 @@ margin_right = -11.9999
 margin_bottom = 262.0
 
 [node name="Menu" type="VBoxContainer" parent="."]
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -91,6 +88,14 @@ margin_right = 564.0
 margin_bottom = 64.0
 custom_fonts/font = SubResource( 1 )
 text = "RESUME"
+
+[node name="Controls" parent="Menu" instance=ExtResource( 5 )]
+visible = false
+margin_top = 96.0
+margin_right = 564.0
+margin_bottom = 160.0
+custom_fonts/font = SubResource( 1 )
+text = "CONTROLS"
 
 [node name="Retire" parent="Menu" instance=ExtResource( 5 )]
 margin_top = 96.0
@@ -129,5 +134,6 @@ margin_bottom = 167.0
 custom_fonts/font = SubResource( 3 )
 text = "Retire"
 [connection signal="pressed" from="Menu/Resume" to="." method="hide_menu"]
+[connection signal="pressed" from="Menu/Controls" to="." method="_on_Controls_pressed"]
 [connection signal="pressed" from="Menu/Retire" to="." method="_on_Retire_pressed"]
 [connection signal="pressed" from="Summary/Retire" to="." method="_on_Retire_pressed"]

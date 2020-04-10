@@ -1,5 +1,4 @@
 extends "res://entities/Entity.gd"
-class_name FrogEmperor
 
 
 

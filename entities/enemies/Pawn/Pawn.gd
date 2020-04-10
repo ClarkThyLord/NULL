@@ -1,5 +1,4 @@
 extends "res://entities/enemies/Enemy.gd"
-class_name Pawn
 
 
 

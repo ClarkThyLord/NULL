@@ -9,16 +9,6 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "KinematicBody",
-"class": "FrogEmperor",
-"language": "GDScript",
-"path": "res://entities/FrogEmperor/FrogEmperor.gd"
-}, {
-"base": "KinematicBody",
-"class": "Pawn",
-"language": "GDScript",
-"path": "res://entities/enemies/Pawn/Pawn.gd"
-}, {
 "base": "Reference",
 "class": "Voxel",
 "language": "GDScript",
@@ -40,8 +30,6 @@ _global_script_classes=[ {
 "path": "res://addons/Voxel-Core/src/VoxelMultiMesh.gd"
 } ]
 _global_script_class_icons={
-"FrogEmperor": "",
-"Pawn": "",
 "Voxel": "res://addons/Voxel-Core/assets/Voxel.png",
 "VoxelLayeredMesh": "res://addons/Voxel-Core/assets/VoxelLayeredMesh.png",
 "VoxelMesh": "res://addons/Voxel-Core/assets/VoxelMesh.png",

@@ -3,6 +3,11 @@ extends Spatial
 
 
 
+# Imports
+const Pawn := preload("res://entities/enemies/Pawn/Pawn.tscn")
+
+
+
 # Refrences
 onready var Floor := get_node("Floor")
 
@@ -16,7 +21,7 @@ export(bool) var Start := false setget set_start
 func set_start(start : bool) -> void:
 	Start = start
 	if Start: start()
-	else: State = States.IDLE
+	else: clean()
 
 enum States { IDLE, STARTING, PROGRESSING, CLEARED }
 export(States) var State := States.IDLE setget set_state
@@ -72,6 +77,7 @@ var dither := 0.0
 var dither_growth = DitherGrowth
 
 
+
 # Core
 func _ready():
 	set_size(Size)
@@ -87,15 +93,48 @@ func _ready():
 	Floor.material_override = material
 
 
+func clean() -> void:
+	State = States.IDLE
+	for child in get_children():
+		if child != $Floor:
+			child.queue_free()
+
+
+var entities_count := 1
+func sub_entities_count() -> void:
+	entities_count -= 1
+	if entities_count <= 0:
+		cleared()
+
 func start() -> void:
-	time = 0
+	clean()
 	Start = true
 	State = States.STARTING
+	
+	yield(get_tree().create_timer(3), "timeout")
+	
+	State = States.PROGRESSING
+	entities_count = 1 + randi() % 10
+	for enemy in range(entities_count):
+		var pawn := Pawn.instance()
+		pawn.translation = Vector3(
+			4 + randi() % int(Size.x * 2 - 12) - Size.x,
+			0.1,
+			4 + randi() % int(Size.y * 2 - 12) - Size.y
+		)
+		add_child(pawn)
+		pawn.connect("died", self, "sub_entities_count")
+	
 	emit_signal("started")
 
 func cleared() -> void:
+	clean()
 	State = States.CLEARED
 	emit_signal("cleared")
+	
+	yield(get_tree().create_timer(3), "timeout")
+	
+	State = States.IDLE
 
 
 func set_floor_color(base : Color, rim : Color) -> void:
@@ -104,15 +143,15 @@ func set_floor_color(base : Color, rim : Color) -> void:
 		Floor.material_override.albedo_color = rim
 
 
-var time := 0.0
+#var time := 0.0
 func _process(delta):
-	if Start:
-		time += delta
-		
-		if time < 3: pass
-		elif time < 6: State = States.PROGRESSING
-		elif time < 8: cleared()
-		elif time < 10: State = States.IDLE
+#	if Start:
+#		time += delta
+#
+#		if time < 3: pass
+#		elif time < 6: State = States.PROGRESSING
+#		elif time < 8: cleared()
+#		elif time < 10: State = States.IDLE
 	
 	if Floor:
 		var color : Color
