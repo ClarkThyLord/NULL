@@ -21,6 +21,9 @@ onready var HighScoreBlinker := get_node("HBoxContainer/VBoxContainer/VBoxContai
 func _ready():
 	correct()
 	
+	if not Engine.editor_hint:
+		HighScore.hide()
+	
 	if get_node("/root/Server").add_score():
 		Score.text = "YOUR SCORE\n" + str(get_node("/root/Server").CurrentPoints)
 		var position : int
@@ -29,9 +32,7 @@ func _ready():
 			if scores_sorted[score][0] == get_node("/root/Server").CurrentName:
 				position = score
 				break
-		if position >= 10:
-			Score.text += "\n!!!NEW HIGH SCORE!!!"
-			HighScoreBlinker.start()
+		if position <= 10: HighScoreBlinker.start()
 	
 	if get_node("/root/Server").BackgroundMusic.stream != BackgroundMusic:
 		get_node("/root/Server").BackgroundMusic.stream = BackgroundMusic
