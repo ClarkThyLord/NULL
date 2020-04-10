@@ -41,6 +41,7 @@ func hide_menu() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	get_tree().paused = false
 
+
 func show_summary() -> void:
 	FinalScore.text = "YOUR SCORE\n" + str(get_node("/root/Server").CurrentPoints)
 	Summary.show()
@@ -55,10 +56,9 @@ func _unhandled_key_input(event : InputEventKey) -> void:
 				toggle_menu()
 
 
+func _on_Controls_pressed():
+	pass # Replace with function body.
+
 func _on_Retire_pressed():
 	get_tree().change_scene("res://scenes/MainMenu/MainMenu.tscn")
 	get_tree().paused = false
-
-
-func _on_Controls_pressed():
-	pass # Replace with function body.

@@ -26,6 +26,7 @@ export(int, 0, 100) var MaxDamage := 10
 
 # Core
 func _ready():
+	Pointage = 10
 	add_to_group("pawns", true)
 
 

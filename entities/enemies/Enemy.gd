@@ -3,6 +3,8 @@ extends "res://entities/Entity.gd"
 
 
 # Declarations
+export(int, -1000000000, 1000000000) var Pointage := 0
+
 var Target : Spatial
 export(NodePath) var TargetPath : NodePath setget set_target_path
 func set_target_path(targetpath : NodePath) -> void:
@@ -26,6 +28,10 @@ func seek() -> Spatial:
 		if target == null or translation.distance_to(player.translation) < translation.distance_to(target.translation):
 			target = player
 	return target
+
+func die() -> void:
+	get_node("/root/Server").CurrentPoints += Pointage
+	.die()
 
 
 func _process(delta):

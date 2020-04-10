@@ -9,16 +9,9 @@ const Event := preload("res://entities/FrogEmperor/HUD/Tracker/Event/Event.tscn"
 
 
 # Refrences
-onready var ScoreLabel := get_node("HBoxContainer/Score")
+onready var Score := get_node("HBoxContainer/Score")
 
 onready var Events := get_node("Events")
-
-
-
-# Declarations
-export(int, 0, 1000000000) var Score := 0 setget set_score
-func set_score(score : int) -> void:
-	Score = score
 
 
 
@@ -30,8 +23,9 @@ func add_event(event : String) -> void:
 
 
 func _process(delta):
-	if ScoreLabel and int(ScoreLabel.text) != Score:
-		ScoreLabel.text = "%010d" %  (int(ScoreLabel.text) + sign(Score - int(ScoreLabel.text)))
+	var score = get_node("/root/Server").CurrentPoints
+	if Score and int(Score.text) != score:
+		Score.text = "%010d" %  (int(Score.text) + sign(score - int(Score.text)))
 	
 	if Events:
 		var last_event = Events.get_children()
