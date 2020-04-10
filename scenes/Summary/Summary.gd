@@ -26,6 +26,7 @@ func _ready():
 	if not Engine.editor_hint:
 		HighScore.hide()
 	
+	var previous_score = get_node("/root/Server").Scores.get(get_node("/root/Server").CurrentName, 0)
 	if get_node("/root/Server").add_score():
 		Score.text = "YOUR SCORE\n" + str(get_node("/root/Server").CurrentPoints)
 		var position : int
@@ -34,7 +35,7 @@ func _ready():
 			if scores_sorted[score][0] == get_node("/root/Server").CurrentName:
 				position = score
 				break
-		if position <= 10: HighScoreBlinker.start()
+		if get_node("/root/Server").CurrentPoints > previous_score: HighScoreBlinker.start()
 	ScoreBoard._update()
 	
 	if get_node("/root/Server").BackgroundMusic.stream != BackgroundMusic:
