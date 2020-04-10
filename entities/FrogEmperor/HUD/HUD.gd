@@ -52,3 +52,7 @@ func _on_Retire_pressed():
 	for player in get_tree().get_nodes_in_group("players"): player.die()
 #	get_tree().change_scene("res://scenes/MainMenu/MainMenu.tscn")
 	get_tree().paused = false
+
+
+func _on_Options_pressed():
+	get_node("/root/Server").Options.show()

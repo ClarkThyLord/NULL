@@ -30,9 +30,9 @@ func _ready():
 	
 	RouteMap.Route = get_node("/root/Server").CurrentRoute
 	
+	Score.text = "YOUR SCORE\n" + str(get_node("/root/Server").CurrentPoints)
 	var previous_score = get_node("/root/Server").Scores.get(get_node("/root/Server").CurrentName, 0)
 	if get_node("/root/Server").add_score():
-		Score.text = "YOUR SCORE\n" + str(get_node("/root/Server").CurrentPoints)
 		var position : int
 		var scores_sorted = get_node("/root/Server").get_scores_sorted()
 		for score in range(scores_sorted.size()):

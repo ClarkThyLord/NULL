@@ -81,13 +81,12 @@ margin_bottom = 64.0
 custom_fonts/font = SubResource( 1 )
 text = "RESUME"
 
-[node name="Controls" parent="Menu" instance=ExtResource( 5 )]
-visible = false
+[node name="Options" parent="Menu" instance=ExtResource( 5 )]
 margin_top = 96.0
 margin_right = 564.0
 margin_bottom = 160.0
 custom_fonts/font = SubResource( 1 )
-text = "CONTROLS"
+text = "OPTIONS"
 
 [node name="Retire" parent="Menu" instance=ExtResource( 5 )]
 margin_top = 96.0
@@ -96,5 +95,5 @@ margin_bottom = 160.0
 custom_fonts/font = SubResource( 1 )
 text = "RETIRE"
 [connection signal="pressed" from="Menu/Resume" to="." method="hide_menu"]
-[connection signal="pressed" from="Menu/Controls" to="." method="_on_Controls_pressed"]
+[connection signal="pressed" from="Menu/Options" to="." method="_on_Options_pressed"]
 [connection signal="pressed" from="Menu/Retire" to="." method="_on_Retire_pressed"]

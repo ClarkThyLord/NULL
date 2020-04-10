@@ -7,6 +7,8 @@ extends Node
 var BackgroundMusic := AudioStreamPlayer.new() setget set_background_music
 func set_background_music(backgroundmusic : AudioStreamPlayer) -> void: pass
 
+var Options := preload("res://scenes/Options/Options.tscn").instance()
+
 var CurrentName := ""
 var CurrentPoints := 0
 var CurrentRoute := []
@@ -20,6 +22,9 @@ func get_scores() -> Dictionary: return Scores.duplicate()
 # Core
 func _init(): load_game()
 func _ready():
+	add_child(Options)
+	add_child(BackgroundMusic)
+	
 	load_game()
 	if Scores.size() == 0:
 		add_score("ClarkThyLord", 7777)
@@ -33,8 +38,6 @@ func _ready():
 		add_score("Pawn", 22)
 		add_score("LOSER", 1)
 		save_game()
-	
-	add_child(BackgroundMusic)
 
 
 func save_game() -> void:

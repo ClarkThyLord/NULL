@@ -34,8 +34,8 @@ func _on_resized(): correct()
 func _on_Start_pressed():
 	get_tree().change_scene("res://scenes/Start/Start.tscn")
 
-func _on_Controls_pressed():
-	get_tree().change_scene("res://scenes/Controls/Controls.tscn")
+func _on_Options_pressed():
+	get_node("/root/Server").Options.show()
 
 func _on_HighScores_pressed():
 	get_tree().change_scene("res://scenes/HighScores/HighScores.tscn")
@@ -45,3 +45,4 @@ func _on_GitHub_pressed():
 
 func _on_Exit_pressed():
 	get_tree().quit()
+

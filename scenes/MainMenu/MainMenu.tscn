@@ -111,12 +111,12 @@ margin_bottom = 96.0
 custom_fonts/font = SubResource( 3 )
 text = "START"
 
-[node name="Controls" parent="HBoxContainer/VBoxContainer/VBoxContainer" instance=ExtResource( 5 )]
+[node name="Options" parent="HBoxContainer/VBoxContainer/VBoxContainer" instance=ExtResource( 5 )]
 margin_top = 128.0
 margin_right = 432.0
 margin_bottom = 160.0
 custom_fonts/font = SubResource( 3 )
-text = "CONTROLS"
+text = "OPTIONS"
 
 [node name="HighScores" parent="HBoxContainer/VBoxContainer/VBoxContainer" instance=ExtResource( 5 )]
 margin_top = 192.0
@@ -153,7 +153,7 @@ __meta__ = {
 }
 [connection signal="resized" from="." to="." method="_on_resized"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/VBoxContainer/Start" to="." method="_on_Start_pressed"]
-[connection signal="pressed" from="HBoxContainer/VBoxContainer/VBoxContainer/Controls" to="." method="_on_Controls_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/VBoxContainer/Options" to="." method="_on_Options_pressed"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/VBoxContainer/HighScores" to="." method="_on_HighScores_pressed"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/VBoxContainer/GitHub" to="." method="_on_GitHub_pressed"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/VBoxContainer/Exit" to="." method="_on_Exit_pressed"]
