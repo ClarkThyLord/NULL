@@ -44,4 +44,6 @@ func _update() -> void:
 			score.Name = scores_sorted[rank][0]
 			score.Points = scores_sorted[rank][1]
 			Scores.add_child(score)
+			if scores_sorted[rank][0] == get_node("/root/Server").CurrentName:
+				score.grab_focus()
 			rank += 1

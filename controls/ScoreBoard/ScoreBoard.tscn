@@ -7,6 +7,7 @@ margin_right = 360.0
 margin_bottom = 228.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+follow_focus = true
 scroll_horizontal_enabled = false
 script = ExtResource( 1 )
 __meta__ = {
@@ -14,7 +15,27 @@ __meta__ = {
 }
 
 [node name="Scores" type="VBoxContainer" parent="."]
-margin_right = 360.0
+margin_right = 408.0
 margin_bottom = 228.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+[connection signal="focus_entered" from="Scores/Score" to="Scores/Score" method="_on_focus_entered"]
+[connection signal="focus_exited" from="Scores/Score" to="Scores/Score" method="_on_focus_exited"]
+[connection signal="focus_entered" from="Scores/Score2" to="Scores/Score2" method="_on_focus_entered"]
+[connection signal="focus_exited" from="Scores/Score2" to="Scores/Score2" method="_on_focus_exited"]
+[connection signal="focus_entered" from="Scores/Score3" to="Scores/Score3" method="_on_focus_entered"]
+[connection signal="focus_exited" from="Scores/Score3" to="Scores/Score3" method="_on_focus_exited"]
+[connection signal="focus_entered" from="Scores/Score4" to="Scores/Score4" method="_on_focus_entered"]
+[connection signal="focus_exited" from="Scores/Score4" to="Scores/Score4" method="_on_focus_exited"]
+[connection signal="focus_entered" from="Scores/Score5" to="Scores/Score5" method="_on_focus_entered"]
+[connection signal="focus_exited" from="Scores/Score5" to="Scores/Score5" method="_on_focus_exited"]
+[connection signal="focus_entered" from="Scores/Score6" to="Scores/Score6" method="_on_focus_entered"]
+[connection signal="focus_exited" from="Scores/Score6" to="Scores/Score6" method="_on_focus_exited"]
+[connection signal="focus_entered" from="Scores/Score7" to="Scores/Score7" method="_on_focus_entered"]
+[connection signal="focus_exited" from="Scores/Score7" to="Scores/Score7" method="_on_focus_exited"]
+[connection signal="focus_entered" from="Scores/Score8" to="Scores/Score8" method="_on_focus_entered"]
+[connection signal="focus_exited" from="Scores/Score8" to="Scores/Score8" method="_on_focus_exited"]
+[connection signal="focus_entered" from="Scores/Score9" to="Scores/Score9" method="_on_focus_entered"]
+[connection signal="focus_exited" from="Scores/Score9" to="Scores/Score9" method="_on_focus_exited"]
+[connection signal="focus_entered" from="Scores/Score10" to="Scores/Score10" method="_on_focus_entered"]
+[connection signal="focus_exited" from="Scores/Score10" to="Scores/Score10" method="_on_focus_exited"]

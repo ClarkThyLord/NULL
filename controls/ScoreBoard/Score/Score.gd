@@ -1,12 +1,12 @@
 tool
-extends HBoxContainer
+extends ColorRect
 
 
 
 # Refrences
-onready var RankLabel := get_node("Rank")
-onready var NameLabel := get_node("Name")
-onready var PointsLabel := get_node("Points")
+onready var RankLabel := get_node("HBoxContainer/Rank")
+onready var NameLabel := get_node("HBoxContainer/Name")
+onready var PointsLabel := get_node("HBoxContainer/Points")
 
 
 
@@ -31,6 +31,14 @@ func set_points(points : int) -> void:
 
 # Core
 func _ready():
+	color.a = 0
 	set_rank(Rank)
 	set_name(Name)
 	set_points(Points)
+
+
+func _on_focus_entered():
+	color.a = 0.1
+
+func _on_focus_exited():
+	color.a = 0

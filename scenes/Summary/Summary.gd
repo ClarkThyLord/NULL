@@ -15,6 +15,8 @@ onready var Score := get_node("HBoxContainer/VBoxContainer/VBoxContainer/Score")
 onready var HighScore := get_node("HBoxContainer/VBoxContainer/VBoxContainer2/HighScore")
 onready var HighScoreBlinker := get_node("HBoxContainer/VBoxContainer/VBoxContainer2/HighScore/BlinkTimer")
 
+onready var ScoreBoard := get_node("HBoxContainer/VBoxContainer/ScoreBoard")
+
 
 
 # Core
@@ -33,6 +35,7 @@ func _ready():
 				position = score
 				break
 		if position <= 10: HighScoreBlinker.start()
+	ScoreBoard._update()
 	
 	if get_node("/root/Server").BackgroundMusic.stream != BackgroundMusic:
 		get_node("/root/Server").BackgroundMusic.stream = BackgroundMusic
