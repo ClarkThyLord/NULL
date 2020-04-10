@@ -3,10 +3,10 @@ extends Control
 
 
 # Refrences
-onready var Health := get_node("Stats/HBoxContainer/Health")
-onready var Stamina := get_node("Stats/HBoxContainer2/Stamina")
+onready var Health := get_node("Stats/Health")
+onready var Stamina := get_node("Stats/Stamina")
 
-onready var ScoreBoard := get_node("ScoreBoard")
+onready var Tracker := get_node("Tracker")
 
 onready var Menu := get_node("Menu")
 
@@ -33,14 +33,16 @@ func toggle_menu() -> void:
 
 func show_menu() -> void:
 	Menu.show()
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	get_tree().paused = true
 
 func hide_menu() -> void:
 	Menu.hide()
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	get_tree().paused = false
 
 func show_summary() -> void:
-	FinalScore.text = "YOUR SCORE\n" + ("%010d" % ScoreBoard.ScoreValue)
+	FinalScore.text = "YOUR SCORE\n" + (get_node("/root/Server").CurrentPoints)
 	Summary.show()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	get_tree().paused = true
@@ -51,12 +53,6 @@ func _unhandled_key_input(event : InputEventKey) -> void:
 		match event.scancode:
 			KEY_ESCAPE:
 				toggle_menu()
-				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED else Input.MOUSE_MODE_CAPTURED)
-
-
-func _on_Quit_pressed():
-	get_tree().change_scene("res://scenes/MainMenu/MainMenu.tscn")
-	get_tree().paused = false
 
 
 func _on_Retire_pressed():

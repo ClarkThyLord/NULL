@@ -11,9 +11,9 @@ const BackgroundMusic := preload("res://assets/audio/0cc ost - Track 04 (Takeoff
 onready var SoundEffects := get_node("SoundEffects")
 onready var MenuParticles := get_node("MenuParticles")
 
-onready var Name := get_node("HBoxContainer/VBoxContainer/VBoxContainer/Name")
+onready var Name := get_node("VBoxContainer/Name")
 
-onready var Start := get_node("HBoxContainer/VBoxContainer/VBoxContainer2/Start")
+onready var Start := get_node("HBoxContainer/VBoxContainer/Start")
 
 
 
@@ -26,7 +26,9 @@ func _ready():
 	if not get_node("/root/Server").BackgroundMusic.playing:
 		get_node("/root/Server").BackgroundMusic.play()
 	
-	Name.grab_focus()
+	if not Engine.editor_hint:
+		Name.grab_focus()
+		Start.visible = false
 
 
 func correct() -> void:
@@ -40,10 +42,10 @@ func _on_resized(): correct()
 
 func _on_Name_text_changed(new_text : String) -> void:
 	SoundEffects.play()
-	Start.disabled = Name.text.empty()
+	Start.visible = not Name.text.empty()
 
 func _on_Name_text_entered(new_text : String) -> void:
-	Start.grab_focus()
+	if not Name.text.empty(): Start.grab_focus()
 
 
 func _on_Start_pressed():
@@ -53,7 +55,7 @@ func _on_Start_pressed():
 	get_node("/root/Server").CurrentName = result.get_string().to_upper()
 	get_node("/root/Server").CurrentPoints = 0
 	
-	get_tree().change_scene("res://maps/Testing.tscn")
+	get_tree().change_scene("res://maps/Map/Map.tscn")
 
 func _on_Back_pressed():
 	get_tree().change_scene("res://scenes/MainMenu/MainMenu.tscn")

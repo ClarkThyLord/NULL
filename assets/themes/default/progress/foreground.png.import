@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/panorama_image.png-4a1ba4f2713eef6011c5f5ed67a2ca2d.stex"
+path="res://.import/foreground.png-a2cf462834c3ad2af75dd3033d43608b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/environment/panorama_image.png"
-dest_files=[ "res://.import/panorama_image.png-4a1ba4f2713eef6011c5f5ed67a2ca2d.stex" ]
+source_file="res://assets/themes/default/progress/foreground.png"
+dest_files=[ "res://.import/foreground.png-a2cf462834c3ad2af75dd3033d43608b.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
@@ -30,5 +30,5 @@ process/HDR_as_SRGB=false
 process/invert_color=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0

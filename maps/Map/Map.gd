@@ -25,7 +25,7 @@ func set_active(active : bool) -> void:
 	
 
 
-export(Vector2) var LevelSize := Vector2(16, 16) setget set_level_size
+export(Vector2) var LevelSize := Vector2(32, 32) setget set_level_size
 func set_level_size(levelsize : Vector2, update := true) -> void:
 	LevelSize = Vector2(
 		clamp(levelsize.x, 16, 100),
@@ -41,6 +41,7 @@ func set_level_size(levelsize : Vector2, update := true) -> void:
 # Core
 func _ready():
 	add_to_group("Map")
+	self.Active = not Engine.editor_hint
 
 
 func reset() -> void:

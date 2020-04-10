@@ -24,7 +24,7 @@ func set_state(state : int) -> void:
 	State = state
 
 
-export(Vector2) var Size := Vector2(16, 16) setget set_size
+export(Vector2) var Size := Vector2(32, 32) setget set_size
 func set_size(size : Vector2, autogenerate := true) -> void:
 	Size = Vector2(
 		clamp(size.x, 16, 100),
