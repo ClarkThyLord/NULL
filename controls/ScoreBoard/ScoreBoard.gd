@@ -36,6 +36,7 @@ func _update() -> void:
 			child.queue_free()
 		
 		var rank := 0
+		var current_rank := -1
 		var scores_sorted = get_node("/root/Server").get_scores_sorted()
 		while rank < (MaximumScores if LimitScores else INF):
 			if rank >= scores_sorted.size(): break
@@ -46,4 +47,9 @@ func _update() -> void:
 			Scores.add_child(score)
 			if scores_sorted[rank][0] == get_node("/root/Server").CurrentName:
 				score.grab_focus()
+				current_rank = rank
 			rank += 1
+		
+		if current_rank > -1:
+			yield(get_tree(), "idle_frame")
+			scroll_vertical = (current_rank + 5) * 16
