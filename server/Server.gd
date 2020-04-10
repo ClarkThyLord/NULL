@@ -57,7 +57,7 @@ func reset_game() -> void:
 
 
 func add_score(name := CurrentName, points := CurrentPoints) -> bool:
-	if name.empty() or (Scores.has(name) and Scores[name] <= points): return false
+	if name.empty() or (Scores.has(name) and points <= Scores[name]): return false
 	Scores[name.to_upper()] = points
 	save_game()
 	return true

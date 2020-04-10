@@ -50,6 +50,6 @@ func _update() -> void:
 				current_rank = rank
 			rank += 1
 		
-		if current_rank > -1:
+		if current_rank > 9:
 			yield(get_tree(), "idle_frame")
 			scroll_vertical = (current_rank + 5) * 16
