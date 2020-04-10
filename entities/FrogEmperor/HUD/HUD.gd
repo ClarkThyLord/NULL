@@ -49,5 +49,6 @@ func _on_Controls_pressed():
 	pass # Replace with function body.
 
 func _on_Retire_pressed():
-	get_tree().change_scene("res://scenes/MainMenu/MainMenu.tscn")
+	for player in get_tree().get_nodes_in_group("players"): player.die()
+#	get_tree().change_scene("res://scenes/MainMenu/MainMenu.tscn")
 	get_tree().paused = false

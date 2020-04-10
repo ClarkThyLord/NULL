@@ -88,4 +88,5 @@ func update() -> void:
 
 
 func _on_FrogEmperor_died():
+	get_node("/root/Server").CurrentRoute = Route
 	get_tree().change_scene("res://scenes/Summary/Summary.tscn")

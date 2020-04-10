@@ -9,6 +9,7 @@ func set_background_music(backgroundmusic : AudioStreamPlayer) -> void: pass
 
 var CurrentName := ""
 var CurrentPoints := 0
+var CurrentRoute := []
 
 var Scores := {} setget set_scores, get_scores
 func set_scores(scores : Dictionary) -> void: pass

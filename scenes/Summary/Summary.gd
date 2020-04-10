@@ -12,6 +12,8 @@ onready var MenuParticles := get_node("MenuParticles")
 
 onready var Score := get_node("HBoxContainer/VBoxContainer/VBoxContainer/Score")
 
+onready var RouteMap := get_node("HBoxContainer/VBoxContainer/VBoxContainer/RouteMap")
+
 onready var HighScore := get_node("HBoxContainer/VBoxContainer/VBoxContainer2/HighScore")
 onready var HighScoreBlinker := get_node("HBoxContainer/VBoxContainer/VBoxContainer2/HighScore/BlinkTimer")
 
@@ -25,6 +27,8 @@ func _ready():
 	
 	if not Engine.editor_hint:
 		HighScore.hide()
+	
+	RouteMap.Route = get_node("/root/Server").CurrentRoute
 	
 	var previous_score = get_node("/root/Server").Scores.get(get_node("/root/Server").CurrentName, 0)
 	if get_node("/root/Server").add_score():
