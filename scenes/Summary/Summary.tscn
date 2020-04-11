@@ -90,8 +90,6 @@ margin_top = 83.0
 margin_right = 432.0
 margin_bottom = 258.0
 rect_min_size = Vector2( 0, 175 )
-Route = PoolVector2Array( 0, 0, 1, 0, 2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 4, 0, 4, -1, 4, -2, 4, -3, 4 )
-PathColor = Color( 0.78, 0.08, 0.52, 1 )
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer/VBoxContainer"]
 margin_top = 274.0
@@ -115,7 +113,6 @@ margin_top = 322.0
 margin_right = 432.0
 margin_bottom = 520.0
 LimitScores = false
-MaximumScores = 10
 
 [node name="MainMenu" parent="HBoxContainer/VBoxContainer" instance=ExtResource( 2 )]
 margin_top = 536.0

@@ -15,7 +15,7 @@ __meta__ = {
 }
 
 [node name="Scores" type="VBoxContainer" parent="."]
-margin_right = 408.0
+margin_right = 414.0
 margin_bottom = 228.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
