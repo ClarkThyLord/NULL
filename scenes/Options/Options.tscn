@@ -1,9 +1,13 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/fonts/8-Bit Wonder/8-Bit Wonder.TTF" type="DynamicFontData" id=1]
 [ext_resource path="res://controls/InteractiveButton/InteractiveButton.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/scenes/Options/background.png" type="Texture" id=3]
 [ext_resource path="res://scenes/Options/Options.gd" type="Script" id=4]
+[ext_resource path="res://assets/audio/Menu Selection Click.wav" type="AudioStream" id=5]
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
@@ -11,6 +15,9 @@ font_data = ExtResource( 1 )
 
 [node name="Options" type="CanvasLayer"]
 script = ExtResource( 4 )
+
+[node name="SoundEffects" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
 
 [node name="Background" type="ColorRect" parent="."]
 anchor_right = 1.0
@@ -31,7 +38,6 @@ margin_left = -300.0
 margin_top = -200.0
 margin_right = 300.0
 margin_bottom = 200.0
-rect_min_size = Vector2( 600, 400 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 __meta__ = {
@@ -67,6 +73,26 @@ margin_right = 443.0
 margin_bottom = 250.0
 size_flags_vertical = 3
 
+[node name="GridContainer" type="GridContainer" parent="Popup/TextureRect/VBoxContainer/VBoxContainer"]
+margin_right = 443.0
+margin_bottom = 16.0
+custom_constants/vseparation = 16
+columns = 2
+
+[node name="Label" type="Label" parent="Popup/TextureRect/VBoxContainer/VBoxContainer/GridContainer"]
+margin_right = 219.0
+margin_bottom = 16.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 2 )
+text = "SOUND"
+
+[node name="Sound" type="HSlider" parent="Popup/TextureRect/VBoxContainer/VBoxContainer/GridContainer"]
+margin_left = 223.0
+margin_right = 442.0
+margin_bottom = 16.0
+size_flags_horizontal = 3
+value = 100.0
+
 [node name="Close" parent="Popup/TextureRect/VBoxContainer" instance=ExtResource( 2 )]
 margin_top = 266.0
 margin_right = 443.0
@@ -74,4 +100,8 @@ margin_bottom = 298.0
 custom_fonts/font = SubResource( 1 )
 text = "CLOSE"
 [connection signal="visibility_changed" from="Popup" to="." method="_on_Popup_visibility_changed"]
+[connection signal="focus_entered" from="Popup/TextureRect/VBoxContainer/VBoxContainer/GridContainer/Sound" to="SoundEffects" method="play"]
+[connection signal="mouse_entered" from="Popup/TextureRect/VBoxContainer/VBoxContainer/GridContainer/Sound" to="SoundEffects" method="play"]
+[connection signal="value_changed" from="Popup/TextureRect/VBoxContainer/VBoxContainer/GridContainer/Sound" to="." method="_on_slider_value_changed"]
+[connection signal="value_changed" from="Popup/TextureRect/VBoxContainer/VBoxContainer/GridContainer/Sound" to="." method="_on_Sound_value_changed"]
 [connection signal="pressed" from="Popup/TextureRect/VBoxContainer/Close" to="." method="_on_Close_pressed"]

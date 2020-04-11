@@ -1,10 +1,13 @@
-[gd_resource type="Theme" load_steps=19 format=2]
+[gd_resource type="Theme" load_steps=24 format=2]
 
 [ext_resource path="res://assets/fonts/8-Bit Wonder/8-Bit Wonder.TTF" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/themes/default/button/hover.png" type="Texture" id=2]
 [ext_resource path="res://assets/themes/default/scroll/grabber.png" type="Texture" id=3]
 [ext_resource path="res://assets/themes/default/button/focus.png" type="Texture" id=4]
 [ext_resource path="res://assets/themes/default/progress/foreground.png" type="Texture" id=5]
+[ext_resource path="res://assets/themes/default/slider/grabber.png" type="Texture" id=6]
+[ext_resource path="res://assets/themes/default/slider/grabber.disabled.png" type="Texture" id=7]
+[ext_resource path="res://assets/themes/default/slider/grabber.highlight.png" type="Texture" id=8]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -29,6 +32,12 @@ modulate_color = Color( 0.870588, 0.870588, 0.870588, 1 )
 
 [sub_resource type="StyleBoxLine" id=7]
 color = Color( 0, 0, 0, 0 )
+thickness = 3
+
+[sub_resource type="StyleBoxEmpty" id=14]
+
+[sub_resource type="StyleBoxLine" id=15]
+color = Color( 1, 1, 1, 0.607843 )
 thickness = 3
 
 [sub_resource type="DynamicFont" id=8]
@@ -71,6 +80,12 @@ HScrollBar/styles/grabber_highlight = SubResource( 6 )
 HScrollBar/styles/grabber_pressed = SubResource( 6 )
 HScrollBar/styles/scroll = SubResource( 7 )
 HScrollBar/styles/scroll_focus = SubResource( 7 )
+HSlider/icons/grabber = ExtResource( 6 )
+HSlider/icons/grabber_disabled = ExtResource( 7 )
+HSlider/icons/grabber_highlight = ExtResource( 8 )
+HSlider/icons/tick = null
+HSlider/styles/grabber_area = SubResource( 14 )
+HSlider/styles/slider = SubResource( 15 )
 LineEdit/colors/clear_button_color = Color( 0.88, 0.88, 0.88, 1 )
 LineEdit/colors/clear_button_color_pressed = Color( 1, 1, 1, 1 )
 LineEdit/colors/cursor_color = Color( 0.94, 0.94, 0.94, 1 )
