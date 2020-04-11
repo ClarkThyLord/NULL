@@ -65,15 +65,18 @@ func _on_Sound_value_changed(value):
 	value = MinSound + (MaxSound * (value * 0.01))
 	AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"), value == MinSound)
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), value)
+	get_node("/root/Server").save_config()
 
 
 func _on_Music_value_changed(value):
 	value = MinMusic + (MaxMusic * (value * 0.01))
 	AudioServer.set_bus_mute(AudioServer.get_bus_index("Music"), value == MinMusic)
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), value)
+	get_node("/root/Server").save_config()
 
 
 func _on_Effects_value_changed(value):
 	value = MinEffects + (MaxEffects * (value * 0.01))
 	AudioServer.set_bus_mute(AudioServer.get_bus_index("Effects"), value == MinEffects)
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Effects"), value)
+	get_node("/root/Server").save_config()

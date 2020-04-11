@@ -20,12 +20,17 @@ func get_scores() -> Dictionary: return Scores.duplicate()
 
 
 # Core
-func _init(): load_game()
+func setup() -> void:
+	load_game()
+	load_config()
+
+
+func _init(): setup()
 func _ready():
 	add_child(Options)
 	add_child(BackgroundMusic)
 	
-	load_game()
+	setup()
 	if Scores.size() == 0:
 		add_score("ClarkThyLord", 7777)
 		add_score("FrogEmperor", 666)
@@ -40,6 +45,32 @@ func _ready():
 		save_game()
 	
 	BackgroundMusic.bus = "Music"
+
+
+func save_config() -> void:
+	var save = File.new()
+	var opened = save.open("user://config.save", File.WRITE)
+	if opened == OK:
+		var config := {
+			'master': AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Master")),
+			'music': AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Music")),
+			'effects': AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Effects")),
+		}
+		
+		save.store_string(JSON.print(config))
+		save.close()
+
+func load_config() -> void:
+	var save = File.new()
+	var opened = save.open("user://config.save", File.READ)
+	if opened == OK:
+		var result := JSON.parse(save.get_as_text())
+		if result.error == OK:
+			var config : Dictionary = result.result
+			AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), config.get("master", 0))
+			AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), config.get("music", 0))
+			AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Effects"), config.get("effects", 0))
+		save.close()
 
 
 func save_game() -> void:
