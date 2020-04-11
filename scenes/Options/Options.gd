@@ -2,8 +2,25 @@ extends CanvasLayer
 
 
 # Refrences
-onready var background := get_node("Background")
 onready var popup := get_node("Popup")
+onready var background := get_node("Background")
+
+
+onready var Sound := get_node("Popup/TextureRect/VBoxContainer/ScrollContainer/GridContainer/Sound")
+onready var Music := get_node("Popup/TextureRect/VBoxContainer/ScrollContainer/GridContainer/Music")
+onready var Effects := get_node("Popup/TextureRect/VBoxContainer/ScrollContainer/GridContainer/Effects")
+
+
+
+# Declarations
+export(int) var MinSound := -40
+export(int) var MaxSound := 45
+
+export(int) var MinMusic := -40
+export(int) var MaxMusic := 45
+
+export(int) var MinEffects := -40
+export(int) var MaxEffects := 45
 
 
 
@@ -22,6 +39,10 @@ func correct() -> void:
 
 
 func show() -> void:
+	Sound.value = ((AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Master")) + -MinSound) / MaxSound) * 100
+	Music.value = ((AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Music")) + -MinMusic) / MaxMusic) * 100
+	Effects.value = ((AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Effects")) + -MinEffects) / MaxEffects) * 100
+	
 	correct()
 	popup.popup_centered()
 
@@ -41,6 +62,18 @@ func _on_slider_value_changed(value):
 
 
 func _on_Sound_value_changed(value):
-	value = -40 + (40 * (value * 0.01))
-	AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"), value == -40)
+	value = MinSound + (MaxSound * (value * 0.01))
+	AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"), value == MinSound)
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), value)
+
+
+func _on_Music_value_changed(value):
+	value = MinMusic + (MaxMusic * (value * 0.01))
+	AudioServer.set_bus_mute(AudioServer.get_bus_index("Music"), value == MinMusic)
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), value)
+
+
+func _on_Effects_value_changed(value):
+	value = MinEffects + (MaxEffects * (value * 0.01))
+	AudioServer.set_bus_mute(AudioServer.get_bus_index("Effects"), value == MinEffects)
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Effects"), value)

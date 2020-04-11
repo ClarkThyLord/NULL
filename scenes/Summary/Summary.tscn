@@ -90,6 +90,16 @@ margin_top = 83.0
 margin_right = 432.0
 margin_bottom = 258.0
 rect_min_size = Vector2( 0, 175 )
+Route = PoolVector2Array(  )
+PathSize = 3
+PathColor = Color( 0.32549, 0.109804, 0.415686, 1 )
+LevelSize = 16
+FirstLevelColor = Color( 0, 1, 0, 1 )
+LevelColor = Color( 0.63, 0.13, 0.94, 1 )
+LastLevelColor = Color( 1, 0, 0, 1 )
+Scroll = true
+ScrollAmount = Vector2( 0, 0 )
+ScrollSensitivity = 16.0
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer/VBoxContainer"]
 margin_top = 274.0
@@ -113,6 +123,7 @@ margin_top = 322.0
 margin_right = 432.0
 margin_bottom = 520.0
 LimitScores = false
+MaximumScores = 10
 
 [node name="MainMenu" parent="HBoxContainer/VBoxContainer" instance=ExtResource( 2 )]
 margin_top = 536.0

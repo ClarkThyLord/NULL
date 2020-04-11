@@ -50,7 +50,7 @@ __meta__ = {
 }
 
 [node name="modelleft" type="TextureRect" parent="HBoxContainer"]
-margin_right = 308.0
+margin_right = 257.0
 margin_bottom = 568.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -61,14 +61,14 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
-margin_left = 340.0
-margin_right = 652.0
+margin_left = 289.0
+margin_right = 703.0
 margin_bottom = 568.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="throphy" type="TextureRect" parent="HBoxContainer/VBoxContainer"]
-margin_right = 312.0
+margin_right = 414.0
 margin_bottom = 228.0
 rect_min_size = Vector2( 0, 32 )
 size_flags_vertical = 3
@@ -78,7 +78,7 @@ stretch_mode = 6
 
 [node name="head" type="TextureRect" parent="HBoxContainer/VBoxContainer"]
 margin_top = 232.0
-margin_right = 312.0
+margin_right = 414.0
 margin_bottom = 264.0
 rect_min_size = Vector2( 0, 32 )
 texture = ExtResource( 6 )
@@ -86,14 +86,14 @@ expand = true
 
 [node name="ScoreBoard" parent="HBoxContainer/VBoxContainer" instance=ExtResource( 2 )]
 margin_top = 268.0
-margin_right = 312.0
+margin_right = 414.0
 margin_bottom = 496.0
 LimitScores = false
 MaximumScores = 10
 
 [node name="footer" type="TextureRect" parent="HBoxContainer/VBoxContainer"]
 margin_top = 500.0
-margin_right = 312.0
+margin_right = 414.0
 margin_bottom = 532.0
 rect_min_size = Vector2( 0, 32 )
 texture = ExtResource( 6 )
@@ -102,13 +102,13 @@ flip_v = true
 
 [node name="Back" parent="HBoxContainer/VBoxContainer" instance=ExtResource( 4 )]
 margin_top = 536.0
-margin_right = 312.0
+margin_right = 414.0
 margin_bottom = 568.0
 custom_fonts/font = SubResource( 2 )
 text = "BACK"
 
 [node name="modelright" type="TextureRect" parent="HBoxContainer"]
-margin_left = 684.0
+margin_left = 735.0
 margin_right = 992.0
 margin_bottom = 568.0
 size_flags_horizontal = 3

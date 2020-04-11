@@ -38,6 +38,8 @@ func _ready():
 		add_score("Pawn", 22)
 		add_score("LOSER", 1)
 		save_game()
+	
+	BackgroundMusic.bus = "Music"
 
 
 func save_game() -> void:
