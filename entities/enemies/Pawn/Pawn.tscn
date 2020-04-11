@@ -1,27 +1,13 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://entities/enemies/Pawn/Pawn.gd" type="Script" id=1]
 [ext_resource path="res://controls/ProgressBar3D/ProgressBar3D.tscn" type="PackedScene" id=2]
-[ext_resource path="res://assets/entities/enemies/Pawn/Pawn.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/entities/enemies/Pawn/model.png" type="Texture" id=3]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 1, 1, 1.00245 )
 
 [sub_resource type="BoxShape" id=2]
-
-[sub_resource type="QuadMesh" id=3]
-size = Vector2( 4, 4 )
-
-[sub_resource type="ViewportTexture" id=4]
-viewport_path = NodePath("Viewport")
-
-[sub_resource type="SpatialMaterial" id=5]
-resource_local_to_scene = true
-flags_transparent = true
-flags_do_not_receive_shadows = true
-vertex_color_use_as_albedo = true
-params_cull_mode = 2
-albedo_texture = SubResource( 4 )
 
 [node name="Pawn" type="KinematicBody"]
 script = ExtResource( 1 )
@@ -30,7 +16,7 @@ script = ExtResource( 1 )
 shape = SubResource( 1 )
 
 [node name="HealthBar" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0 )
 Progress = 100
 ForegroundColor = Color( 1, 0, 0, 1 )
 BackgroundColor = Color( 0, 0, 0, 0 )
@@ -41,16 +27,9 @@ BackgroundColor = Color( 0, 0, 0, 0 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.1 )
 shape = SubResource( 2 )
 
-[node name="Viewport" type="Viewport" parent="."]
-size = Vector2( 32, 32 )
-transparent_bg = true
-disable_3d = true
-usage = 0
-render_target_v_flip = true
-
-[node name="Pawn" parent="Viewport" instance=ExtResource( 3 )]
-
-[node name="MeshInstance" type="MeshInstance" parent="."]
-transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, 1, 0 )
-mesh = SubResource( 3 )
-material/0 = SubResource( 5 )
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1, 0, 1.26, 0 )
+cast_shadow = 0
+pixel_size = 0.1
+shaded = true
+texture = ExtResource( 3 )
