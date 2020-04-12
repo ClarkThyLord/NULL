@@ -1,9 +1,13 @@
 extends "res://entities/Entity.gd"
 
-export (bool) var beKnocked := true
+
+#References
+onready var HealthBar := get_node("HealthBar")
 
 # Declarations
 export(int, -1000000000, 1000000000) var Pointage := 0
+
+export (bool) var beKnocked := true
 
 var Target : Spatial
 export(NodePath) var TargetPath : NodePath setget set_target_path
@@ -12,7 +16,9 @@ func set_target_path(targetpath : NodePath) -> void:
 		TargetPath = targetpath
 		if not Engine.editor_hint: Target = get_node(targetpath)
 
-
+func set_health(health : int) -> void:
+	.set_health(health)
+	HealthBar.Progress = Health
 
 # Core
 func _ready():
@@ -42,5 +48,5 @@ func _process(delta):
 
 func hurt(hit : Dictionary) -> void:
 	if beKnocked:
-		move_and_slide(hit["direction"]*250)
+		move_and_slide(hit["direction"]*5000)
 	.hurt(hit)

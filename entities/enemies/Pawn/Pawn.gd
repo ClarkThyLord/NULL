@@ -1,19 +1,12 @@
 extends "res://entities/enemies/Enemy.gd"
 
 
-
 # Refrences
-onready var HealthBar := get_node("HealthBar")
-
 onready var HitArea := get_node("HitArea")
 
 
 
 # Declarations
-func set_health(health : int) -> void:
-	.set_health(health)
-	HealthBar.Progress = Health
-
 export(int, 0, 100) var Speed := 10
 
 var hit_frames = 0
@@ -32,7 +25,7 @@ func _ready():
 
 func attack():
 	for body in HitArea.get_overlapping_bodies():
-		if body.is_in_group("entities"):
+		if body.is_in_group("players"):
 			hit(body, MinDamage + randi() % MaxDamage)
 
 
