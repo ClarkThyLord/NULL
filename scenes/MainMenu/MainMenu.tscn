@@ -151,9 +151,26 @@ flip_h = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="FullScreen" type="Label" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -64.0
+custom_fonts/font = SubResource( 3 )
+text = "TOGGLE FULL SCREEN"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="FullScreen"]
+wait_time = 0.3
 [connection signal="resized" from="." to="." method="_on_resized"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/VBoxContainer/Start" to="." method="_on_Start_pressed"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/VBoxContainer/Options" to="." method="_on_Options_pressed"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/VBoxContainer/HighScores" to="." method="_on_HighScores_pressed"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/VBoxContainer/GitHub" to="." method="_on_GitHub_pressed"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/VBoxContainer/Exit" to="." method="_on_Exit_pressed"]
+[connection signal="timeout" from="FullScreen/Timer" to="." method="_on_FullScreen_Timer_timeout"]

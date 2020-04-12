@@ -16,6 +16,14 @@ onready var MenuParticles := get_node("MenuParticles")
 func _ready():
 	correct()
 	
+	if OS.get_name() == "HTML5":
+		$HBoxContainer/VBoxContainer/VBoxContainer/Exit.visible = false
+		
+		$FullScreen.visible = true
+		$FullScreen/Timer.start()
+	else:
+		$FullScreen.visible = false
+	
 	if get_node("/root/Server").BackgroundMusic.stream != BackgroundMusic:
 		get_node("/root/Server").BackgroundMusic.stream = BackgroundMusic
 	if not get_node("/root/Server").BackgroundMusic.playing:
@@ -46,3 +54,6 @@ func _on_GitHub_pressed():
 func _on_Exit_pressed():
 	get_tree().quit()
 
+
+func _on_FullScreen_Timer_timeout():
+	$FullScreen.visible = !$FullScreen.visible
