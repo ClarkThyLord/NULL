@@ -6,10 +6,10 @@
 [ext_resource path="res://scenes/Options/Options.gd" type="Script" id=4]
 [ext_resource path="res://assets/audio/Menu Selection Click.wav" type="AudioStream" id=5]
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=2]
 size = 32
 font_data = ExtResource( 1 )
 
@@ -22,6 +22,7 @@ stream = ExtResource( 5 )
 bus = "Effects"
 
 [node name="Background" type="ColorRect" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 0.588235 )
@@ -90,7 +91,7 @@ columns = 2
 margin_right = 219.0
 margin_bottom = 16.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
 text = "SOUND"
 
 [node name="Sound" type="HSlider" parent="Popup/TextureRect/VBoxContainer/ScrollContainer/GridContainer"]
@@ -105,7 +106,7 @@ margin_top = 32.0
 margin_right = 219.0
 margin_bottom = 48.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
 text = "MUSIC"
 
 [node name="Music" type="HSlider" parent="Popup/TextureRect/VBoxContainer/ScrollContainer/GridContainer"]
@@ -121,7 +122,7 @@ margin_top = 64.0
 margin_right = 219.0
 margin_bottom = 80.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
 text = "EFFECTS"
 
 [node name="Effects" type="HSlider" parent="Popup/TextureRect/VBoxContainer/ScrollContainer/GridContainer"]
@@ -136,7 +137,7 @@ value = 100.0
 margin_top = 266.0
 margin_right = 443.0
 margin_bottom = 298.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "CLOSE"
 [connection signal="visibility_changed" from="Popup" to="." method="_on_Popup_visibility_changed"]
 [connection signal="focus_entered" from="Popup/TextureRect/VBoxContainer/ScrollContainer/GridContainer/Sound" to="SoundEffects" method="play"]
@@ -145,10 +146,10 @@ text = "CLOSE"
 [connection signal="value_changed" from="Popup/TextureRect/VBoxContainer/ScrollContainer/GridContainer/Sound" to="." method="_on_Sound_value_changed"]
 [connection signal="focus_entered" from="Popup/TextureRect/VBoxContainer/ScrollContainer/GridContainer/Music" to="SoundEffects" method="play"]
 [connection signal="mouse_entered" from="Popup/TextureRect/VBoxContainer/ScrollContainer/GridContainer/Music" to="SoundEffects" method="play"]
-[connection signal="value_changed" from="Popup/TextureRect/VBoxContainer/ScrollContainer/GridContainer/Music" to="." method="_on_Music_value_changed"]
 [connection signal="value_changed" from="Popup/TextureRect/VBoxContainer/ScrollContainer/GridContainer/Music" to="." method="_on_slider_value_changed"]
+[connection signal="value_changed" from="Popup/TextureRect/VBoxContainer/ScrollContainer/GridContainer/Music" to="." method="_on_Music_value_changed"]
 [connection signal="focus_entered" from="Popup/TextureRect/VBoxContainer/ScrollContainer/GridContainer/Effects" to="SoundEffects" method="play"]
 [connection signal="mouse_entered" from="Popup/TextureRect/VBoxContainer/ScrollContainer/GridContainer/Effects" to="SoundEffects" method="play"]
-[connection signal="value_changed" from="Popup/TextureRect/VBoxContainer/ScrollContainer/GridContainer/Effects" to="." method="_on_Effects_value_changed"]
 [connection signal="value_changed" from="Popup/TextureRect/VBoxContainer/ScrollContainer/GridContainer/Effects" to="." method="_on_slider_value_changed"]
+[connection signal="value_changed" from="Popup/TextureRect/VBoxContainer/ScrollContainer/GridContainer/Effects" to="." method="_on_Effects_value_changed"]
 [connection signal="pressed" from="Popup/TextureRect/VBoxContainer/Close" to="." method="_on_Close_pressed"]
