@@ -6,10 +6,10 @@
 
 [sub_resource type="SpatialMaterial" id=1]
 vertex_color_use_as_albedo = true
-albedo_color = Color( 0.89, 0, 0.89, 1 )
+albedo_color = Color( 0.93, 0, 0.93, 1 )
 albedo_texture = ExtResource( 1 )
 emission_enabled = true
-emission = Color( 0.89, 0, 0.89, 1 )
+emission = Color( 0.93, 0, 0.93, 1 )
 emission_energy = 1.0
 emission_operator = 1
 emission_on_uv2 = false
@@ -31,6 +31,8 @@ mesh = SubResource( 2 )
 material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="Floor"]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape" type="CollisionShape" parent="Floor/StaticBody"]
 shape = SubResource( 3 )

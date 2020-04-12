@@ -544,16 +544,16 @@ shape = SubResource( 14 )
 transform = Transform( -1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -1.77636e-15, 0, 0 )
 
 [node name="Head" parent="Content/Body" instance=ExtResource( 2 )]
-transform = Transform( 0.234773, -0.0137741, -0.0848045, 0.0183624, 0.249109, 0.0103739, 0.0839305, -0.0159709, 0.234948, 0, 1.20426, 0 )
+transform = Transform( 0.237487, -0.0136734, -0.0768942, 0.0167234, 0.249333, 0.00731377, 0.0762889, -0.0120915, 0.237768, 0, 1.28747, 0 )
 
 [node name="Torso" parent="Content/Body" instance=ExtResource( 4 )]
-transform = Transform( 0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, -0.845741, -0.3 )
+transform = Transform( 0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, -0.762532, -0.3 )
 
 [node name="HandRight" parent="Content/Body" instance=ExtResource( 3 )]
-transform = Transform( 0.393891, -0.00928914, -0.0690177, -0.00705389, 0.389065, -0.0926217, 0.0692818, 0.0924244, 0.382959, -1, -0.345741, -0.04 )
+transform = Transform( 0.393891, -0.00928914, -0.0690177, -0.00705389, 0.389065, -0.0926217, 0.0692818, 0.0924244, 0.382959, -1, -0.262532, -0.04 )
 
 [node name="HandLeft" parent="Content/Body" instance=ExtResource( 3 )]
-transform = Transform( 0.385798, 0.00503596, 0.105521, 0.0175114, 0.390969, -0.0826825, -0.10418, 0.0843663, 0.376867, 1.1, -0.345741, -0.04 )
+transform = Transform( 0.385798, 0.00503596, 0.105521, 0.0175114, 0.390969, -0.0826825, -0.10418, 0.0843663, 0.376867, 1.1, -0.262532, -0.04 )
 
 [node name="FootRight" parent="Content/Body" instance=ExtResource( 5 )]
 transform = Transform( 0.296569, 0, -0.0452437, 0, 0.3, 0, 0.0452437, 0, 0.296569, -0.6, -1.92, -0.2092 )

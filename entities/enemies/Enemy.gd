@@ -37,6 +37,9 @@ func seek() -> Spatial:
 
 func die() -> void:
 	get_node("/root/Server").CurrentPoints += Pointage
+	var drop = preload("res://controls/Drop/Drop.tscn").instance()
+	get_parent().add_child(drop)
+	drop.translation = translation
 	.die()
 
 
