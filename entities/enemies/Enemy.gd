@@ -1,6 +1,6 @@
 extends "res://entities/Entity.gd"
 
-
+export (bool) var beKnocked := true
 
 # Declarations
 export(int, -1000000000, 1000000000) var Pointage := 0
@@ -39,3 +39,8 @@ func _process(delta):
 		look_at(Target.translation, Vector3(0,1,0))
 		rotation.z = 0
 		rotation.x = 0
+
+func hurt(hit : Dictionary) -> void:
+	if beKnocked:
+		move_and_slide(hit["direction"]*250)
+	.hurt(hit)
