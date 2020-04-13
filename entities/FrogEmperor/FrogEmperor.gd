@@ -96,9 +96,15 @@ func _unhandled_input(event : InputEvent):
 		match event.button_index:
 			BUTTON_WHEEL_UP, BUTTON_WHEEL_DOWN:
 				PlayerCamera.translation += Vector3(0, 0.1, 0.1) * (1 if event.button_index == BUTTON_WHEEL_DOWN else -1)
-			BUTTON_LEFT, BUTTON_RIGHT:
+			BUTTON_LEFT:
 				if Stamina >= LightCost:
 					self.Stamina -= LightCost
 					for body in HitArea.get_overlapping_bodies():
 						if body.is_in_group("enemies"):
-							hit(body, (MinLightDamage + randi() % MaxLightDamage) if event.button_index == BUTTON_LEFT else (MinHeavyDamage + randi() % MaxHeavyDamage))
+							hit(body, (MinLightDamage + randi() % MaxLightDamage))
+			BUTTON_RIGHT:
+				if Stamina >= HeavyCost:
+					self.Stamina -= HeavyCost
+					for body in HitArea.get_overlapping_bodies():
+						if body.is_in_group("enemies"):
+							hit(body, (MinHeavyDamage + randi() % MaxHeavyDamage))
