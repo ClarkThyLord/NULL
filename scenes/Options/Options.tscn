@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/fonts/8-Bit Wonder/8-Bit Wonder.TTF" type="DynamicFontData" id=1]
 [ext_resource path="res://controls/InteractiveButton/InteractiveButton.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/scenes/Options/background.png" type="Texture" id=3]
 [ext_resource path="res://scenes/Options/Options.gd" type="Script" id=4]
 [ext_resource path="res://assets/audio/Menu Selection Click.wav" type="AudioStream" id=5]
+[ext_resource path="res://assets/scenes/Controls/Controls.png" type="Texture" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 1 )
@@ -71,7 +72,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Popup/TextureRect/VBoxContainer"]
+[node name="Options" type="ScrollContainer" parent="Popup/TextureRect/VBoxContainer"]
 margin_right = 443.0
 margin_bottom = 250.0
 size_flags_horizontal = 3
@@ -79,29 +80,34 @@ size_flags_vertical = 3
 follow_focus = true
 scroll_horizontal_enabled = false
 
-[node name="GridContainer" type="GridContainer" parent="Popup/TextureRect/VBoxContainer/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Popup/TextureRect/VBoxContainer/Options"]
 margin_right = 443.0
 margin_bottom = 250.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+
+[node name="GridContainer" type="GridContainer" parent="Popup/TextureRect/VBoxContainer/Options/VBoxContainer"]
+margin_right = 443.0
+margin_bottom = 80.0
+size_flags_horizontal = 3
 custom_constants/vseparation = 16
 columns = 2
 
-[node name="Label" type="Label" parent="Popup/TextureRect/VBoxContainer/ScrollContainer/GridContainer"]
+[node name="Label" type="Label" parent="Popup/TextureRect/VBoxContainer/Options/VBoxContainer/GridContainer"]
 margin_right = 219.0
 margin_bottom = 16.0
 size_flags_horizontal = 3
 custom_fonts/font = SubResource( 1 )
 text = "SOUND"
 
-[node name="Sound" type="HSlider" parent="Popup/TextureRect/VBoxContainer/ScrollContainer/GridContainer"]
+[node name="Sound" type="HSlider" parent="Popup/TextureRect/VBoxContainer/Options/VBoxContainer/GridContainer"]
 margin_left = 223.0
 margin_right = 442.0
 margin_bottom = 16.0
 size_flags_horizontal = 3
 value = 100.0
 
-[node name="Label2" type="Label" parent="Popup/TextureRect/VBoxContainer/ScrollContainer/GridContainer"]
+[node name="Label2" type="Label" parent="Popup/TextureRect/VBoxContainer/Options/VBoxContainer/GridContainer"]
 margin_top = 32.0
 margin_right = 219.0
 margin_bottom = 48.0
@@ -109,7 +115,7 @@ size_flags_horizontal = 3
 custom_fonts/font = SubResource( 1 )
 text = "MUSIC"
 
-[node name="Music" type="HSlider" parent="Popup/TextureRect/VBoxContainer/ScrollContainer/GridContainer"]
+[node name="Music" type="HSlider" parent="Popup/TextureRect/VBoxContainer/Options/VBoxContainer/GridContainer"]
 margin_left = 223.0
 margin_top = 32.0
 margin_right = 442.0
@@ -117,7 +123,7 @@ margin_bottom = 48.0
 size_flags_horizontal = 3
 value = 100.0
 
-[node name="Label3" type="Label" parent="Popup/TextureRect/VBoxContainer/ScrollContainer/GridContainer"]
+[node name="Label3" type="Label" parent="Popup/TextureRect/VBoxContainer/Options/VBoxContainer/GridContainer"]
 margin_top = 64.0
 margin_right = 219.0
 margin_bottom = 80.0
@@ -125,13 +131,30 @@ size_flags_horizontal = 3
 custom_fonts/font = SubResource( 1 )
 text = "EFFECTS"
 
-[node name="Effects" type="HSlider" parent="Popup/TextureRect/VBoxContainer/ScrollContainer/GridContainer"]
+[node name="Effects" type="HSlider" parent="Popup/TextureRect/VBoxContainer/Options/VBoxContainer/GridContainer"]
 margin_left = 223.0
 margin_top = 64.0
 margin_right = 442.0
 margin_bottom = 80.0
 size_flags_horizontal = 3
 value = 100.0
+
+[node name="ViewControls" parent="Popup/TextureRect/VBoxContainer/Options/VBoxContainer" instance=ExtResource( 2 )]
+margin_top = 84.0
+margin_right = 443.0
+margin_bottom = 96.0
+text = "VIEW CONTROLS"
+
+[node name="Controls" type="TextureButton" parent="Popup/TextureRect/VBoxContainer"]
+visible = false
+margin_top = 133.0
+margin_right = 443.0
+margin_bottom = 250.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource( 6 )
+expand = true
+stretch_mode = 5
 
 [node name="Close" parent="Popup/TextureRect/VBoxContainer" instance=ExtResource( 2 )]
 margin_top = 266.0
@@ -140,16 +163,18 @@ margin_bottom = 298.0
 custom_fonts/font = SubResource( 2 )
 text = "CLOSE"
 [connection signal="visibility_changed" from="Popup" to="." method="_on_Popup_visibility_changed"]
-[connection signal="focus_entered" from="Popup/TextureRect/VBoxContainer/ScrollContainer/GridContainer/Sound" to="SoundEffects" method="play"]
-[connection signal="mouse_entered" from="Popup/TextureRect/VBoxContainer/ScrollContainer/GridContainer/Sound" to="SoundEffects" method="play"]
-[connection signal="value_changed" from="Popup/TextureRect/VBoxContainer/ScrollContainer/GridContainer/Sound" to="." method="_on_slider_value_changed"]
-[connection signal="value_changed" from="Popup/TextureRect/VBoxContainer/ScrollContainer/GridContainer/Sound" to="." method="_on_Sound_value_changed"]
-[connection signal="focus_entered" from="Popup/TextureRect/VBoxContainer/ScrollContainer/GridContainer/Music" to="SoundEffects" method="play"]
-[connection signal="mouse_entered" from="Popup/TextureRect/VBoxContainer/ScrollContainer/GridContainer/Music" to="SoundEffects" method="play"]
-[connection signal="value_changed" from="Popup/TextureRect/VBoxContainer/ScrollContainer/GridContainer/Music" to="." method="_on_slider_value_changed"]
-[connection signal="value_changed" from="Popup/TextureRect/VBoxContainer/ScrollContainer/GridContainer/Music" to="." method="_on_Music_value_changed"]
-[connection signal="focus_entered" from="Popup/TextureRect/VBoxContainer/ScrollContainer/GridContainer/Effects" to="SoundEffects" method="play"]
-[connection signal="mouse_entered" from="Popup/TextureRect/VBoxContainer/ScrollContainer/GridContainer/Effects" to="SoundEffects" method="play"]
-[connection signal="value_changed" from="Popup/TextureRect/VBoxContainer/ScrollContainer/GridContainer/Effects" to="." method="_on_slider_value_changed"]
-[connection signal="value_changed" from="Popup/TextureRect/VBoxContainer/ScrollContainer/GridContainer/Effects" to="." method="_on_Effects_value_changed"]
+[connection signal="focus_entered" from="Popup/TextureRect/VBoxContainer/Options/VBoxContainer/GridContainer/Sound" to="SoundEffects" method="play"]
+[connection signal="mouse_entered" from="Popup/TextureRect/VBoxContainer/Options/VBoxContainer/GridContainer/Sound" to="SoundEffects" method="play"]
+[connection signal="value_changed" from="Popup/TextureRect/VBoxContainer/Options/VBoxContainer/GridContainer/Sound" to="." method="_on_slider_value_changed"]
+[connection signal="value_changed" from="Popup/TextureRect/VBoxContainer/Options/VBoxContainer/GridContainer/Sound" to="." method="_on_Sound_value_changed"]
+[connection signal="focus_entered" from="Popup/TextureRect/VBoxContainer/Options/VBoxContainer/GridContainer/Music" to="SoundEffects" method="play"]
+[connection signal="mouse_entered" from="Popup/TextureRect/VBoxContainer/Options/VBoxContainer/GridContainer/Music" to="SoundEffects" method="play"]
+[connection signal="value_changed" from="Popup/TextureRect/VBoxContainer/Options/VBoxContainer/GridContainer/Music" to="." method="_on_slider_value_changed"]
+[connection signal="value_changed" from="Popup/TextureRect/VBoxContainer/Options/VBoxContainer/GridContainer/Music" to="." method="_on_Music_value_changed"]
+[connection signal="focus_entered" from="Popup/TextureRect/VBoxContainer/Options/VBoxContainer/GridContainer/Effects" to="SoundEffects" method="play"]
+[connection signal="mouse_entered" from="Popup/TextureRect/VBoxContainer/Options/VBoxContainer/GridContainer/Effects" to="SoundEffects" method="play"]
+[connection signal="value_changed" from="Popup/TextureRect/VBoxContainer/Options/VBoxContainer/GridContainer/Effects" to="." method="_on_slider_value_changed"]
+[connection signal="value_changed" from="Popup/TextureRect/VBoxContainer/Options/VBoxContainer/GridContainer/Effects" to="." method="_on_Effects_value_changed"]
+[connection signal="pressed" from="Popup/TextureRect/VBoxContainer/Options/VBoxContainer/ViewControls" to="." method="_on_ViewControls_pressed"]
+[connection signal="pressed" from="Popup/TextureRect/VBoxContainer/Controls" to="." method="_on_Controls_pressed"]
 [connection signal="pressed" from="Popup/TextureRect/VBoxContainer/Close" to="." method="_on_Close_pressed"]

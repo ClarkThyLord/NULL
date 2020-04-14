@@ -6,9 +6,13 @@ onready var popup := get_node("Popup")
 onready var background := get_node("Background")
 
 
-onready var Sound := get_node("Popup/TextureRect/VBoxContainer/ScrollContainer/GridContainer/Sound")
-onready var Music := get_node("Popup/TextureRect/VBoxContainer/ScrollContainer/GridContainer/Music")
-onready var Effects := get_node("Popup/TextureRect/VBoxContainer/ScrollContainer/GridContainer/Effects")
+onready var Options := get_node("Popup/TextureRect/VBoxContainer/Options")
+
+onready var Sound := get_node("Popup/TextureRect/VBoxContainer/Options/VBoxContainer/GridContainer/Sound")
+onready var Music := get_node("Popup/TextureRect/VBoxContainer/Options/VBoxContainer/GridContainer/Music")
+onready var Effects := get_node("Popup/TextureRect/VBoxContainer/Options/VBoxContainer/GridContainer/Effects")
+
+onready var Controls := get_node("Popup/TextureRect/VBoxContainer/Controls")
 
 
 
@@ -80,3 +84,13 @@ func _on_Effects_value_changed(value):
 	AudioServer.set_bus_mute(AudioServer.get_bus_index("Effects"), value == MinEffects)
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Effects"), value)
 	get_node("/root/Server").save_config()
+
+
+
+func _on_ViewControls_pressed():
+	Options.visible = false
+	Controls.visible = true
+
+func _on_Controls_pressed():
+	Options.visible = true
+	Controls.visible = false
