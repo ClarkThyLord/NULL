@@ -11,6 +11,7 @@ extents = Vector3( 1.34651, 1.50296, 1.002 )
 
 [node name="Pawn" type="KinematicBody"]
 script = ExtResource( 1 )
+Pointage = 10
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 shape = SubResource( 1 )

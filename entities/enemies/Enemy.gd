@@ -14,7 +14,7 @@ func set_target_path(targetpath : NodePath) -> void:
 		TargetPath = targetpath
 		if not Engine.editor_hint: Target = get_node(targetpath)
 
-func set_health(health : int) -> void:
+func set_health(health : float) -> void:
 	.set_health(health)
 	HealthBar.Progress = Health
 
@@ -34,7 +34,7 @@ func seek() -> Spatial:
 	return target
 
 func die() -> void:
-#	get_node("/root/Server").CurrentPoints += Pointage
+	get_node("/root/Server").CurrentPoints += Pointage
 #	var drop = preload("res://controls/Drop/Drop.tscn").instance()
 #	get_parent().add_child(drop)
 #	drop.translation = translation

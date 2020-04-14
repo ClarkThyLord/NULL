@@ -16,12 +16,12 @@ onready var HitArea := get_node("Content/HitArea")
 
 
 # Declarations
-func set_health(health : int) -> void:
+func set_health(health : float) -> void:
 	.set_health(health)
 	HUD.update_health(Health)
 
-export(int, 0, 100, 1) var Stamina := 100 setget set_stamina
-func set_stamina(stamina : int) -> void:
+export(float, 0.0, 100.0, 1) var Stamina := 100.0 setget set_stamina
+func set_stamina(stamina : float) -> void:
 	Stamina = clamp(stamina, 0, 100)
 	HUD.update_stamina(Stamina)
 
@@ -85,7 +85,7 @@ func _physics_process(delta) -> void:
 		PlayerAnimationTree.travel("moving")
 	else: PlayerAnimationTree.travel("idle")
 	move_and_slide(Vector3.DOWN * Gravity, Vector3.UP)
-	if regenerate_stamina: self.Stamina += 1
+	if regenerate_stamina: self.Stamina += 1 * delta
 
 func _unhandled_input(event : InputEvent):
 	if event is InputEventMouseMotion:
@@ -97,13 +97,13 @@ func _unhandled_input(event : InputEvent):
 			BUTTON_WHEEL_UP, BUTTON_WHEEL_DOWN:
 				PlayerCamera.translation += Vector3(0, 0.1, 0.1) * (1 if event.button_index == BUTTON_WHEEL_DOWN else -1)
 			BUTTON_LEFT:
-				if Stamina >= LightCost:
+				if Stamina >= LightCost and not event.is_pressed():
 					self.Stamina -= LightCost
 					for body in HitArea.get_overlapping_bodies():
 						if body.is_in_group("enemies"):
 							hit(body, (MinLightDamage + randi() % MaxLightDamage))
 			BUTTON_RIGHT:
-				if Stamina >= HeavyCost:
+				if Stamina >= HeavyCost and not event.is_pressed():
 					self.Stamina -= HeavyCost
 					for body in HitArea.get_overlapping_bodies():
 						if body.is_in_group("enemies"):

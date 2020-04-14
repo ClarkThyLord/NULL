@@ -5,8 +5,8 @@ extends KinematicBody
 # Declarations
 signal died
 
-export(int, 0, 100, 1) var Health := 100 setget set_health
-func set_health(health : int) -> void:
+export(float, 0.0, 100.0, 1) var Health := 100.0 setget set_health
+func set_health(health : float) -> void:
 	Health = clamp(health, 0, 100)
 	if Health <= 0: die()
 
