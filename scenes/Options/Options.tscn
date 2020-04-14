@@ -88,7 +88,7 @@ size_flags_vertical = 3
 
 [node name="GridContainer" type="GridContainer" parent="Popup/TextureRect/VBoxContainer/Options/VBoxContainer"]
 margin_right = 443.0
-margin_bottom = 80.0
+margin_bottom = 108.0
 size_flags_horizontal = 3
 custom_constants/vseparation = 16
 columns = 2
@@ -139,10 +139,23 @@ margin_bottom = 80.0
 size_flags_horizontal = 3
 value = 100.0
 
+[node name="ResetGame" parent="Popup/TextureRect/VBoxContainer/Options/VBoxContainer/GridContainer" instance=ExtResource( 2 )]
+margin_top = 96.0
+margin_right = 219.0
+margin_bottom = 108.0
+text = "RESET GAME"
+
+[node name="ResetOptions" parent="Popup/TextureRect/VBoxContainer/Options/VBoxContainer/GridContainer" instance=ExtResource( 2 )]
+margin_left = 223.0
+margin_top = 96.0
+margin_right = 442.0
+margin_bottom = 108.0
+text = "RESET OPTIONS"
+
 [node name="ViewControls" parent="Popup/TextureRect/VBoxContainer/Options/VBoxContainer" instance=ExtResource( 2 )]
-margin_top = 84.0
+margin_top = 112.0
 margin_right = 443.0
-margin_bottom = 96.0
+margin_bottom = 124.0
 text = "VIEW CONTROLS"
 
 [node name="Controls" type="TextureButton" parent="Popup/TextureRect/VBoxContainer"]
@@ -176,6 +189,8 @@ text = "CLOSE"
 [connection signal="mouse_entered" from="Popup/TextureRect/VBoxContainer/Options/VBoxContainer/GridContainer/Effects" to="SoundEffects" method="play"]
 [connection signal="value_changed" from="Popup/TextureRect/VBoxContainer/Options/VBoxContainer/GridContainer/Effects" to="." method="_on_slider_value_changed"]
 [connection signal="value_changed" from="Popup/TextureRect/VBoxContainer/Options/VBoxContainer/GridContainer/Effects" to="." method="_on_Effects_value_changed"]
+[connection signal="pressed" from="Popup/TextureRect/VBoxContainer/Options/VBoxContainer/GridContainer/ResetGame" to="." method="_on_ResetGame_pressed"]
+[connection signal="pressed" from="Popup/TextureRect/VBoxContainer/Options/VBoxContainer/GridContainer/ResetOptions" to="." method="_on_ResetOptions_pressed"]
 [connection signal="pressed" from="Popup/TextureRect/VBoxContainer/Options/VBoxContainer/ViewControls" to="." method="_on_ViewControls_pressed"]
 [connection signal="pressed" from="Popup/TextureRect/VBoxContainer/Controls" to="." method="_on_Controls_pressed"]
 [connection signal="pressed" from="Popup/TextureRect/VBoxContainer/Close" to="." method="_on_Close_pressed"]

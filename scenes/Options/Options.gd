@@ -37,18 +37,18 @@ func _ready():
 
 func correct() -> void:
 	if popup and popup.visible:
-		Options.visible = true
-		Controls.visible = false
 		var ratio = get_viewport().size / Vector2(1024, 600)
 		popup.rect_position = Vector2(212, 100) * ratio
 		popup.rect_size = Vector2(600, 400) * ratio
+		
+		Sound.value = ((AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Master")) + -MinSound) / MaxSound) * 100
+		Music.value = ((AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Music")) + -MinMusic) / MaxMusic) * 100
+		Effects.value = ((AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Effects")) + -MinEffects) / MaxEffects) * 100
 
 
 func show() -> void:
-	Sound.value = ((AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Master")) + -MinSound) / MaxSound) * 100
-	Music.value = ((AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Music")) + -MinMusic) / MaxMusic) * 100
-	Effects.value = ((AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Effects")) + -MinEffects) / MaxEffects) * 100
-	
+	Options.visible = true
+	Controls.visible = false
 	popup.popup_centered()
 	correct()
 
@@ -59,8 +59,6 @@ func hide() -> void:
 func _on_Popup_visibility_changed():
 	if background and popup:
 		background.visible = popup.visible
-
-func _on_Close_pressed(): hide()
 
 
 func _on_slider_value_changed(value):
@@ -73,13 +71,11 @@ func _on_Sound_value_changed(value):
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), value)
 	get_node("/root/Server").save_config()
 
-
 func _on_Music_value_changed(value):
 	value = MinMusic + (MaxMusic * (value * 0.01))
 	AudioServer.set_bus_mute(AudioServer.get_bus_index("Music"), value == MinMusic)
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), value)
 	get_node("/root/Server").save_config()
-
 
 func _on_Effects_value_changed(value):
 	value = MinEffects + (MaxEffects * (value * 0.01))
@@ -87,6 +83,13 @@ func _on_Effects_value_changed(value):
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Effects"), value)
 	get_node("/root/Server").save_config()
 
+
+func _on_ResetGame_pressed():
+	get_node("/root/Server").reset_game()
+
+func _on_ResetOptions_pressed():
+	get_node("/root/Server").reset_config()
+	correct()
 
 
 func _on_ViewControls_pressed():
@@ -96,3 +99,6 @@ func _on_ViewControls_pressed():
 func _on_Controls_pressed():
 	Options.visible = true
 	Controls.visible = false
+
+
+func _on_Close_pressed(): hide()
