@@ -7,8 +7,6 @@ onready var HealthBar := get_node("HealthBar")
 # Declarations
 export(int, -1000000000, 1000000000) var Pointage := 0
 
-export (bool) var beKnocked := true
-
 var Target : Spatial
 export(NodePath) var TargetPath : NodePath setget set_target_path
 func set_target_path(targetpath : NodePath) -> void:
@@ -36,10 +34,10 @@ func seek() -> Spatial:
 	return target
 
 func die() -> void:
-	get_node("/root/Server").CurrentPoints += Pointage
-	var drop = preload("res://controls/Drop/Drop.tscn").instance()
-	get_parent().add_child(drop)
-	drop.translation = translation
+#	get_node("/root/Server").CurrentPoints += Pointage
+#	var drop = preload("res://controls/Drop/Drop.tscn").instance()
+#	get_parent().add_child(drop)
+#	drop.translation = translation
 	.die()
 
 
@@ -48,8 +46,3 @@ func _process(delta):
 		look_at(Target.translation, Vector3(0,1,0))
 		rotation.z = 0
 		rotation.x = 0
-
-func hurt(hit : Dictionary) -> void:
-	if beKnocked:
-		move_and_slide(hit["direction"]*5000)
-	.hurt(hit)

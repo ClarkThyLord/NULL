@@ -11,6 +11,9 @@ func set_health(health : int) -> void:
 	if Health <= 0: die()
 
 
+export(float, 0.0, 1.0, 0.01) var Knockback := 0.0
+
+
 
 # Core
 func _ready():
@@ -29,6 +32,8 @@ func hit(target : KinematicBody, damage : int) -> void:
 #	"direction": Vector3
 # }
 func hurt(hit : Dictionary) -> void:
+	if Knockback > 0.0:
+		move_and_slide(hit["direction"] * hit["damage"] * Knockback)
 	set_health(Health - hit["damage"])
 
 func die() -> void:
