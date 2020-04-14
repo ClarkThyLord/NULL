@@ -37,6 +37,8 @@ func _ready():
 
 func correct() -> void:
 	if popup and popup.visible:
+		Options.visible = true
+		Controls.visible = false
 		var ratio = get_viewport().size / Vector2(1024, 600)
 		popup.rect_position = Vector2(212, 100) * ratio
 		popup.rect_size = Vector2(600, 400) * ratio
@@ -47,8 +49,8 @@ func show() -> void:
 	Music.value = ((AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Music")) + -MinMusic) / MaxMusic) * 100
 	Effects.value = ((AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Effects")) + -MinEffects) / MaxEffects) * 100
 	
-	correct()
 	popup.popup_centered()
+	correct()
 
 func hide() -> void:
 	popup.hide()

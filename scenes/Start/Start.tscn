@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scenes/Start/Start.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/8-Bit Wonder/8-Bit Wonder.TTF" type="DynamicFontData" id=2]
 [ext_resource path="res://controls/InteractiveButton/InteractiveButton.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/scenes/MainMenu/margin.png" type="Texture" id=4]
+[ext_resource path="res://assets/scenes/Controls/Controls.png" type="Texture" id=5]
 [ext_resource path="res://assets/fonts/8-Bit Wonder/8-Bit Wonder.tres" type="DynamicFont" id=6]
 [ext_resource path="res://assets/scenes/MainMenu/model_3.png" type="Texture" id=7]
 [ext_resource path="res://assets/audio/Menu Selection Click.wav" type="AudioStream" id=8]
@@ -44,6 +45,21 @@ linear_accel = 30.0
 scale_amount = 6.0
 scale_amount_random = 1.0
 scale_amount_curve = SubResource( 1 )
+
+[node name="Controls" type="TextureRect" parent="."]
+visible = false
+anchor_left = 0.255859
+anchor_top = 0.208333
+anchor_right = 0.744141
+anchor_bottom = 0.791667
+rect_min_size = Vector2( 500, 350 )
+mouse_filter = 2
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": true
+}
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 anchor_right = 1.0
@@ -106,7 +122,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="Input" type="VBoxContainer" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -121,7 +137,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Name" type="LineEdit" parent="VBoxContainer"]
+[node name="Name" type="LineEdit" parent="Input"]
 margin_right = 400.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 400, 0 )
@@ -131,7 +147,7 @@ max_length = 12
 expand_to_text_length = true
 placeholder_text = "ENTER NAME"
 
-[node name="footer" type="TextureRect" parent="VBoxContainer"]
+[node name="footer" type="TextureRect" parent="Input"]
 margin_top = 36.0
 margin_right = 400.0
 margin_bottom = 68.0
@@ -142,5 +158,5 @@ flip_v = true
 [connection signal="resized" from="." to="." method="_on_resized"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/Start" to="." method="_on_Start_pressed"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/Back" to="." method="_on_Back_pressed"]
-[connection signal="text_changed" from="VBoxContainer/Name" to="." method="_on_Name_text_changed"]
-[connection signal="text_entered" from="VBoxContainer/Name" to="." method="_on_Name_text_entered"]
+[connection signal="text_changed" from="Input/Name" to="." method="_on_Name_text_changed"]
+[connection signal="text_entered" from="Input/Name" to="." method="_on_Name_text_entered"]
