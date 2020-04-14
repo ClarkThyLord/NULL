@@ -11,6 +11,7 @@ func set_health(health : float) -> void:
 	if Health <= 0: die()
 
 
+export(int, 0, 100, 1) var Gravity := 10
 export(float, 0.0, 1.0, 0.01) var Knockback := 0.0
 
 
@@ -43,4 +44,7 @@ func die() -> void:
 
 func _process(delta):
 	if translation.y <= -10: die()
+
+func _physics_process(delta):
+	move_and_slide(Vector3.DOWN * Gravity, Vector3.UP)
 

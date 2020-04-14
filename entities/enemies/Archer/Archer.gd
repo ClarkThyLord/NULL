@@ -31,3 +31,4 @@ func _physics_process(delta):
 	if hit_frames == 0: attack()
 	if translation.distance_to(Target.translation) > 25:
 		move_and_slide(Vector3.FORWARD.rotated(Vector3.UP, rotation.y) * Speed)
+	._physics_process(delta)

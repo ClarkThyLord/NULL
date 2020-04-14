@@ -31,7 +31,6 @@ export(float, 0, 10, 0.01) var SpeedBoost := 1.75
 var jumps := 0
 export(int, 0, 3, 1) var MaxJumps := 1
 export(int, 0, 100, 1) var JumpHeight := 3
-export(int, 0, 100, 1) var Gravity := 10
 
 export(int, 0, 100) var LightCost := 0
 export(int, 0, 100) var MinLightDamage := 5
@@ -84,8 +83,8 @@ func _physics_process(delta) -> void:
 		Content.rotation = Vector3(0, -Vector2(-velocity.z, velocity.x).angle(), 0)
 		PlayerAnimationTree.travel("moving")
 	else: PlayerAnimationTree.travel("idle")
-	move_and_slide(Vector3.DOWN * Gravity, Vector3.UP)
 	if regenerate_stamina: self.Stamina += 1 * delta
+	._physics_process(delta)
 
 func _unhandled_input(event : InputEvent):
 	if event is InputEventMouseMotion:
