@@ -85,6 +85,7 @@ margin_right = 443.0
 margin_bottom = 250.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+custom_constants/separation = 16
 
 [node name="GridContainer" type="GridContainer" parent="Popup/TextureRect/VBoxContainer/Options/VBoxContainer"]
 margin_right = 443.0
@@ -152,10 +153,16 @@ margin_right = 442.0
 margin_bottom = 108.0
 text = "RESET OPTIONS"
 
-[node name="ViewControls" parent="Popup/TextureRect/VBoxContainer/Options/VBoxContainer" instance=ExtResource( 2 )]
-margin_top = 112.0
+[node name="FullScreen" parent="Popup/TextureRect/VBoxContainer/Options/VBoxContainer" instance=ExtResource( 2 )]
+margin_top = 124.0
 margin_right = 443.0
-margin_bottom = 124.0
+margin_bottom = 136.0
+text = "TOGGLE FULL SCREEN"
+
+[node name="ViewControls" parent="Popup/TextureRect/VBoxContainer/Options/VBoxContainer" instance=ExtResource( 2 )]
+margin_top = 152.0
+margin_right = 443.0
+margin_bottom = 164.0
 text = "VIEW CONTROLS"
 
 [node name="Controls" type="TextureButton" parent="Popup/TextureRect/VBoxContainer"]
@@ -191,6 +198,7 @@ text = "CLOSE"
 [connection signal="value_changed" from="Popup/TextureRect/VBoxContainer/Options/VBoxContainer/GridContainer/Effects" to="." method="_on_Effects_value_changed"]
 [connection signal="pressed" from="Popup/TextureRect/VBoxContainer/Options/VBoxContainer/GridContainer/ResetGame" to="." method="_on_ResetGame_pressed"]
 [connection signal="pressed" from="Popup/TextureRect/VBoxContainer/Options/VBoxContainer/GridContainer/ResetOptions" to="." method="_on_ResetOptions_pressed"]
+[connection signal="pressed" from="Popup/TextureRect/VBoxContainer/Options/VBoxContainer/FullScreen" to="." method="_on_FullScreen_pressed"]
 [connection signal="pressed" from="Popup/TextureRect/VBoxContainer/Options/VBoxContainer/ViewControls" to="." method="_on_ViewControls_pressed"]
 [connection signal="pressed" from="Popup/TextureRect/VBoxContainer/Controls" to="." method="_on_Controls_pressed"]
 [connection signal="pressed" from="Popup/TextureRect/VBoxContainer/Close" to="." method="_on_Close_pressed"]

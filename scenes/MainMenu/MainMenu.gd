@@ -19,8 +19,9 @@ func _ready():
 	if OS.get_name() == "HTML5":
 		$HBoxContainer/VBoxContainer/VBoxContainer/Exit.visible = false
 		
-		$FullScreen.visible = true
-		$FullScreen/Timer.start()
+		if not OS.window_fullscreen:
+			$FullScreen.visible = true
+			$FullScreen/Timer.start()
 	else:
 		$FullScreen.visible = false
 	

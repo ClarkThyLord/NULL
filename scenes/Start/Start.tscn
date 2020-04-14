@@ -47,18 +47,21 @@ scale_amount_random = 1.0
 scale_amount_curve = SubResource( 1 )
 
 [node name="Controls" type="TextureRect" parent="."]
-visible = false
-anchor_left = 0.255859
-anchor_top = 0.208333
-anchor_right = 0.744141
-anchor_bottom = 0.791667
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -250.0
+margin_top = -175.0
+margin_right = 250.0
+margin_bottom = 175.0
 rect_min_size = Vector2( 500, 350 )
 mouse_filter = 2
 texture = ExtResource( 5 )
 expand = true
 stretch_mode = 5
 __meta__ = {
-"_edit_use_anchors_": true
+"_edit_use_anchors_": false
 }
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]

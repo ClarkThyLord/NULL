@@ -92,6 +92,10 @@ func _on_ResetOptions_pressed():
 	correct()
 
 
+func _on_FullScreen_pressed():
+	OS.window_fullscreen = !OS.window_fullscreen
+
+
 func _on_ViewControls_pressed():
 	Options.visible = false
 	Controls.visible = true
