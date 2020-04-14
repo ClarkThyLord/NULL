@@ -39,7 +39,8 @@ func _ready():
 			if scores_sorted[score][0] == get_node("/root/Server").CurrentName:
 				position = score
 				break
-		if get_node("/root/Server").CurrentPoints > previous_score: HighScoreBlinker.start()
+		if get_node("/root/Server").CurrentPoints > previous_score:
+			HighScoreBlinker.start()
 	ScoreBoard._update()
 	
 	if get_node("/root/Server").BackgroundMusic.stream != BackgroundMusic:
@@ -65,3 +66,11 @@ func _on_MainMenu_pressed():
 
 func _on_BlinkTimer_timeout():
 	HighScore.hide() if HighScore.visible else HighScore.show()
+
+
+func _on_Twitter_pressed():
+	var url := "https://twitter.com/intent/tweet?url=https%3A%2F%2Fgotm.io%2Fnobodies%2Fnull&text=New%20"
+	if not HighScoreBlinker.is_stopped():
+		url += "high%20"
+	url += "score%20" + str(get_node("/root/Server").CurrentPoints) + "%2C%20in%20the%20new%203D%20Arcade%20Hack%20and%20Slash&hashtags=NULL%2Cgodot%2Chighscore"
+	OS.shell_open(url)

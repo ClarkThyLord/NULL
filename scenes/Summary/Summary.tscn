@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/fonts/8-Bit Wonder/8-Bit Wonder.TTF" type="DynamicFontData" id=1]
 [ext_resource path="res://controls/InteractiveButton/InteractiveButton.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://controls/ScoreBoard/ScoreBoard.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/fonts/8-Bit Wonder/8-Bit Wonder.tres" type="DynamicFont" id=6]
 [ext_resource path="res://controls/RouteMap/RouteMap.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/scenes/Summary/Twitter.png" type="Texture" id=8]
 
 [sub_resource type="Curve" id=1]
 _data = [ Vector2( 0, 0 ), 0.0, 1.4, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
@@ -83,13 +84,27 @@ text = "YOUR SCORE
 align = 1
 valign = 1
 
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/VBoxContainer"]
+margin_top = 83.0
+margin_right = 432.0
+margin_bottom = 107.0
+alignment = 1
+
+[node name="Twitter" type="TextureButton" parent="HBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
+margin_left = 202.0
+margin_right = 229.0
+margin_bottom = 24.0
+hint_tooltip = "Tweet your new score!"
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource( 8 )
+
 [node name="RouteMap" parent="HBoxContainer/VBoxContainer/VBoxContainer" instance=ExtResource( 7 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 83.0
+margin_top = 123.0
 margin_right = 432.0
 margin_bottom = 258.0
-rect_min_size = Vector2( 0, 175 )
+rect_min_size = Vector2( 0, 135 )
 Route = PoolVector2Array(  )
 PathSize = 3
 PathColor = Color( 0.32549, 0.109804, 0.415686, 1 )
@@ -145,5 +160,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 [connection signal="resized" from="." to="." method="_on_resized"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer/Twitter" to="." method="_on_Twitter_pressed"]
 [connection signal="timeout" from="HBoxContainer/VBoxContainer/VBoxContainer2/HighScore/BlinkTimer" to="." method="_on_BlinkTimer_timeout"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/MainMenu" to="." method="_on_MainMenu_pressed"]

@@ -39,6 +39,7 @@ _global_script_class_icons={
 [application]
 
 config/name="NULL"
+config/description="3D Hack and Slash made for School with Godot"
 run/main_scene="res://scenes/MainMenu/MainMenu.tscn"
 boot_splash/image="res://assets/icon.splash.png"
 boot_splash/bg_color=Color( 0.513726, 0.164706, 0.662745, 1 )
