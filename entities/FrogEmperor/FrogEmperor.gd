@@ -25,6 +25,9 @@ func set_stamina(stamina : float) -> void:
 	Stamina = clamp(stamina, 0, 100)
 	HUD.update_stamina(Stamina)
 
+export(float, 0.0, 100.0, 1) var StaminaRegen := 1
+
+
 export(int, 0, 100, 1) var Speed := 25
 export(float, 0, 10, 0.01) var SpeedBoost := 1.75
 
@@ -83,7 +86,7 @@ func _physics_process(delta) -> void:
 		Content.rotation = Vector3(0, -Vector2(-velocity.z, velocity.x).angle(), 0)
 		PlayerAnimationTree.travel("moving")
 	else: PlayerAnimationTree.travel("idle")
-	if regenerate_stamina: self.Stamina += 1 * delta
+	if regenerate_stamina: self.Stamina += StaminaRegen * delta
 	._physics_process(delta)
 
 func _unhandled_input(event : InputEvent):
