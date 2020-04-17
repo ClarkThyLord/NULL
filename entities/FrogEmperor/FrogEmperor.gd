@@ -25,11 +25,12 @@ func set_stamina(stamina : float) -> void:
 	Stamina = clamp(stamina, 0, 100)
 	HUD.update_stamina(Stamina)
 
-export(float, 0.0, 100.0, 1) var StaminaRegen := 1
+export(float, 0.0, 100.0, 1) var StaminaRegen := 3
 
 
 export(int, 0, 100, 1) var Speed := 25
 export(float, 0, 10, 0.01) var SpeedBoost := 1.75
+export(float, 0.0, 100.0, 1) var SpeedBoostCost := 2
 
 var jumps := 0
 export(int, 0, 3, 1) var MaxJumps := 1
@@ -77,7 +78,7 @@ func _physics_process(delta) -> void:
 		velocity += CameraPivot.global_transform.basis.z * direction.z
 		velocity *= Speed
 		if Stamina > 0 and Input.is_action_pressed("move_boost"):
-			self.Stamina -= 2
+			self.Stamina -= SpeedBoostCost
 			regenerate_stamina = false
 			velocity *= SpeedBoost
 		
