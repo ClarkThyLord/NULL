@@ -12,6 +12,7 @@ export(int, 0, 100) var Speed := 10
 
 var hit_frames = 0
 export(int, 1, 1000) var HitRate := 100
+export(float, 0, 1, 0.01) var HitRand := 0.4
 
 export(int, 0, 100) var MinDamage := 0
 export(int, 0, 100) var MaxDamage := 10
@@ -32,7 +33,7 @@ func attack():
 
 func _physics_process(delta):
 	hit_frames = (hit_frames + 1) % HitRate
-	if hit_frames == 0 and not animation.current_animation == "attack":
+	if hit_frames == 0 and not animation.current_animation == "attack" and HitRand <= randf():
 		attack()
 	
 	move_and_slide(Vector3.FORWARD.rotated(Vector3.UP, rotation.y) * Speed)
