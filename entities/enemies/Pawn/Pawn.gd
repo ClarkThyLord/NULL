@@ -36,4 +36,5 @@ func _physics_process(delta):
 		attack()
 	
 	move_and_slide(Vector3.FORWARD.rotated(Vector3.UP, rotation.y) * Speed)
+	if animation.current_animation == "idle": animation.play("moving")
 	._physics_process(delta)
