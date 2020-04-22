@@ -12,7 +12,8 @@ func set_health(health : float) -> void:
 
 
 export(int, 0, 100, 1) var Gravity := 10
-export(float, 0.0, 1.0, 0.01) var Knockback := 0.0
+export(int, 0, 1000000000) var Knockback := 250
+export(int, 0.0, 1.0, 0.01) var KnockbackAmplifier := 0.0
 
 
 
@@ -22,7 +23,7 @@ func _ready():
 
 
 
-func hit(target : KinematicBody, damage : int) -> void:	
+func hit(target : KinematicBody, damage : int) -> void:
 	target.hurt({
 		"damage": damage,
 		"direction": (target.translation - translation).normalized()
@@ -33,8 +34,8 @@ func hit(target : KinematicBody, damage : int) -> void:
 #	"direction": Vector3
 # }
 func hurt(hit : Dictionary) -> void:
-	if Knockback > 0.0:
-		move_and_slide(hit["direction"] * hit["damage"] * Knockback)
+	if Knockback > 0:
+		move_and_slide(hit["direction"] * Knockback * clamp(hit["damage"] / 100.0 + KnockbackAmplifier, 0, 1))
 	set_health(Health - hit["damage"])
 
 func die() -> void:
