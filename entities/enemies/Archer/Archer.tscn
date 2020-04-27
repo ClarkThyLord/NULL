@@ -2,10 +2,10 @@
 
 [ext_resource path="res://entities/enemies/Archer/Archer.gd" type="Script" id=1]
 [ext_resource path="res://controls/ProgressBar3D/ProgressBar3D.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/entities/enemies/Archer/model.png" type="Texture" id=3]
 
 [sub_resource type="BoxShape" id=1]
-
-[sub_resource type="CubeMesh" id=2]
+extents = Vector3( 1.4, 1.5, 0.5 )
 
 [node name="Archer" type="KinematicBody"]
 script = ExtResource( 1 )
@@ -14,11 +14,11 @@ script = ExtResource( 1 )
 shape = SubResource( 1 )
 
 [node name="HealthBar" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.59762, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
 Progress = 100
 ForegroundColor = Color( 1, 0, 0, 1 )
 BackgroundColor = Color( 1, 1, 1, 1 )
 
-[node name="PlaceHolder" type="MeshInstance" parent="."]
-mesh = SubResource( 2 )
-material/0 = null
+[node name="Sprite3D" type="Sprite3D" parent="."]
+pixel_size = 0.1
+texture = ExtResource( 3 )
