@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/archer.png-b9f9b033ee2e3e6c09b6f7950f6873d6.stex"
+path="res://.import/Archer.png-0049bea40a44a790c66c327fe52d1bcb.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/entities/enemies/Archer/archer.png"
-dest_files=[ "res://.import/archer.png-b9f9b033ee2e3e6c09b6f7950f6873d6.stex" ]
+source_file="res://assets/entities/enemies/Archer/Archer.png"
+dest_files=[ "res://.import/Archer.png-0049bea40a44a790c66c327fe52d1bcb.stex" ]
 
 [params]
 
