@@ -11,7 +11,7 @@ export(int, 0, 100) var MinDamage := 0
 export(int, 0, 100) var MaxDamage := 10
 
 
-var bullet = preload("res://controls/Bullet/Bullet.tscn").instance()
+var bullet = preload("res://objects/Bullet/Bullet.tscn").instance()
 # Core
 func _ready():
 	Pointage = 10
