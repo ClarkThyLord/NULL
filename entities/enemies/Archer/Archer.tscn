@@ -1,11 +1,26 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://entities/enemies/Archer/Archer.gd" type="Script" id=1]
 [ext_resource path="res://controls/ProgressBar3D/ProgressBar3D.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/entities/enemies/Archer/Archer.png" type="Texture" id=3]
 
 [sub_resource type="Animation" id=1]
-resource_name = "idle"
+resource_name = "attacking"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 12, 13, 14, 15, 16, 17 ]
+}
+
+[sub_resource type="Animation" id=2]
 length = 0.3
 loop = true
 tracks/0/type = "value"
@@ -38,7 +53,7 @@ tracks/0/keys = {
 "values": [ 4, 5, 6, 7 ]
 }
 
-[sub_resource type="BoxShape" id=2]
+[sub_resource type="BoxShape" id=4]
 extents = Vector3( 1.4, 1.5, 0.5 )
 
 [node name="Archer" type="KinematicBody"]
@@ -46,11 +61,12 @@ script = ExtResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "idle"
-anims/idle = SubResource( 1 )
+anims/attacking = SubResource( 1 )
+anims/idle = SubResource( 2 )
 anims/moving = SubResource( 3 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-shape = SubResource( 2 )
+shape = SubResource( 4 )
 
 [node name="HealthBar" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
@@ -61,6 +77,6 @@ BackgroundColor = Color( 1, 1, 1, 1 )
 [node name="Sprite3D" type="Sprite3D" parent="."]
 pixel_size = 0.1
 texture = ExtResource( 3 )
-vframes = 2
-hframes = 4
-frame = 2
+vframes = 3
+hframes = 6
+frame = 17
