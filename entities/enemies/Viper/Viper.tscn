@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://entities/enemies/Viper/Viper.gd" type="Script" id=1]
+[ext_resource path="res://controls/ProgressBar3D/ProgressBar3D.tscn" type="PackedScene" id=2]
 
 [sub_resource type="CylinderMesh" id=1]
 
@@ -17,3 +18,9 @@ material/0 = null
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 5, 0, 0, 0, 1, 0, 0, 0 )
 shape = SubResource( 2 )
+
+[node name="HealthBar" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.1072, 0 )
+Progress = 100
+ForegroundColor = Color( 1, 0, 0, 1 )
+BackgroundColor = Color( 0, 0, 0, 0 )

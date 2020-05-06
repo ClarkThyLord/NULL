@@ -6,6 +6,7 @@ onready var HealthBar := get_node("HealthBar")
 
 # Declarations
 export(int, -1000000000, 1000000000) var Pointage := 0
+var look_at_player = true
 
 var Target : Spatial
 export(NodePath) var TargetPath : NodePath setget set_target_path
@@ -42,7 +43,8 @@ func die() -> void:
 
 
 func _process(delta):
-	if is_instance_valid(Target):
+	if is_instance_valid(Target) and look_at_player:
 		look_at(Target.translation, Vector3(0,1,0))
 		rotation.z = 0
 		rotation.x = 0
+	._process(delta)
