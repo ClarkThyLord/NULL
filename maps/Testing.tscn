@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://entities/FrogEmperor/FrogEmperor.tscn" type="PackedScene" id=1]
 [ext_resource path="res://entities/enemies/Viper/Viper.tscn" type="PackedScene" id=2]
-[ext_resource path="res://entities/enemies/Rusher/Rusher.tscn" type="PackedScene" id=3]
 
 [sub_resource type="PlaneMesh" id=1]
 size = Vector2( 100, 100 )
@@ -24,8 +23,5 @@ shape = SubResource( 2 )
 [node name="FrogEmperor" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
 
-[node name="KinematicBody" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.80855, -26.3649 )
-
-[node name="KinematicBody2" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.64366, 23.1104 )
+[node name="KinematicBody2" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.80546, -35.414 )

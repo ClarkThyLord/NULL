@@ -1,5 +1,7 @@
 extends "res://entities/enemies/Enemy.gd"
 
+onready var animation := get_node("AnimationPlayer")
+
 var hit_frames = 0
 export(int, 1, 1000) var HitRate := 200
 
@@ -15,15 +17,19 @@ func _ready():
 	get_node("/root").get_child(0).call_deferred("add_child", venom)
 	venom.visible = false
 	venom.myViper = self
+	venom.translation = translation
+	venom.translation.y = 7
+	animation.play("idle")
 
 func attack():
 	venom.translation = translation
-	venom.translation.y = 5
+	venom.translation.y = 7
 	venom.rotation = rotation
 	venom.visible = true
 	venom.canShoot = true
 	venom.velocityY = - 5 / (translation.distance_to(Target.translation) / venom.Speed)
-	
+	animation.play("attack")
+	animation.queue("idle")
 	
 func _physics_process(delta):
 	hit_frames = (hit_frames + 1) % HitRate

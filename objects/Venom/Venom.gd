@@ -3,7 +3,7 @@ extends Area
 # Refrences
 onready var HitArea := get_node("HitArea")
 
-export (float) var Speed := .5
+export (float) var Speed := .7
 export(int, 0, 100) var MinDamage := 30
 export(int, 0, 100) var MaxDamage := 50
 
@@ -22,4 +22,8 @@ func _physics_process(delta):
 						myViper.hit(body, MinDamage + randi() % MaxDamage)
 				canShoot = false
 				visible = false
+				translation = myViper.translation
+				translation.y = 7
+		
+		print(canShoot)
 
