@@ -5,13 +5,8 @@ extends "res://entities/Entity.gd"
 # Refrences
 onready var HUD := get_node("HUD")
 
-onready var CameraPivot := get_node("CameraPivot")
-onready var PlayerCamera := get_node("CameraPivot/PlayerCamera")
-
-onready var PlayerAnimationTree : AnimationNodeStateMachinePlayback = get_node("AnimationTree").get("parameters/playback")
-
-onready var Content := get_node("Content")
-onready var HitArea := get_node("Content/HitArea")
+onready var CameraRef := get_node("Camera")
+onready var HitArea := get_node("HitArea")
 
 
 
@@ -74,8 +69,8 @@ func _physics_process(delta) -> void:
 	
 	if direction.length() > 0:
 		var velocity := Vector3()
-		velocity += CameraPivot.global_transform.basis.x * direction.x
-		velocity += CameraPivot.global_transform.basis.z * direction.z
+		velocity += CameraRef.global_transform.basis.x * direction.x
+		velocity += CameraRef.global_transform.basis.z * direction.z
 		velocity *= Speed
 		if Stamina > 0 and Input.is_action_pressed("move_boost"):
 			self.Stamina -= SpeedBoostCost
@@ -84,21 +79,18 @@ func _physics_process(delta) -> void:
 		
 		velocity.y = 0
 		move_and_slide(velocity, Vector3.UP)
-		Content.rotation = Vector3(0, -Vector2(-velocity.z, velocity.x).angle(), 0)
-		PlayerAnimationTree.travel("moving")
-	else: PlayerAnimationTree.travel("idle")
 	if regenerate_stamina: self.Stamina += StaminaRegen * delta
 	._physics_process(delta)
 
 func _unhandled_input(event : InputEvent):
 	if event is InputEventMouseMotion:
 		var motion : Vector2 = event.relative.normalized()
-		CameraPivot.rotation_degrees.x = clamp(CameraPivot.rotation_degrees.x + -motion.y * MouseSensitivity, -45, 30)
-		CameraPivot.rotation_degrees.y += -motion.x * MouseSensitivity
+		CameraRef.rotation_degrees.x = clamp(CameraRef.rotation_degrees.x + -motion.y * MouseSensitivity, -45, 30)
+		CameraRef.rotation_degrees.y += -motion.x * MouseSensitivity
 	elif event is InputEventMouseButton:
 		match event.button_index:
 			BUTTON_WHEEL_UP, BUTTON_WHEEL_DOWN:
-				PlayerCamera.translation += Vector3(0, 0.1, 0.1) * (1 if event.button_index == BUTTON_WHEEL_DOWN else -1)
+				CameraRef.translation += Vector3(0, 0.1, 0.1) * (1 if event.button_index == BUTTON_WHEEL_DOWN else -1)
 			BUTTON_LEFT:
 				if Stamina >= LightCost and not event.is_pressed():
 					self.Stamina -= LightCost
