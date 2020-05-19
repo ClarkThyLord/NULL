@@ -4,7 +4,12 @@ extends Spatial
 
 
 # Imports
-const Pawn := preload("res://entities/enemies/Pawn/Pawn.tscn")
+const Enemies := [
+	preload("res://entities/enemies/Pawn/Pawn.tscn"),
+	preload("res://entities/enemies/Archer/Archer.tscn"),
+	preload("res://entities/enemies/Rusher/Rusher.tscn"),
+	preload("res://entities/enemies/Viper/Viper.tscn")
+]
 
 
 
@@ -116,14 +121,14 @@ func start() -> void:
 	State = States.PROGRESSING
 	entities_count = 1 + randi() % 10
 	for enemy in range(entities_count):
-		var pawn := Pawn.instance()
-		pawn.translation = Vector3(
+		var enemyref = Enemies[randi() % Enemies.size()].instance()
+		enemyref.translation = Vector3(
 			4 + randi() % int(Size.x * 2 - 12) - Size.x,
 			0.1,
 			4 + randi() % int(Size.y * 2 - 12) - Size.y
 		)
-		add_child(pawn)
-		pawn.connect("died", self, "sub_entities_count")
+		add_child(enemyref)
+		enemyref.connect("died", self, "sub_entities_count")
 	
 	emit_signal("started")
 
