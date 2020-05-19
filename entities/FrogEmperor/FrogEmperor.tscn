@@ -109,7 +109,6 @@ MinLightDamage = 15
 MaxLightDamage = 40
 MinHeavyDamage = 35
 MaxHeavyDamage = 70
-MouseSensitivity = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "idle"

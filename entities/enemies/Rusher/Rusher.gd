@@ -12,8 +12,8 @@ export(int, 1, 1000) var HitRate := 100
 var attack_frames = 0
 export(int, 1, 1000) var AttackReach := 25
 
-export(int, 0, 100) var MinDamage := 30
-export(int, 0, 100) var MaxDamage := 40
+export(int, 0, 100) var MinDamage := 10
+export(int, 0, 100) var MaxDamage := 20
 
 var attack = false
 

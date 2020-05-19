@@ -29,7 +29,7 @@ Server="*res://server/Server.gd"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "Voxel-Core" )
+enabled=PoolStringArray(  )
 
 [gui]
 

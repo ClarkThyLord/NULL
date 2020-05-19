@@ -17,6 +17,8 @@ func set_health(health : float) -> void:
 	.set_health(health)
 	HUD.update_health(Health)
 
+export(float) var HealthRegen := 3
+
 export(float, 0.0, 100.0, 1) var Stamina := 100.0 setget set_stamina
 func set_stamina(stamina : float) -> void:
 	Stamina = clamp(stamina, 0, 100)
@@ -105,6 +107,7 @@ func _physics_process(delta) -> void:
 		
 		velocity.y = 0
 		move_and_slide(velocity, Vector3.UP)
+	self.Health += HealthRegen * delta
 	if regenerate_stamina: self.Stamina += StaminaRegen * delta
 	._physics_process(delta)
 

@@ -4,8 +4,8 @@ extends Area
 onready var HitArea := get_node("HitArea")
 
 export (float) var Speed := .7
-export(int, 0, 100) var MinDamage := 30
-export(int, 0, 100) var MaxDamage := 50
+export(int, 0, 100) var MinDamage := 10
+export(int, 0, 100) var MaxDamage := 18
 
 var myViper : KinematicBody
 var canShoot = false
@@ -24,6 +24,3 @@ func _physics_process(delta):
 				visible = false
 				translation = myViper.translation
 				translation.y = 7
-		
-		print(canShoot)
-
