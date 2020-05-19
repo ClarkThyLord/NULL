@@ -8,6 +8,8 @@ onready var HUD := get_node("HUD")
 onready var CameraRef := get_node("Camera")
 onready var HitArea := get_node("HitArea")
 
+onready var AnimationPlayerRef := get_node("AnimationPlayer")
+
 
 
 # Declarations
@@ -43,10 +45,34 @@ export(int, 0, 100, 1) var MouseSensitivity := 5
 
 
 # Core
+func correct() -> void:
+	$Sprite.scale = Vector2(
+		8 * (get_viewport().size.x / 1024),
+		7 * (get_viewport().size.y / 600)
+	)
+	$Sprite.position = get_viewport().size / 2
+
+
 func _ready() -> void:
 	add_to_group("players", true)
 	if not Engine.editor_hint:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	get_viewport().connect("size_changed", self, "correct")
+
+
+func light() -> void:
+	self.Stamina -= LightCost
+	for body in HitArea.get_overlapping_bodies():
+		if body.is_in_group("enemies"):
+			hit(body, (MinLightDamage + randi() % MaxLightDamage))
+	AnimationPlayerRef.play("idle")
+
+func heavy() -> void:
+	self.Stamina -= HeavyCost
+	for body in HitArea.get_overlapping_bodies():
+		if body.is_in_group("enemies"):
+			hit(body, (MinHeavyDamage + randi() % MaxHeavyDamage))
+	AnimationPlayerRef.play("idle")
 
 
 func die() -> void:
@@ -92,14 +118,8 @@ func _unhandled_input(event : InputEvent):
 			BUTTON_WHEEL_UP, BUTTON_WHEEL_DOWN:
 				CameraRef.translation += Vector3(0, 0.1, 0.1) * (1 if event.button_index == BUTTON_WHEEL_DOWN else -1)
 			BUTTON_LEFT:
-				if Stamina >= LightCost and not event.is_pressed():
-					self.Stamina -= LightCost
-					for body in HitArea.get_overlapping_bodies():
-						if body.is_in_group("enemies"):
-							hit(body, (MinLightDamage + randi() % MaxLightDamage))
+				if AnimationPlayerRef.current_animation == "idle" and Stamina >= LightCost and not event.is_pressed():
+					AnimationPlayerRef.play("light")
 			BUTTON_RIGHT:
-				if Stamina >= HeavyCost and not event.is_pressed():
-					self.Stamina -= HeavyCost
-					for body in HitArea.get_overlapping_bodies():
-						if body.is_in_group("enemies"):
-							hit(body, (MinHeavyDamage + randi() % MaxHeavyDamage))
+				if AnimationPlayerRef.current_animation == "idle" and Stamina >= HeavyCost and not event.is_pressed():
+					AnimationPlayerRef.play("heavy")
