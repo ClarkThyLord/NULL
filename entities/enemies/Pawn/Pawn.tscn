@@ -75,7 +75,7 @@ extents = Vector3( 1.34651, 1.50296, 1.002 )
 
 [node name="Pawn" type="KinematicBody"]
 script = ExtResource( 1 )
-Pointage = 10
+Pointage = 25
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "idle"
