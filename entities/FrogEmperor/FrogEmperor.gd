@@ -6,7 +6,7 @@ extends "res://entities/Entity.gd"
 onready var HUD := get_node("HUD")
 
 onready var CameraRef := get_node("Camera")
-onready var HitArea := get_node("HitArea")
+onready var HitArea := get_node("Camera/HitArea")
 
 onready var AnimationPlayerRef := get_node("AnimationPlayer")
 
