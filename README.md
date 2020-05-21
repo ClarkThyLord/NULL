@@ -10,7 +10,7 @@
 
 <p align="center">
 	<a href="https://github.com/ClarkThyLord/NULL/releases">
-		<img src="https://img.shields.io/badge/Version-0.1.0-green.svg" alt="Version">
+		<img src="https://img.shields.io/badge/Version-1.0.0-green.svg" alt="Version">
 	</a>
 	<a href="./LICENSE">
 		<img src="https://img.shields.io/badge/License-MIT-brightgreen.svg" alt="License">
